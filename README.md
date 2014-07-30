@@ -67,7 +67,7 @@ parsed almost the same way. First the pulse squence must be converted to a binar
 In almost all cases there exist a mapping from pulse sequences to a binary `0` and `1`. In this
 example the pulse sequence `0110` represents a binary `0` and `0101` maps to a binary `1`:
 
-
+```CoffeeScript
 pulsesToBinaryMapping = {
   '0110': '0' #binary 0
   '0101': '1' #binary 1 
