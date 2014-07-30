@@ -7,7 +7,7 @@ signals for various devices switches or weather stations.
 It works well together with the [RFControl](https://github.com/pimatic/RFControl) Arduino library
 for receving the signals.
 
-The Processing pipeline
+The Processing Pipeline
 -----------------------
 
 ### 1. Receiving
@@ -54,12 +54,12 @@ sorting it after receiving from the arduino).
 We call the sorted buckets **pulse lengths**, the compressed timings **pulse sequence* and the 
 length of the pulse sequence (inclusive footer) **pulse count**.
 
-### 2. Protocol matching
+### 2. Protocol Matching
 
 We detect possible protocols by two criteria. The pulse length must match with a small tolerance
 and the pulse count must match. 
 
-### 2. Protocol parsing
+### 2. Protocol Parsing
 
 If a protocol matches its `parse` function is called with the pulse sequence. Most protocols are
 parsed almost the same way. First the pulse squence must be converted to a binary representation.
