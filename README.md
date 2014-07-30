@@ -61,13 +61,13 @@ and the pulse count must match.
 
 ### 2. Protocol Parsing
 
-If a protocol matches its `parse` function is called with the pulse sequence. Most protocols are
+If a protocol matches, its `parse` function is called with the pulse sequence. Most protocols are
 parsed almost the same way. First the pulse squence must be converted to a binary representation.
 
 In almost all cases there exist a mapping from pulse sequences to a binary `0` and `1`. In this
 example the pulse sequence `0110` represents a binary `0` and `0101` maps to a binary `1`:
 
-```CoffeeScript
+
 pulsesToBinaryMapping = {
   '0110': '0' #binary 0
   '0101': '1' #binary 1 
@@ -82,4 +82,12 @@ The binary reprsentation now looks like this:
 110011000010
 ```
 
-As last step the protocol dependend information must be extracted from the binary representation.
+As last step the protocol dependend information must be extracted from the binary representation:
+
+```CoffeeScript
+result = {
+  houseCode: helper.binaryToNumber(binary, 0, 5)
+  unitCode: helper.binaryToNumber(binary, 6, 10)
+  state: helper.binaryToBoolean(binary, 12)
+}
+```
