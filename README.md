@@ -21,7 +21,7 @@ and waits for rf signal.
 
 [RFControl](https://github.com/pimatic/RFControl) running on the arduino detects the start of a 
 signal by its longer footer pulse and verifies it one time by comparing it with the next signal. 
-It does know nothing about the specific protocol, it just uses the state fact above. Also we aren't
+It does nothing know about the specific protocol, it just uses the stated fact above. Also we aren't
 interested in if the pulse was a high or low pulse (presence or absence of a carrier wave), 
 because the information is decoded in the pulse lengths.
 
@@ -51,7 +51,7 @@ pulses: 01010101011001100101010101100110011001100101011002
 To make the representation unique, we choose the buckets in ascending order (respectively we are
 sorting it after receiving from the arduino).
 
-We call the sorted buckets **pulse lengths**, the compressed timings **pulse sequence* and the 
+We call the sorted buckets **pulse lengths**, the compressed timings **pulse sequence** and the 
 length of the pulse sequence (inclusive footer) **pulse count**.
 
 ### 2. Protocol Matching
