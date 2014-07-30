@@ -59,7 +59,7 @@ length of the pulse sequence (inclusive footer) **pulse count**.
 We detect possible protocols by two criteria. The pulse length must match with a small tolerance
 and the pulse count must match. 
 
-### 2. Protocol Parsing
+### 3. Protocol Parsing
 
 If a protocol matches, its `parse` function is called with the pulse sequence. Most protocols are
 parsed almost the same way. First the pulse squence must be converted to a binary representation.
