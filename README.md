@@ -16,7 +16,7 @@ The arduino is connecte via serial bus to the processing computer (for example a
 and waits for rf signal. 
 
 > Mostly all 433mhzw OOK signals from devices are send multiple times directly in row and have a
-> longer footer pulse in between. They differ by the pulse lengths used to decode the data and footer 
+> longer footer pulse in between. They differ by the pulse lengths used to encode the data and footer 
 > and the pulse count.
 
 [RFControl](https://github.com/pimatic/RFControl) running on the arduino detects the start of a 
