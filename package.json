@@ -1,11 +1,17 @@
 {
   "name": "rfcontroljs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Protocol support for different 433mhz switches and weather stations for the RFControl Arduino library",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "files": [
+    "test",
+    "lib",
+    "protocols",
+    "README.md",
+    "LICENSE",
+    "gulpfile.js",
+    "gulpfile.coffee"
+  ],
   "scripts": {
     "test": "gulp test"
   },
