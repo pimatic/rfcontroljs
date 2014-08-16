@@ -10,7 +10,8 @@
     "README.md",
     "LICENSE",
     "gulpfile.js",
-    "gulpfile.coffee"
+    "gulpfile.coffee",
+    "index.js"
   ],
   "scripts": {
     "test": "gulp test"
