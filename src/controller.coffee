@@ -1,7 +1,7 @@
-helper = require './helper.coffee'
+helper = require './helper'
 protocols = ['weather1', 'weather2', 'switch1', 'switch2', 'switch3', 'switch4']
 # load protocol files:
-protocols = protocols.map( (p) => require("../protocols/#{p}.coffee")(helper) )
+protocols = protocols.map( (p) => require("../protocols/#{p}")(helper) )
 
 doesProtocolMatch = (pulseLengths, pulses, protocol) ->
   unless pulses.length is protocol.pulseCount then return false
