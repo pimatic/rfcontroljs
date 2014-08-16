@@ -6,7 +6,6 @@
   "files": [
     "test",
     "lib",
-    "protocols",
     "README.md",
     "LICENSE",
     "gulpfile.js",
