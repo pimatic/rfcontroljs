@@ -1,4 +1,9 @@
+class ParsingError extends Error
+  constructor: (@message,@cause)->
+    Error.captureStackTrace(this, ParsingError)
+
 module.exports = {
+  ParsingError: ParsingError
   map: (data, mapping) ->
     i = 0
     result = ''
@@ -15,7 +20,7 @@ module.exports = {
             i += search.length
             hadMatch = true
             break
-      unless hadMatch then throw new Error("Data did not match mapping")
+      unless hadMatch then throw new ParsingError("Data did not match mapping")
     return result
 
   mapByArray: (data, mapping) ->

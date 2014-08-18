@@ -26,6 +26,7 @@ sortIndices = (array) ->
   
 
 module.exports = {
+  debug: false
   compressTimings: (timings) ->
     pulses = ''
     buckets = []
@@ -79,10 +80,16 @@ module.exports = {
       # First test if pulse count and pulse lengths match
       if doesProtocolMatch(pulseLengths, pulses, p)
         # Then try to parse
-        values = p.parse(pulses)
-        results.push {
-          protocol: p.name
-          values: values
-        }
+        try
+          values = p.parse(pulses)
+          results.push {
+            protocol: p.name
+            values: values
+          }
+        catch err
+          if debug
+            console.log "Error trying to parse message with protocol #{p.name}: #{err.stack}"
+          unless err instanceof helper.ParsingError
+            throw err
     return results
 }   
