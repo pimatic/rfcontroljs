@@ -87,7 +87,7 @@ module.exports = {
             values: values
           }
         catch err
-          if debug
+          if @debug
             console.log "Error trying to parse message with protocol #{p.name}: #{err.stack}"
           unless err instanceof helper.ParsingError
             throw err
