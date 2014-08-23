@@ -17,7 +17,7 @@ module.exports = (helper) ->
     brands: ["Elro", "Elro Home Easy"]
     pulseLengths: [306, 957, 9808]
     pulseCount: 50
-    parse: (pulses) ->
+    decodePulses: (pulses) ->
       # pulses is something like: '01010101011001100101010101100110011001100101011002'
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)

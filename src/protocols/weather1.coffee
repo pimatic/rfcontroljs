@@ -15,7 +15,7 @@ module.exports = (helper) ->
     models: []
     pulseLengths: [456, 1990, 3940, 9236]
     pulseCount: 74
-    parse: (pulses) ->
+    decodePulses: (pulses) ->
       # pulses is something like: '01020102020201020101010101010102010101010202020101020202010102010101020103'
       # we first map the pulse sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)

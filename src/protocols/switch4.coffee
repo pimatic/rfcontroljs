@@ -17,7 +17,7 @@ module.exports = (helper) ->
     brands: ["Cogex", "KlikAanKlikUit", "Intertechno", "Düwi Terminal"]
     pulseLengths: [ 295, 1180, 11210 ]
     pulseCount: 50
-    parse: (pulses) ->
+    decodePulses: (pulses) ->
       # pulses is something like: '01010110010101100110011001100110010101100110011002'
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)

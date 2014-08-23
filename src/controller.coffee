@@ -73,7 +73,7 @@ module.exports = {
       pulses
     }
 
-  parsePulseSquence: (pulseLengths, pulses) ->
+  decodePulses: (pulseLengths, pulses) ->
     results = []
     # test for each protocol
     for p in protocols
@@ -81,7 +81,7 @@ module.exports = {
       if doesProtocolMatch(pulseLengths, pulses, p)
         # Then try to parse
         try
-          values = p.parse(pulses)
+          values = p.decodePulses(pulses)
           results.push {
             protocol: p.name
             values: values
@@ -92,4 +92,17 @@ module.exports = {
           unless err instanceof helper.ParsingError
             throw err
     return results
+
+  encodeMessage: (protocolName, message) ->
+    protocol = null
+    for p in protocols
+      if p.name is protocolName
+        protocol = p
+        break
+    unless protocol? then throw new Error("Could not find a protocol named #{protocolName}")
+    unless protocol.encodeMessage? then throw new Error("The protocol has no send report.")
+    return {
+      pulseLengths: protocol.pulseLengths
+      pulses: protocol.encodeMessage(message)
+    }
 }   

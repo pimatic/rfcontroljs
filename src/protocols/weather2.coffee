@@ -13,7 +13,7 @@ module.exports = (helper) ->
     models: ["Auriol"]
     pulseLengths: [492, 969, 1948, 4004]
     pulseCount: 74
-    parse: (pulses) ->
+    decodePulses: (pulses) ->
       # pulses is something like: '01010102020202010201010101010101020202010201020102020202010101010101010103'
       # we first map: 01 => 0, 02 => 1, 03 => nothing
       binary = helper.map(pulses, pulsesToBinaryMapping)

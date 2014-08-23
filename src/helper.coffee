@@ -47,6 +47,15 @@ module.exports = {
       i--
     return number
 
+  numberToBinary: (number, length) ->
+    binary = ''
+    i = 0
+    while i < length
+      binary = (number & 1) + binary
+      number >>= 1
+      i++
+    return binary
+
   binaryToBoolean: (data, i) ->
     return (data[i] is '1')
 }
