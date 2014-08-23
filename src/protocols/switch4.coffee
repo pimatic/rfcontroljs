@@ -4,6 +4,10 @@ module.exports = (helper) ->
     '0101': '1' #binary 1 
     '02': ''    #footer
   }
+  binaryToPulse = {
+    '0': '0110'
+    '1': '0101'
+  }
   return protocolInfo = {
     name: 'switch4'
     type: 'switch'
@@ -26,8 +30,14 @@ module.exports = (helper) ->
       # |    10100 | 00010 |      0 |    0 |
       # |     Unit |    ID |  fixed | State|
       return result = {
-        unit: helper.binaryToNumber(binary, 0, 5)
-        id: helper.binaryToNumber(binary, 6, 10)
-        state: helper.binaryToBoolean(binary, 12)
+        unit: helper.binaryToNumber(binary, 0, 4)
+        id: helper.binaryToNumber(binary, 5, 9)
+        state: helper.binaryToBoolean(binary, 11)
       }
+    encodeMessage: (message) ->
+      unit = helper.map(helper.numberToBinary(message.unit, 5), binaryToPulse)
+      id = helper.map(helper.numberToBinary(message.id, 5), binaryToPulse)
+      fixed = binaryToPulse['0']
+      state = (if message.state then binaryToPulse['1'] else binaryToPulse['0'])
+      return "#{unit}#{id}#{fixed}#{state}"
   }

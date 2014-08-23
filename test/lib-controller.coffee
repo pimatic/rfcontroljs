@@ -12,6 +12,11 @@ describe '#decodePulses()', ->
         '01020102020201020101010101010102010101010202020102010102010102010101020103'
         '01020102020201020101010101010102010101010202020102010101010102010101020103'
       ]
+      values: [
+        { temperature: 23.1, humidity: 34 }
+        { temperature: 23.3, humidity: 34 }
+        { temperature: 23.2, humidity: 34 }
+      ]
     },
     {
       protocol: 'weather2'
@@ -23,6 +28,14 @@ describe '#decodePulses()', ->
         '01010101020201020201010101010102010101010202010102020202010101010101010103'
         '01010101020201020201010101010102010101010201010102020202010101010101010103'
         '01010101020201020201010101010102010101010202020102020202010101010101010103'
+      ],
+      values: [
+        { temperature: 23.4 }
+        { temperature: 23.3 }
+        { temperature: 23.2 }
+        { temperature: 26.8 }
+        { temperature: 26.4 }
+        { temperature: 27 }
       ]
     },
     {
@@ -32,6 +45,11 @@ describe '#decodePulses()', ->
         '020001000101000001000100010100010001000100000101000001000101000001000100010100000100010100010000010100000100010100000100010001000103'
         '020001000101000001000100010100010001000100000101000001000101000001000100010100000100010100010000010100000100010100000100010001010003'
         '020001000101000001000100010100010001000100000101000001000101000001000100010100000100010100010000010100000100010001000100010001010003'
+      ],
+      values: [
+        { id: 9390234, all: false, state: true, unit: 0 }
+        { id: 9390234, all: false, state: true, unit: 1 }
+        { id: 9390234, all: false, state: false, unit: 1 }
       ]
     },
     {
@@ -39,20 +57,26 @@ describe '#decodePulses()', ->
       pulseLengths: [306, 957, 9808]
       pulses: [
         '01010101011001100101010101100110011001100101011002'
-      ]    
+      ],
+      values: [
+        { houseCode: 25, unitCode: 16, state: true }
+      ]
     },
     { 
       protocol: 'switch4'
       pulseLengths: [ 295, 1180, 11210 ],
       pulses: [
         '01010110010101100110011001100110010101100110011002'
+      ],
+      values: [
+         { id: 2, unit: 20, state: false }
       ]
     }
   ]
 
   runTest = ( (t) ->
     it "#{t.protocol} should decode the pulses", ->
-      for pulses in t.pulses
+      for pulses, i in t.pulses
         results = controller.decodePulses(t.pulseLengths, pulses)
         assert(results.length >= 1, "pulse of #{t.protocol} should be detected.")
         result = null
@@ -61,6 +85,7 @@ describe '#decodePulses()', ->
             result = r
             break
         assert(result, "pulse of #{t.protocol} should be detected as #{t.protocol}.") 
+        assert.deepEqual(result.values, t.values[i])
   )
 
   runTest(t) for t in tests
