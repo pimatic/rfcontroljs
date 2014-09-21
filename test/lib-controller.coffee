@@ -5,6 +5,16 @@ controller = require '../src/controller.coffee'
 describe '#decodePulses()', ->
   tests = [
     {
+      protocol: 'tfa'
+      pulseLengths: [506, 625, 2013, 7728]
+      pulses: [
+        '0202010101010201010202020102010102020201010202010102020201010201020202010202020101010303'
+      ]
+      values: [
+        { id:12, temperature: 23.6, humidity: 67 }
+      ]
+    },
+    {
       protocol: 'weather1'
       pulseLengths: [456, 1990, 3940, 9236]
       pulses: [
