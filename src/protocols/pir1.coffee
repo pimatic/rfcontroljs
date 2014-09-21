@@ -48,6 +48,6 @@ module.exports = (helper) ->
       console.log binary
       # binary is now something like: '000111101000000011101010111100000000'
       return result = {
-        presence: helper.binaryToBoolean(binary, 27)
+        presence: helper.binaryToBoolean(binary, 26)
       }
   }
