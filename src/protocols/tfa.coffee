@@ -1,7 +1,7 @@
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
-    '01': '1' #binary 0
-    '02': '0' #binary 1
+    '01': '0' #binary 0
+    '02': '1' #binary 1
     '03': ''  #footer
   }
   return protocolInfo = {
@@ -15,7 +15,7 @@ module.exports = (helper) ->
       humidity:
         type: "number"
     models: ["tfa"]
-    pulseLengths: [506, 625, 2013, 7728]
+    pulseLengths: [508, 2012, 3908, 7726]
     pulseCount: 88
     decodePulses: (pulses) ->
       # pulses could be: '0202010101010201010202020102010102020201010202010102020201010201020202010202020101010303'
