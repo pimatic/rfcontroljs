@@ -1,6 +1,7 @@
 assert = require 'assert'
 
 controller = require '../src/controller.coffee'
+controller.debug = yes
 
 describe '#decodePulses()', ->
   tests = [
