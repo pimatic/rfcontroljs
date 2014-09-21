@@ -22,13 +22,13 @@ module.exports = (helper) ->
       # we first map the pulse sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '001111011000101100011001100011010001000111'
-      console.log binary
+      # console.log binary
       # now we extract the temperature and humidity from that string
       # | 01011101000000010 | 00011100111 | 00100010 |
       # | ?                 | Temp.       | Humid.   |
       return result = {
         id: helper.binaryToNumber(binary, 2, 9),
-        temperature: Math.round((((((((helper.binaryToNumber(binary, 22, 25)*256) + (helper.binaryToNumber(binary, 18, 21)*16) + (helper.binaryToNumber(binary, 14, 17)))*10) - 9000) - 3200) * (5/9)) /100) *10)/10,
+        temperature:  Math.round(((((helper.binaryToNumber(binary, 22, 25)*256) + (helper.binaryToNumber(binary, 18, 21)*16) + (helper.binaryToNumber(binary, 14, 17)))*10) - 12200) /18)/10, 
         humidity: helper.binaryToNumber(binary, 26,29) + helper.binaryToNumber(binary, 30, 33)*16
       }
   }
