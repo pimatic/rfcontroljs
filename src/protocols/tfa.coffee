@@ -14,7 +14,7 @@ module.exports = (helper) ->
         type: "number"
       humidity:
         type: "number"
-    models: []
+    models: ["tfa"]
     pulseLengths: [506, 625, 2013, 7728]
     pulseCount: 88
     decodePulses: (pulses) ->
