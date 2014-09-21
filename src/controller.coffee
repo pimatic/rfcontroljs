@@ -56,14 +56,17 @@ module.exports = {
     }
 
   prepareCompressedPulses: (input) ->
-    # input is something like: "268 2632 1282 10168 0 0 0 0 010002000202000002000200020200020002..."
+    # input is something like:
+    # "268 2632 1282 10168 0 0 0 0 010002000202000002000200020200020002..."
     # The first 8 numbers are the pulse length
     # and the last string is the pulse sequence
     parts = input.split(' ')
     pulseLengths = parts[0..7]
     pulses = parts[8]
     # Now lets filter out 0 puses
-    pulseLengths = pulseLengths.filter( (puls) -> puls isnt '0' ).map( (puls) -> parseInt(puls, 10) )
+    pulseLengths = pulseLengths
+      .filter( (puls) -> puls isnt '0' )
+      .map( (puls) -> parseInt(puls, 10) )
     # next sort the pulses from short to long and update indces in pulse
     sortedIndices = sortIndices(pulseLengths)
     pulseLengths.sort( (l,r) -> l-r )
@@ -105,4 +108,4 @@ module.exports = {
       pulseLengths: protocol.pulseLengths
       pulses: protocol.encodeMessage(message)
     }
-}   
+}
