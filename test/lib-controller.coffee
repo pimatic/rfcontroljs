@@ -5,6 +5,16 @@ controller = require '../src/controller.coffee'
 describe '#decodePulses()', ->
   tests = [
     {
+      protocol: 'pir1'
+      pulseLengths: [426, 660, 1653, 17000]
+      pulses: [
+        '02210221022102020221022102210221022102210221020203'
+      ]
+      values: [
+        { presence: true }
+      ]
+    },
+    {
       protocol: 'tfa'
       pulseLengths: [506, 625, 2013, 7728]
       pulses: [
@@ -15,11 +25,11 @@ describe '#decodePulses()', ->
         '0202020202010101010201020201020101010202010202010102020102010201020102020201020101020303'
       ]
       values: [
-        { id:246, temperature: 23.6, humidity: 67 }
-        { id:246, temperature: 23.5, humidity: 64 }
-        { id:173, temperature: 22.5, humidity: 68 }
-        { id:173, temperature: 23.1, humidity: 66 }
-        { id:30, temperature: 19.7, humidity: 85 }
+        { id: 246, temperature: 23.6, humidity: 67 }
+        { id: 246, temperature: 23.5, humidity: 64 }
+        { id: 173, temperature: 22.5, humidity: 68 }
+        { id: 173, temperature: 23.1, humidity: 66 }
+        { id: 30, temperature: 19.7, humidity: 85 }
       ]
     },
     {
