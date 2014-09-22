@@ -10,6 +10,8 @@ module.exports = (helper) ->
     values:
       id:
         type: "number"
+      channel:
+        type: "number"
       temperature:
         type: "number"
       humidity:
@@ -36,6 +38,7 @@ module.exports = (helper) ->
       # 0011 : cksum ?? don't know/care
       return result = {
         id: helper.binaryToNumber(binary, 2, 9),
+        channel: helper.binaryToNumber(binary, 12, 13) + 1,
         temperature: Math.round((((helper.binaryToNumber(binary, 22, 25)*256 + helper.binaryToNumber(binary, 18, 21)*16 + helper.binaryToNumber(binary, 14, 17))*10) - 12200) /18)/10,
         humidity: helper.binaryToNumber(binary, 26,29) + helper.binaryToNumber(binary, 30, 33)*16
       }

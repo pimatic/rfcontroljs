@@ -27,12 +27,12 @@ describe '#decodePulses()', ->
         '0101010101020202020101010102010201020101010201020201020202020101020201010101020201010303'
       ]
       values: [
-        { id: 246, temperature: 24.2, humidity: 56 }
-        { id: 246, temperature: 24.4, humidity: 56 }
-        { id: 173, temperature: 21.1, humidity: 65 }
-        { id: 173, temperature: 21.5, humidity: 65 }
-        { id: 30,  temperature: 18.1, humidity: 62 }
-        { id: 30,  temperature: 18.7, humidity: 63 }
+        { id: 246, channel:3, temperature: 24.2, humidity: 56 }
+        { id: 246, channel:3, temperature: 24.4, humidity: 56 }
+        { id: 173, channel:1, temperature: 21.1, humidity: 65 }
+        { id: 173, channel:1, temperature: 21.5, humidity: 65 }
+        { id: 30,  channel:2, temperature: 18.1, humidity: 62 }
+        { id: 30,  channel:2, temperature: 18.7, humidity: 63 }
       ]
     },
     {
