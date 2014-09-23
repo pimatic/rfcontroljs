@@ -10,7 +10,7 @@ module.exports = (helper) ->
     values:
       presence:
         type: "boolean"
-    models: []
+    brands: []
     pulseLengths: [413, 668, 1644, 16936]
     pulseCount: 50
     decodePulses: (pulses) ->
