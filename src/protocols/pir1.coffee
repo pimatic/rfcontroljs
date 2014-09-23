@@ -43,7 +43,7 @@ module.exports = (helper) ->
       # RF receive 661 1987 22400 0 0 0 0 0 01100110011001010110011001100110011001100110010102
 
       binary = helper.map(pulses, pulsesToBinaryMapping)
-      console.log binary
+      #console.log binary
       # binary is now something like: '000111101000000011101010111100000000'
       return result = {
         presence: true
