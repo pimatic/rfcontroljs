@@ -24,7 +24,7 @@ gulp.task('default', ->
 gulp.task 'test', ->
   gulp.src('test/*.coffee', read: false)
     .pipe(mocha(
-        reporter: 'spec'
+      reporter: 'spec'
     ))
 
 gulp.task 'coverage', ->
@@ -38,3 +38,54 @@ gulp.task 'coverage', ->
     .pipe(cover.report({
       outFile: 'coverage.html'
     }));
+
+
+gulp.task 'docs', ->
+  controller = require './src/controller'
+  protocols = controller.getAllProtocols()
+  output = """
+    <!-- This file is generated automatically don't edit it -->
+    Supported Protocols
+    ===================
+
+  """
+  for p in protocols
+    supports = {
+      temperature: p.values.temperature
+      humidity: p.values.humidity
+      state: p.values.state
+      all: p.values.all
+      battery: p.values.battery
+      presence: p.values.presence
+    }
+
+    for k, v of supports
+      if v?
+        delete p.values[k]
+      else
+        delete supports[k]
+
+    brands = JSON.stringify(p.brands)
+    brands = brands.substring(1, brands.length-1).replace(/\"/g, '').replace(/\,/g, ', ')
+    if brands.length is 0 then brands = '?'
+
+    output += """
+      #{p.name}
+      ---------
+      __Type__: #{p.type}
+
+      __Brands__: #{brands}
+      
+      __Protocol Options__:
+      ```json
+      #{JSON.stringify(p.values, null, '  ')}
+      ```
+      __Supports__:\n
+      ```json
+      #{JSON.stringify(supports, null, '  ')}
+      ```
+
+    """
+
+    require('fs').writeFileSync('./protocols.md', output)
+
