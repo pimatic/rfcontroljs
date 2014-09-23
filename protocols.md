@@ -8,21 +8,14 @@ __Type__: weather
 __Brands__: ?
 
 __Protocol Options__:
-```json
-{}
-```
+none
+
 __Supports__:
 
-```json
-{
-  "temperature": {
-    "type": "number"
-  },
-  "humidity": {
-    "type": "number"
-  }
-}
-```
+  * temperature
+  * humidity
+
+
 weather2
 ---------
 __Type__: weather
@@ -30,18 +23,13 @@ __Type__: weather
 __Brands__: Auriol
 
 __Protocol Options__:
-```json
-{}
-```
+none
+
 __Supports__:
 
-```json
-{
-  "temperature": {
-    "type": "number"
-  }
-}
-```
+  * temperature
+
+
 weather3
 ---------
 __Type__: weather
@@ -49,28 +37,17 @@ __Type__: weather
 __Brands__: tfa, conrad
 
 __Protocol Options__:
-```json
-{
-  "id": {
-    "type": "number"
-  },
-  "channel": {
-    "type": "number"
-  }
-}
-```
+
+  * **id** (number)
+  * **channel** (number)
+
+
 __Supports__:
 
-```json
-{
-  "temperature": {
-    "type": "number"
-  },
-  "humidity": {
-    "type": "number"
-  }
-}
-```
+  * temperature
+  * humidity
+
+
 switch1
 ---------
 __Type__: switch
@@ -78,28 +55,17 @@ __Type__: switch
 __Brands__: CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa
 
 __Protocol Options__:
-```json
-{
-  "id": {
-    "type": "binary"
-  },
-  "unit": {
-    "type": "number"
-  }
-}
-```
+
+  * **id** (binary)
+  * **unit** (number)
+
+
 __Supports__:
 
-```json
-{
-  "state": {
-    "type": "boolean"
-  },
-  "all": {
-    "type": "boolean"
-  }
-}
-```
+  * state
+  * all
+
+
 switch2
 ---------
 __Type__: switch
@@ -107,25 +73,16 @@ __Type__: switch
 __Brands__: Elro, Elro Home Easy
 
 __Protocol Options__:
-```json
-{
-  "houseCode": {
-    "type": "number"
-  },
-  "unitCode": {
-    "type": "number"
-  }
-}
-```
+
+  * **houseCode** (number)
+  * **unitCode** (number)
+
+
 __Supports__:
 
-```json
-{
-  "state": {
-    "type": "boolean"
-  }
-}
-```
+  * state
+
+
 switch3
 ---------
 __Type__: switch
@@ -133,25 +90,16 @@ __Type__: switch
 __Brands__: Brennenstuhl Comfort, Elro Home Control
 
 __Protocol Options__:
-```json
-{
-  "houseCode": {
-    "type": "number"
-  },
-  "unitCode": {
-    "type": "number"
-  }
-}
-```
+
+  * **houseCode** (number)
+  * **unitCode** (number)
+
+
 __Supports__:
 
-```json
-{
-  "state": {
-    "type": "boolean"
-  }
-}
-```
+  * state
+
+
 switch4
 ---------
 __Type__: switch
@@ -159,25 +107,16 @@ __Type__: switch
 __Brands__: Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal
 
 __Protocol Options__:
-```json
-{
-  "unit": {
-    "type": "number"
-  },
-  "id": {
-    "type": "number"
-  }
-}
-```
+
+  * **unit** (number)
+  * **id** (number)
+
+
 __Supports__:
 
-```json
-{
-  "state": {
-    "type": "boolean"
-  }
-}
-```
+  * state
+
+
 pir1
 ---------
 __Type__: pir
@@ -185,15 +124,10 @@ __Type__: pir
 __Brands__: ?
 
 __Protocol Options__:
-```json
-{}
-```
+none
+
 __Supports__:
 
-```json
-{
-  "presence": {
-    "type": "boolean"
-  }
-}
-```
+  * presence
+
+

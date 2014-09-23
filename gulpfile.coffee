@@ -69,21 +69,31 @@ gulp.task 'docs', ->
     brands = brands.substring(1, brands.length-1).replace(/\"/g, '').replace(/\,/g, ', ')
     if brands.length is 0 then brands = '?'
 
+    options = ""
+    for name, info of p.values
+      options += """  * **#{name}** (#{info.type})\n"""
+    
+    if options.length is 0 then options = "none\n"
+    else options = "\n#{options}\n"
+
+    supportsList = ""
+    for name, info of supports
+      supportsList += """  * #{name}\n"""
+    
+    if supportsList.length is 0 then supportsList = "none\n"
+    else supportsList = "\n#{supportsList}\n"
+
     output += """
       #{p.name}
       ---------
       __Type__: #{p.type}
 
       __Brands__: #{brands}
-      
+
       __Protocol Options__:
-      ```json
-      #{JSON.stringify(p.values, null, '  ')}
-      ```
-      __Supports__:\n
-      ```json
-      #{JSON.stringify(supports, null, '  ')}
-      ```
+      #{options}
+      __Supports__:
+      #{supportsList}
 
     """
 
