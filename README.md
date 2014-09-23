@@ -7,7 +7,7 @@ signals for various devices switches or weather stations.
 It works well together with the [RFControl](https://github.com/pimatic/RFControl) Arduino library
 for receving the signals.
 
-You can find a list of all supported protocols [here](protocols.md)
+You can find a list of all supported protocols [here](protocols.md).
 
 The Processing Pipeline
 -----------------------
