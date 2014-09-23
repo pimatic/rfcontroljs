@@ -5,7 +5,7 @@ module.exports = (helper) ->
     '03': ''  #footer
   }
   return protocolInfo = {
-    name: 'tfa'
+    name: 'weather3'
     type: 'weather'
     values:
       id:
