@@ -112,4 +112,13 @@ module.exports = {
       pulseLengths: protocol.pulseLengths
       pulses: protocol.encodeMessage(message)
     }
+
+  getAllProtocols: ->
+    return protocols
+
+  getProtocol: (protocolName) ->
+    for p in protocols
+      if p.name is protocolName
+        return p
+    return null
 }
