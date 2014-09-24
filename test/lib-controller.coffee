@@ -215,7 +215,7 @@ describe '#encodeMessage()', ->
   runTest = ( (t) ->
     it "should create the correct pulses for #{t.protocol}", ->
       result = controller.encodeMessage(t.protocol, t.message)
-      assert result.pulses, t.pulses
+      assert.equal result.pulses, t.pulses
   )
 
   runTest(t) for t in tests
