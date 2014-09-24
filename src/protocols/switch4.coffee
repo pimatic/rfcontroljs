@@ -39,5 +39,5 @@ module.exports = (helper) ->
       id = helper.map(helper.numberToBinary(message.id, 5), binaryToPulse)
       fixed = binaryToPulse['0']
       state = (if message.state then binaryToPulse['1'] else binaryToPulse['0'])
-      return "#{unit}#{id}#{fixed}#{state}"
+      return "#{unit}#{id}#{fixed}#{state}02"
   }
