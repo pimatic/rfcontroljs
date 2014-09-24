@@ -204,11 +204,16 @@ describe '#encodeMessage()', ->
       protocol: 'switch1'
       message: { id: 9390234, all: false, state: true, unit: 0 }
       pulses: '020001000101000001000100010100010001000100000101000001000101000001000100010100000100010100010000010100000100010100000100010001000103'
+    },
+    {
+      protocol: 'switch2'
+      message: { houseCode: 25, unitCode: 16, state: true }
+      pulses: '01010101011001100101010101100110011001100101011002'
     }
   ]
 
   runTest = ( (t) ->
-    it 'should compress the timings', ->
+    it 'should create the correct pulses', ->
       result = controller.encodeMessage(t.protocol, t.message)
       assert result.pulses, t.pulses
   )
