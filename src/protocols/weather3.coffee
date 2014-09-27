@@ -5,7 +5,7 @@ module.exports = (helper) ->
     '03': ''  #footer
   }
   return protocolInfo = {
-    name: 'tfa'
+    name: 'weather3'
     type: 'weather'
     values:
       id:
@@ -16,11 +16,12 @@ module.exports = (helper) ->
         type: "number"
       humidity:
         type: "number"
-    models: ["tfa"]
+    brands: ["tfa", "conrad"]
     pulseLengths: [508, 2012, 3908, 7726]
     pulseCount: 88
     decodePulses: (pulses) ->
-      # pulses could be: '0202010101010201010202020102010102020201010202010102020201010201020202010202020101010303'
+      # pulses could be:
+      # '0202010101010201010202020102010102020201010202010102020201010201020202010202020101010303'
       # we first map the pulse sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '001111011000101100011001100011010001000111'
@@ -31,15 +32,24 @@ module.exports = (helper) ->
       # 10 : channel (00 means Ch 1, 01 Ch 2, 10 Ch3)
       # 0100 0000 0110 : temperature is sent by the sensor in °F (and not °C)
       # the lowest value that the protocol support is 90°F (000000000000).
-      # Again you have to swap (321) the column order, in our example it give us 0110 0000 0100 which is 1540 in decimal
-      # So the rule is 1540/10 - 90 = 64 °F (17.78 °C) (this rule works fine for all temp positive/negative)
+      # Again you have to swap (321) the column order, in our example it give us 0110 0000 0100
+      # which is 1540 in decimal
+      # So the rule is 1540/10 - 90 = 64 °F (17.78 °C) (this rule works fine for all temp
+      # positive/negative)
+      t0 = helper.binaryToNumber(binary, 22, 25)
+      t1 = helper.binaryToNumber(binary, 18, 21)
+      t2 = helper.binaryToNumber(binary, 14, 17)
+      temperature = Math.round(((t0 * 256 + t1 * 16 + t2) * 10 - 12200) / 18 ) / 10
       # 0000 0100 : humidity swap the 2 col and it give the bin value of the HUM (ie 100 000 = 64)
+      h0 = helper.binaryToNumber(binary, 30, 33)
+      h1 = helper.binaryToNumber(binary, 26, 29)
+      humidity = h0 * 16 + h1
       # 0000 : battery ?? if > 0100 then BAT is failing ??
       # 0011 : cksum ?? don't know/care
       return result = {
         id: helper.binaryToNumber(binary, 2, 9),
         channel: helper.binaryToNumber(binary, 12, 13) + 1,
-        temperature: Math.round((((helper.binaryToNumber(binary, 22, 25)*256 + helper.binaryToNumber(binary, 18, 21)*16 + helper.binaryToNumber(binary, 14, 17))*10) - 12200) /18)/10,
-        humidity: helper.binaryToNumber(binary, 26,29) + helper.binaryToNumber(binary, 30, 33)*16
+        temperature: temperature
+        humidity: humidity
       }
   }

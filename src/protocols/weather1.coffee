@@ -12,7 +12,7 @@ module.exports = (helper) ->
         type: "number"
       humidity:
         type: "number"
-    models: []
+    brands: []
     pulseLengths: [456, 1990, 3940, 9236]
     pulseCount: 74
     decodePulses: (pulses) ->

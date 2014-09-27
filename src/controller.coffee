@@ -1,5 +1,9 @@
 helper = require './helper'
-protocols = ['weather1', 'weather2', 'switch1', 'switch2', 'switch3', 'switch4', 'tfa', 'pir1']
+protocols = [
+  'weather1', 'weather2', 'weather3',
+  'switch1', 'switch2', 'switch3', 'switch4',
+  'pir1'
+]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
 
@@ -108,4 +112,13 @@ module.exports = {
       pulseLengths: protocol.pulseLengths
       pulses: protocol.encodeMessage(message)
     }
+
+  getAllProtocols: ->
+    return protocols
+
+  getProtocol: (protocolName) ->
+    for p in protocols
+      if p.name is protocolName
+        return p
+    return null
 }

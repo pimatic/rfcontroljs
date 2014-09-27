@@ -16,26 +16,6 @@ describe '#decodePulses()', ->
       ]
     },
     {
-      protocol: 'tfa'
-      pulseLengths: [508, 2012, 3908, 7726]
-      pulses: [
-        '0101020202020102020101010201010202020102020201020201020101010101020201020101010102010303'
-        '0101020202020102020101010201020102020102020201020201020101010101020201020101020201010303'
-        '0101020102010202010201010101010101010102010101020201010101020102010101010101010201020303'
-        '0101020102010202010201010101010202020102010101020201010101020102010101010101010201010303'
-        '0101010101020202020101010102020101020101010101020201020202010101020201020101010101020303'
-        '0101010101020202020101010102010201020101010201020201020202020101020201010101020201010303'
-      ]
-      values: [
-        { id: 246, channel:3, temperature: 24.2, humidity: 56 }
-        { id: 246, channel:3, temperature: 24.4, humidity: 56 }
-        { id: 173, channel:1, temperature: 21.1, humidity: 65 }
-        { id: 173, channel:1, temperature: 21.5, humidity: 65 }
-        { id: 30,  channel:2, temperature: 18.1, humidity: 62 }
-        { id: 30,  channel:2, temperature: 18.7, humidity: 63 }
-      ]
-    },
-    {
       protocol: 'weather1'
       pulseLengths: [456, 1990, 3940, 9236]
       pulses: [
@@ -67,6 +47,26 @@ describe '#decodePulses()', ->
         { temperature: 26.8 }
         { temperature: 26.4 }
         { temperature: 27 }
+      ]
+    },
+    {
+      protocol: 'weather3'
+      pulseLengths: [508, 2012, 3908, 7726]
+      pulses: [
+        '0101020202020102020101010201010202020102020201020201020101010101020201020101010102010303'
+        '0101020202020102020101010201020102020102020201020201020101010101020201020101020201010303'
+        '0101020102010202010201010101010101010102010101020201010101020102010101010101010201020303'
+        '0101020102010202010201010101010202020102010101020201010101020102010101010101010201010303'
+        '0101010101020202020101010102020101020101010101020201020202010101020201020101010101020303'
+        '0101010101020202020101010102010201020101010201020201020202020101020201010101020201010303'
+      ]
+      values: [
+        { id: 246, channel:3, temperature: 24.2, humidity: 56 }
+        { id: 246, channel:3, temperature: 24.4, humidity: 56 }
+        { id: 173, channel:1, temperature: 21.1, humidity: 65 }
+        { id: 173, channel:1, temperature: 21.5, humidity: 65 }
+        { id: 30,  channel:2, temperature: 18.1, humidity: 62 }
+        { id: 30,  channel:2, temperature: 18.7, humidity: 63 }
       ]
     },
     {
@@ -204,13 +204,18 @@ describe '#encodeMessage()', ->
       protocol: 'switch1'
       message: { id: 9390234, all: false, state: true, unit: 0 }
       pulses: '020001000101000001000100010100010001000100000101000001000101000001000100010100000100010100010000010100000100010100000100010001000103'
+    },
+    {
+      protocol: 'switch2'
+      message: { houseCode: 25, unitCode: 16, state: true }
+      pulses: '01010101011001100101010101100110011001100101011002'
     }
   ]
 
   runTest = ( (t) ->
-    it 'should compress the timings', ->
+    it "should create the correct pulses for #{t.protocol}", ->
       result = controller.encodeMessage(t.protocol, t.message)
-      assert result.pulses, t.pulses
+      assert.equal result.pulses, t.pulses
   )
 
   runTest(t) for t in tests
