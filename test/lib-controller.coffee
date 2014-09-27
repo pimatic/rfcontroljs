@@ -14,9 +14,9 @@ describe '#decodePulses()', ->
         '01100110011001010110011001100110010101100110011002'
       ]
       values: [
-        { unit: 8, id: 1, state: true }
-        { unit: 0, id: 17, state: true }
-        { unit: 2, id: 2, state: true }
+        { unit: 8, id: 1, presence: true }
+        { unit: 0, id: 17, presence: true }
+        { unit: 2, id: 2, presence: true }
       ]
     },
     {

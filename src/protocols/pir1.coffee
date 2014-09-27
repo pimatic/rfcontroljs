@@ -16,7 +16,7 @@ module.exports = (helper) ->
         type: "number"
       id:
         type: "number"
-      state:
+      presence:
         type: "boolean"
     brands: []
     pulseLengths: [ 358, 1095, 11244 ]
@@ -32,6 +32,6 @@ module.exports = (helper) ->
       return result = {
         unit: helper.binaryToNumber(binary, 0, 4)
         id: helper.binaryToNumber(binary, 5, 9)
-        state: true
+        presence: true
       }
   }
