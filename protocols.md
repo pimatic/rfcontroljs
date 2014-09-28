@@ -124,7 +124,10 @@ __Type__: pir
 __Brands__: ?
 
 __Protocol Options__:
-none
+
+  * **unit** (number)
+  * **id** (number)
+
 
 __Supports__:
 
