@@ -2,7 +2,7 @@ helper = require './helper'
 protocols = [
   'weather1', 'weather2', 'weather3',
   'switch1', 'switch2', 'switch3', 'switch4',
-  'pir1'
+  'pir1', 'generic'
 ]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
