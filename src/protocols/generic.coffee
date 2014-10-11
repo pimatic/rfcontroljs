@@ -6,15 +6,15 @@ module.exports = (helper) ->
   }
   return protocolInfo = {
     name: 'generic'
-    type: 'generic'
+    type: 'value'
     values:
       id:
         type: "number"
-      proto:
+      protocol:
         type: "number"
       positive:
         type: "boolean"
-      counter:
+      value:
         type: "number"
     brands: ["homemade"]
     pulseLengths: [ 671, 2049, 4346, 10208 ]
@@ -26,8 +26,8 @@ module.exports = (helper) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
         id: helper.binaryToNumber(binary, 0, 13) 
-        proto: helper.binaryToNumber(binary, 14 , 17)
+        protocol: helper.binaryToNumber(binary, 14 , 17)
         positive: helper.binaryToNumber(binary, 18, 18)
-        counter: helper.binaryToNumber(binary, 19, 48)
+        value: helper.binaryToNumber(binary, 19, 48)
       }
   }
