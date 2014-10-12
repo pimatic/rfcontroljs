@@ -6,7 +6,7 @@ module.exports = (helper) ->
   }
   return protocolInfo = {
     name: 'generic'
-    type: 'value'
+    type: 'generic'
     values:
       id:
         type: "number"
