@@ -16,11 +16,11 @@ describe '#decodePulses()', ->
         '020102010201020101020102010201020102020101020201020102010102020101020201010201020102010201020102010201020102010201020102010201020102010201020102010201020102010201020102010201020102010201020102010203'
       ]
       values: [
-        { id: 1000, protocol: 10, positive: true, value: 1 }
-        { id: 1000, protocol: 10, positive: true, value: 1257 }
-        { id: 1011, protocol: 10, positive: true, value: 67129 }
-        { id: 1000, protocol: 10, positive: false, value: 67129 }
-        { id: 1000, protocol: 10, positive: true, value: 1073741823 }
+        { id: 1000, type: 10, positive: true, value: 1 }
+        { id: 1000, type: 10, positive: true, value: 1257 }
+        { id: 1011, type: 10, positive: true, value: 67129 }
+        { id: 1000, type: 10, positive: false, value: 67129 }
+        { id: 1000, type: 10, positive: true, value: 1073741823 }
       ]
     },
     {

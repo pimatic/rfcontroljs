@@ -10,7 +10,7 @@ module.exports = (helper) ->
     values:
       id:
         type: "number"
-      protocol:
+      type:
         type: "number"
       positive:
         type: "boolean"
@@ -26,7 +26,7 @@ module.exports = (helper) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
         id: helper.binaryToNumber(binary, 0, 13) 
-        protocol: helper.binaryToNumber(binary, 14 , 17)
+        type: helper.binaryToNumber(binary, 14 , 17)
         positive: helper.binaryToNumber(binary, 18, 18)
         value: helper.binaryToNumber(binary, 19, 48)
       }
