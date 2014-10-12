@@ -21,11 +21,13 @@ module.exports = (helper) ->
     pulseCount: 198
     decodePulses: (pulses) ->
       # pulses could be:
-      # '020102010201020101020102010201020102020101020201020102010102020101020201010202010201020102010201020102010201020102010201020102010201020102010201020102010201020102010201020102010201020102010201010203'
+      # '0201020102010201010201020102010201020201010202010201020101020201010202010102020102010201
+      #  0201020102010201020102010201020102010201020102010201020102010201020102010201020102010201
+      #  0201020102010201010203'
       # we first map the pulse sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
-        id: helper.binaryToNumber(binary, 0, 13) 
+        id: helper.binaryToNumber(binary, 0, 13)
         type: helper.binaryToNumber(binary, 14 , 17)
         positive: helper.binaryToNumber(binary, 18, 18)
         value: helper.binaryToNumber(binary, 19, 48)
