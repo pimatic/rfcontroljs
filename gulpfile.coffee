@@ -43,12 +43,16 @@ gulp.task 'coverage', ->
 gulp.task 'docs', ->
   controller = require './src/controller'
   protocols = controller.getAllProtocols()
-  output = """
+  header = """
     <!-- This file is generated automatically don't edit it -->
     Supported Protocols
     ===================
 
   """
+
+
+  main = ""
+  table = "<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr>"
   for p in protocols
     supports = {
       temperature: p.values.temperature
@@ -83,7 +87,10 @@ gulp.task 'docs', ->
     if supportsList.length is 0 then supportsList = "none\n"
     else supportsList = "\n#{supportsList}\n"
 
-    output += """
+    table += """
+      <tr><td>#{p.name}</td><td>#{p.type}</td><td>#{brands}</td></tr>
+    """
+    main += """
       #{p.name}
       ---------
       __Type__: #{p.type}
@@ -97,5 +104,6 @@ gulp.task 'docs', ->
 
     """
 
-    require('fs').writeFileSync('./protocols.md', output)
+  table += "</table>\n"
+  require('fs').writeFileSync('./protocols.md', header + table + main)
 
