@@ -10,7 +10,7 @@ module.exports = (helper) ->
     values:
       temperature:
         type: "number"
-    models: ["Auriol"]
+    brands: ["Auriol"]
     pulseLengths: [492, 969, 1948, 4004]
     pulseCount: 74
     decodePulses: (pulses) ->

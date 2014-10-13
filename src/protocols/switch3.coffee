@@ -39,5 +39,5 @@ module.exports = (helper) ->
       unitCode = helper.map(helper.numberToBinary(message.unitCode, 5), binaryToPulse)
       state = (if message.state then binaryToPulse['1'] else binaryToPulse['0'])
       inverseState = (if message.state then binaryToPulse['0'] else binaryToPulse['1'])
-      return "#{houseCode}#{unitCode}#{inverseState}#{state}"
+      return "#{houseCode}#{unitCode}#{inverseState}#{state}02"
   }

@@ -24,7 +24,7 @@ gulp.task('default', ->
 gulp.task 'test', ->
   gulp.src('test/*.coffee', read: false)
     .pipe(mocha(
-        reporter: 'spec'
+      reporter: 'spec'
     ))
 
 gulp.task 'coverage', ->
@@ -38,3 +38,72 @@ gulp.task 'coverage', ->
     .pipe(cover.report({
       outFile: 'coverage.html'
     }));
+
+
+gulp.task 'docs', ->
+  controller = require './src/controller'
+  protocols = controller.getAllProtocols()
+  header = """
+    <!-- This file is generated automatically don't edit it -->
+    Supported Protocols
+    ===================
+
+  """
+
+
+  main = ""
+  table = "<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr>"
+  for p in protocols
+    supports = {
+      temperature: p.values.temperature
+      humidity: p.values.humidity
+      state: p.values.state
+      all: p.values.all
+      battery: p.values.battery
+      presence: p.values.presence
+    }
+
+    for k, v of supports
+      if v?
+        delete p.values[k]
+      else
+        delete supports[k]
+
+    brands = JSON.stringify(p.brands)
+    brands = brands.substring(1, brands.length-1).replace(/\"/g, '').replace(/\,/g, ', ')
+    if brands.length is 0 then brands = '?'
+
+    options = ""
+    for name, info of p.values
+      options += """  * **#{name}** (#{info.type})\n"""
+    
+    if options.length is 0 then options = "none\n"
+    else options = "\n#{options}\n"
+
+    supportsList = ""
+    for name, info of supports
+      supportsList += """  * #{name}\n"""
+    
+    if supportsList.length is 0 then supportsList = "none\n"
+    else supportsList = "\n#{supportsList}\n"
+
+    table += """
+      <tr><td>#{p.name}</td><td>#{p.type}</td><td>#{brands}</td></tr>
+    """
+    main += """
+      #{p.name}
+      ---------
+      __Type__: #{p.type}
+
+      __Brands__: #{brands}
+
+      __Protocol Options__:
+      #{options}
+      __Supports__:
+      #{supportsList}
+
+    """
+
+  table += "</table>\n"
+  require('fs').writeFileSync('./protocols.md', header + table + main)
+

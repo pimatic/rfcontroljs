@@ -7,6 +7,8 @@ signals for various devices switches or weather stations.
 It works well together with the [RFControl](https://github.com/pimatic/RFControl) Arduino library
 for receving the signals.
 
+You can find a list of all supported protocols [here](protocols.md).
+
 The Processing Pipeline
 -----------------------
 
@@ -90,4 +92,37 @@ result = {
   unitCode: helper.binaryToNumber(binary, 6, 10)
   state: helper.binaryToBoolean(binary, 12)
 }
+```
+
+Adding a new Protocol
+--------------------
+
+## Preparation
+
+1. Fork the rfcontroljs repository and clone your fork into a local directory.
+2. run `npm install` inside the cloned directory, so that all dependencies get installed.
+3. We are using [gulp](http://gulpjs.com/) for automating tests and automatic coffee-script compilation. So best to install it global: `npm install --global gulp`
+4. You should be able to run the tests with `gulp test`.
+5. Running just `gulp` let it compile all files and whats for changes. So always keep in running while editing coffee-files.
+
+## Protocol development
+
+1. Create a new protocol file (like the other) in `src/protocols`.
+2. Add its name in the `src/controller.coffee` file to [the protocol list](https://github.com/pimatic/rfcontroljs/blob/master/src/controller.coffee#L2).
+3. Add a test case to the `#decodePulses()` test case list in `test/lib-controller.coffee` with the data from the arduino ([like this one](https://github.com/pimatic/rfcontroljs/blob/master/test/lib-controller.coffee#L65-L74)). For the `pulseLengths`: strip the zero's at the end and sort them in ascending order, also adapt the `pulse` to the changed sorting. [1]
+4. Adapt the protocol file, so that the test get passed.
+
+[1] You can also use this script to convert the output to a valid test input:
+
+```coffee
+controller = require './index.js'
+result = controller.prepareCompressedPulses('511 2006 627 7728 0 0 0 0 0101020202020102020101010201010102020102020201020201010101020102010101020101020102020303')
+console.log result
+```
+sample output:
+
+```
+coffee convert.coffee 
+{ pulseLengths: [ 511, 627, 2006, 7728 ],
+  pulses: '0202010101010201010202020102020201010201010102010102020202010201020202010202010201010303' }
 ```

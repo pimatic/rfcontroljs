@@ -2,7 +2,7 @@ helper = require './helper'
 protocols = [
   'weather1', 'weather2', 'weather3',
   'switch1', 'switch2', 'switch3', 'switch4',
-  'pir1'
+  'pir1', 'generic'
 ]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
@@ -80,6 +80,35 @@ module.exports = {
       pulses
     }
 
+  fixPulses: (pulseLengths, pulses) ->
+    # if we have less then 3 different pulseLenght there is nothing to fix
+    if pulseLengths.length <= 3 then return null
+    # consider timing as the same if they differ less then ain a factor of 2
+    i = 1
+    while i < pulseLengths.length
+      if pulseLengths[i-1] * 2 < pulseLengths[i]
+        i++
+        continue
+      # merge pulseLengths[i-1] and pulseLengths[i]
+      newPulseLength = Math.floor((pulseLengths[i-1] + pulseLengths[i]) / 2)
+      # replace the old two pulse length with the new one
+      newPulseLengths = pulseLengths.slice()
+      newPulseLengths.splice(i-1, 2, newPulseLength)
+      break
+    # nothing to do...
+    if i is pulseLengths.length
+      return null
+    # adapt pulses
+    newPulses = pulses
+    while i < pulseLengths.length
+      newPulses = newPulses.replace(new RegExp("#{i}", 'g'), "#{i-1}")
+      i++
+    return {
+      pulseLengths: newPulseLengths
+      pulses: newPulses
+    }
+
+
   decodePulses: (pulseLengths, pulses) ->
     results = []
     # test for each protocol
@@ -98,7 +127,13 @@ module.exports = {
             console.log "Error trying to parse message with protocol #{p.name}: #{err.stack}"
           unless err instanceof helper.ParsingError
             throw err
-    return results
+    # try to fix pulses
+    fixed = @fixPulses(pulseLengths, pulses)
+    unless fixed?
+      # no fixes, then just return the results
+      return results
+    # We have fixes so try again with the fixed pulse lengths...
+    return results.concat(@decodePulses(fixed.pulseLengths, fixed.pulses))
 
   encodeMessage: (protocolName, message) ->
     protocol = null
@@ -112,4 +147,13 @@ module.exports = {
       pulseLengths: protocol.pulseLengths
       pulses: protocol.encodeMessage(message)
     }
+
+  getAllProtocols: ->
+    return protocols
+
+  getProtocol: (protocolName) ->
+    for p in protocols
+      if p.name is protocolName
+        return p
+    return null
 }
