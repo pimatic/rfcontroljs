@@ -2,13 +2,19 @@ helper = require './helper'
 protocols = [
   'weather1', 'weather2', 'weather3',
   'switch1', 'switch2', 'switch3', 'switch4',
-  'pir1', 'generic'
+  'pir1', 
+  'contact1',
+  'generic'
 ]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
 
 doesProtocolMatch = (pulseLengths, pulses, protocol) ->
-  unless pulses.length is protocol.pulseCount then return false
+  if protocol.pulseCounts?
+    unless pulses.length in protocol.pulseCounts then return false
+  else
+    unless pulses.length is protocol.pulseCount then return false
+
   unless pulseLengths.length is protocol.pulseLengths.length then return false
   i = 0
   while i < pulseLengths.length
