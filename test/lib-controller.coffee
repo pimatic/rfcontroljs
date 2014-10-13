@@ -143,6 +143,12 @@ describe '#decodePulses()', ->
 
   runTest(t) for t in tests
 
+  it "should decode fixable pulses", ->
+    pulseLengths =[ 258, 401, 1339, 2715, 10424 ]
+    pulses = '030002000202000200000202000002020000020002020000020002020000020201020000020200020000020201020002000200000200020002000200020002000204' 
+    results = controller.decodePulses(pulseLengths, pulses)
+    assert(results.length >= 1, "fixable pulses should be fixed.")
+
 
 describe '#compressTimings()', ->
   tests = [
@@ -241,3 +247,42 @@ describe '#encodeMessage()', ->
   )
 
   runTest(t) for t in tests
+
+
+describe '#fixPulses()', ->
+  tests = [
+    {
+      pulseLengths: [ 258, 401, 1339, 2715, 10424 ],
+      pulses: '030002000202000200000202000002020000020002020000020002020000020201020000020200020000020201020002000200000200020002000200020002000204'
+      result: { 
+        pulseLengths: [ 329, 1339, 2715, 10424 ],
+        pulses: '020001000101000100000101000001010000010001010000010001010000010100010000010100010000010100010001000100000100010001000100010001000103'
+      }
+    },
+    { 
+      pulseLengths: [ 239, 320, 1337, 2717, 10359 ],
+      pulses: '030002000202000201010202010002020101020102020101020102020101020201020101020201020101020201020102010201010201020102010201020112000204'
+      result: { 
+        pulseLengths: [ 279, 1337, 2717, 10359 ],
+        pulses: '020001000101000100000101000001010000010001010000010001010000010100010000010100010000010100010001000100000100010001000100010001000103' 
+      }
+    }
+  ]
+
+  runTest = ( (t) ->
+    it "should fix the pulses", ->
+      result = controller.fixPulses(t.pulseLengths, t.pulses)
+      assert.deepEqual result.pulseLengths, t.result.pulseLengths
+      assert.equal result.pulses, t.result.pulses
+  )
+
+  runTest(t) for t in tests
+
+  it "should not change correct pulses", ->
+    pulseLengths = [ 279, 1337, 2717, 10359 ]
+    pulses = '020001000101000100000101000001010000010001010000010001010000010100010000010100010000010100010001000100000100010001000100010001000103'
+    result = controller.fixPulses(pulseLengths, pulses)
+    assert(result is null)
+
+
+
