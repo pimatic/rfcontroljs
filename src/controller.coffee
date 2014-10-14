@@ -1,8 +1,8 @@
 helper = require './helper'
 protocols = [
   'weather1', 'weather2', 'weather3',
-  'switch1', 'switch2', 'switch3', 'switch4',
-  'pir1', 
+  'switch1', 'switch2', 'switch3', 'switch4', "switch5"
+  'pir1',
   'contact1',
   'generic'
 ]
