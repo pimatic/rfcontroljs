@@ -27,7 +27,6 @@ module.exports = (helper) ->
       # pulses is something like: '10010101101010010110010110101001010101011010101002'
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
-      console.log binary
       # binary is now something like: '011100011011000111110000'
       # now we extract the temperature and humidity from that string
       # | 01110001101100011111 | 000      | 0              |
@@ -44,7 +43,6 @@ module.exports = (helper) ->
           when 4 then 4
           else all = true; 0
       )
-      console.log "unit", unit
       return result = {
         id: id
         unit: unit
