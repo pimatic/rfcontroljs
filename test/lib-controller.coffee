@@ -149,8 +149,8 @@ describe '#decodePulses()', ->
         { id: 465695, unit: 3, all: false, state: off }
         { id: 465695, unit: 4, all: false, state: on }
         { id: 465695, unit: 4, all: false, state: off }
-        { id: 465695, unit: 0, all: true, state: on }
         { id: 465695, unit: 0, all: true, state: off }
+        { id: 465695, unit: 0, all: true, state: on }
       ]
     },
     {

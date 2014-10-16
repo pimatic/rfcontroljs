@@ -43,6 +43,8 @@ module.exports = (helper) ->
           when 4 then 4
           else all = true; 0
       )
+      if all
+        state = not state
       return result = {
         id: id
         unit: unit
@@ -51,14 +53,19 @@ module.exports = (helper) ->
       }
     encodeMessage: (message) ->
       id = helper.map(helper.numberToBinary(message.id, 20), binaryToPulse)
-      unitCode = (
-        switch message.unit
-          when 1 then 0
-          when 2 then 1
-          when 3 then 2
-          when 4 then 4
-      )
+      if message.all
+        unitCode = (if message.state then 6 else 7)
+        state = not message.state
+      else
+        unitCode = (
+          switch message.unit
+            when 1 then 0
+            when 2 then 1
+            when 3 then 2
+            when 4 then 4
+        )
+        state = message.state
       unitCode = helper.map(helper.numberToBinary(unitCode, 3), binaryToPulse)
-      inverseState = (if message.state then binaryToPulse['0'] else binaryToPulse['1'])
+      inverseState = (if state then binaryToPulse['0'] else binaryToPulse['1'])
       return "#{id}#{unitCode}#{inverseState}02"
   }
