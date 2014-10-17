@@ -94,6 +94,25 @@ result = {
 }
 ```
 
+
+Details
+--------
+
+RFControl is more sensitive than needed for most protocols. 
+So we get sometimes, depending of the accuracy of the sender/remote, different bucket counts. 
+
+This is by design, to catch up further protocols that maybe need a higher sensitivity. The specific
+protocol has not to deal with this issue, because `rfcontroljs` auto merges similar buckets before
+calling the `decodePulses` function of each protocol.
+
+The algorithm is the following:
+
+  1. Record the (maybe to many) buckets and compressed pulses with [RFControl](https://github.com/pimatic/RFControl) (arduino / c++)
+  2. Sort the buckets in `rfcontroljs` [`prepareCompressedPulses`](https://github.com/pimatic/rfcontroljs/blob/f39db799ae1fc86cda74c33a01c27da40eb3c9e8/src/controller.coffee#L68)
+  3. Try to find a matching protocol in rfcontroljs [`decodePulses`](https://github.com/pimatic/rfcontroljs/blob/f39db799ae1fc86cda74c33a01c27da40eb3c9e8/src/controller.coffee#L118)
+  4. If we have more than 3 buckets and two of the buckets are similar (`b1*2 < b2`) we merge them to just one bucket by averaging and adapting the pulses in  rfcontroljs [`fixPulses`](https://github.com/pimatic/rfcontroljs/blob/f39db799ae1fc86cda74c33a01c27da40eb3c9e8/src/controller.coffee#L89)
+  5. Go to step 3
+
 Adding a new Protocol
 --------------------
 
