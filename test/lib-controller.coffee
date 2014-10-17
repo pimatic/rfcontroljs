@@ -92,6 +92,16 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'weather4'
+      pulseLengths: [ 526, 990, 1903, 4130, 7828, 16076 ]
+      pulses: [
+        '00000000121313131413131314141314131413141314131314141414131314141414131313141414131414141315'
+      ]
+      values: [
+        { id: 238, channel:1, temperature: 18.9, humidity: 71, battery: 2.5 }
+      ]
+    },
+    {
       protocol: 'switch1'
       pulseLengths: [268, 1282, 2632, 10168]
       pulses: [
