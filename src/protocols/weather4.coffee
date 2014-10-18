@@ -1,9 +1,9 @@
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
-    '0000000012': '' #header
-    '14': '0' #binary 0
-    '13': '1' #binary 1
-    '15': '' #footer
+    '1111111104': '' #header
+    '02': '0' #binary 0
+    '03': '1' #binary 1
+    '05': '' #footer
   }
   return protocolInfo = {
     name: 'weather4'
@@ -24,7 +24,7 @@ module.exports = (helper) ->
     pulseCount: 92
     decodePulses: (pulses) ->
       # pulses could be:
-      # '00000000121313141414131314131313141314131313141413131313141313141313141414131314141313131415'
+      # '11111111040203020202020202030202020203020302030203030303020303020303020202020302020202020305'
       # we first map the pulse sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '0110001100000000011000011101011100110001'
