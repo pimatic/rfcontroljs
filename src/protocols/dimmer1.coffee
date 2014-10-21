@@ -1,15 +1,15 @@
 module.exports = (helper) ->
   # mapping for decoding
   pulsesToBinaryMapping = {
-    '01': ''    #header
-    '0200': '1' #binary 1
-    '0002': '0' #binary 0
+    '02': ''    #header
+    '0100': '1' #binary 1
+    '0001': '0' #binary 0
     '34': ''    #footer
   }
   # same for send
   binaryToPulse = {
-    '1': '0200'
-    '0': '0002'
+    '1': '0100'
+    '0': '0001'
   }
   return protocolInfo = {
     name: 'dimmer1'
@@ -26,7 +26,7 @@ module.exports = (helper) ->
       dimlevel:
         type: "number"
     brands: ["CoCo Technologies", "D-IO (Chacon)", "Intertechno", "KlikAanKlikUit", "Nexa"]
-    pulseLengths: [255, 2900, 1390, 750, 11350]
+    pulseLengths: [255, 1390, 2900, 750, 11350]
     pulseCount: 148
     decodePulses: (pulses) ->
       # pulses is something like: '01000200020200000200020200000200020002020002000200020002000002
@@ -50,5 +50,5 @@ module.exports = (helper) ->
       state = (if message.state then binaryToPulse['1'] else binaryToPulse['0'])
       unit = helper.map(helper.numberToBinary(message.unit, 4), binaryToPulse)
       dimlevel = helper.map(helper.numberToBinary(message.level, 4), binaryToPulse)
-      return "01#{id}#{all}#{state}#{unit}#{dimlevel}34"
+      return "02#{id}#{all}#{state}#{unit}#{dimlevel}34"
   }
