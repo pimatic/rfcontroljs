@@ -1,7 +1,7 @@
 assert = require 'assert'
 
 controller = require '../src/controller.coffee'
-controller.debug = yes
+controller.debug = no
 
 describe '#decodePulses()', ->
   tests = [
@@ -83,22 +83,32 @@ describe '#decodePulses()', ->
         '0101010101020202020101010102010201020101010201020201020202020101020201010101020201010303'
       ]
       values: [
-        { id: 246, channel:3, temperature: 24.2, humidity: 56 }
-        { id: 246, channel:3, temperature: 24.4, humidity: 56 }
-        { id: 173, channel:1, temperature: 21.1, humidity: 65 }
-        { id: 173, channel:1, temperature: 21.5, humidity: 65 }
-        { id: 30,  channel:2, temperature: 18.1, humidity: 62 }
-        { id: 30,  channel:2, temperature: 18.7, humidity: 63 }
+        { id: 246, channel: 3, temperature: 24.2, humidity: 56 }
+        { id: 246, channel: 3, temperature: 24.4, humidity: 56 }
+        { id: 173, channel: 1, temperature: 21.1, humidity: 65 }
+        { id: 173, channel: 1, temperature: 21.5, humidity: 65 }
+        { id: 30,  channel: 2, temperature: 18.1, humidity: 62 }
+        { id: 30,  channel: 2, temperature: 18.7, humidity: 63 }
       ]
     },
     {
       protocol: 'weather4'
       pulseLengths: [ 526, 990, 1903, 4130, 7828, 16076 ]
       pulses: [
-        '00000000121313131413131314141314131413141314131314141414131314141414131313141414131414141315'
+        '11111111040303030203030302020302030203020302030302020202030302020202030303020202030202020305'
       ]
       values: [
         { id: 238, channel:1, temperature: 18.9, humidity: 71, battery: 2.5 }
+      ]
+    },
+    {
+      protocol: 'dimmer1'
+      pulseLengths: [255, 750, 1390, 2900, 11350]
+      pulses: [
+        '0300020002020000020002020000020002000202000200020002000200000202000200020000020002000200020002020002000002000200000002000200020002020002000200020014'
+      ],
+      values: [
+        {id: 0, all: false, state: true, unit: 9565958, dimleve: 15}
       ]
     },
     {
