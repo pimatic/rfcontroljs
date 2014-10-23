@@ -34,7 +34,7 @@ module.exports = (helper) ->
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '001000111101001000100110100100000001'
-      # now we extract the temperature and humidity from that string
+      # now we extract the data from that string
       # | 00100011110100100010011010 |   0 |     1 | 0000 |  0001 |
       # | ID                         | All | State | unit | level |
       return result = {
