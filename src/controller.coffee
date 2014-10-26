@@ -131,9 +131,11 @@ module.exports = {
           }
         catch err
           if @debug
-            console.log "Error trying to parse message with protocol #{p.name}: #{err.stack}"
-          unless err instanceof helper.ParsingError
-            throw err
+            if err instanceof helper.ParsingError
+              console.log "Warning trying to parse message with protocol #{p.name}: #{err.message}"
+              console.log "#{err.stack.split("\n")[2]}"
+            else
+              throw err
     # try to fix pulses
     fixed = @fixPulses(pulseLengths, pulses)
     unless fixed?
