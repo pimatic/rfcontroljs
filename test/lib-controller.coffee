@@ -1,7 +1,7 @@
 assert = require 'assert'
 
 controller = require '../src/controller.coffee'
-controller.debug = no
+controller.debug = yes
 
 describe '#decodePulses()', ->
   tests = [
@@ -108,7 +108,7 @@ describe '#decodePulses()', ->
         '0300020002020000020002020000020002000202000200020002000200000202000200020000020002000200020002020002000002000200000002000200020002020002000200020014'
       ],
       values: [
-        {id: 0, all: false, state: true, unit: 9565958, dimleve: 15}
+        {id: 9565958, all: false, unit: 0, dimlevel: 15}
       ]
     },
     {
