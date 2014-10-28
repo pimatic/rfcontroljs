@@ -9,6 +9,10 @@ module.exports = (helper) ->
     '0': '0110'
     '1': '1010'
   }
+  binaryToPulse2 = {
+    '0': '0110'
+    '1': '0101'
+  }
   return protocolInfo = {
     name: 'switch6'
     type: 'switch'
@@ -56,9 +60,9 @@ module.exports = (helper) ->
       state = message.state
       programcode1 = helper.numberToBinary(message.programcode, 5)
       programcode2 = programcode1[4]+programcode1[3]+programcode1[2]+programcode1[1]+programcode1[0]
-      programcode = helper.map(programcode2, binaryToPulse)
+      programcode = helper.map(programcode2, binaryToPulse2)
 
-      inverseState = (if state then binaryToPulse['0'] else binaryToPulse['1'])
-      State = (if state then binaryToPulse['1'] else binaryToPulse['0'])
+      inverseState = (if state then binaryToPulse2['0'] else binaryToPulse2['1'])
+      State = (if state then binaryToPulse2['1'] else binaryToPulse2['0'])
       return "#{systemcode}#{programcode}#{inverseState}#{State}02"
   }

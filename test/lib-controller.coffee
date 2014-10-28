@@ -178,9 +178,11 @@ describe '#decodePulses()', ->
       pulseLengths: [ 150, 453, 4733],
       pulses: [
         '10101010101010101010010101100110011001100110010102'
+        '10101010101010100110011001010110011001100110010102'
       ],  
       values: [
          { systemcode: 31, programcode: 1, state: true }
+         { systemcode: 15, programcode: 2, state: true }
       ]
     },
     {
@@ -315,8 +317,8 @@ describe '#encodeMessage()', ->
     },
     {
       protocol: 'switch6'
-      message: {systemcode: 31, programcode: 1, state: true }
-      pulses: '10101010101010101010101001100110011001100110101002'
+      message: {systemcode: 15, programcode: 2, state: true }
+      pulses: '10101010101010100110011001010110011001100110010102'
     }
   ]
 
