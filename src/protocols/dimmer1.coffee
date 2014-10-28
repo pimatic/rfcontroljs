@@ -46,7 +46,7 @@ module.exports = (helper) ->
         unit: helper.binaryToNumber(binary, 28, 31)
         dimlevel: helper.binaryToNumber(binary, 32, 35)
       }
-      if binary[27] isnt "N" 
+      if binary[27] isnt "N"
         result.state = helper.binaryToBoolean(binary, 27)
       return result;
 
