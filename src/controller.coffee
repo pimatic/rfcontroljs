@@ -19,7 +19,7 @@ doesProtocolMatch = (pulseLengths, pulses, protocol) ->
   unless pulseLengths.length is protocol.pulseLengths.length then return false
   i = 0
   while i < pulseLengths.length
-    maxDelta = pulseLengths[i]*0.25
+    maxDelta = pulseLengths[i]*0.4
     if Math.abs(pulseLengths[i] - protocol.pulseLengths[i]) > maxDelta
       return false
     i++
