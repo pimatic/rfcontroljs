@@ -142,7 +142,7 @@ describe '#decodePulses()', ->
         '01010110010101100110011001100110010101100110011002'
       ],  
       values: [
-         { id: 2, unit: 20, state: false }
+         { id: 2, unit: 20, state: true }
       ]
     },
     {
