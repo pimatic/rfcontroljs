@@ -29,32 +29,43 @@ module.exports = {
       result += mapping[parseInt(d, 10)]
     return result
 
-  binaryToNumber: (data, b, e) ->
-    number = 0
-    i = b
-    while i <= e
-      number <<= 1
-      number |= (parseInt(data[i], 10))
-      i++
-    return number
+  binaryToNumber: (data, b, e, direction = 'MSB-LSB') ->
+    if direction != 'MSB-LSB' and direction != 'LSB-MSB' then direction = 'MSB-LSB'
+    if direction is 'MSB-LSB'
+      number = 0
+      i = b
+      while i <= e
+        number <<= 1
+        number |= (parseInt(data[i], 10))
+        i++
+      return number
+    else
+      number = 0
+      i = e
+      while i >= b
+        number <<= 1
+        number |= (parseInt(data[i], 10))
+        i--
+      return number
 
-  binaryToNumberRevert: (data, b, e) ->
-    number = 0
-    i = e
-    while i >= b
-      number <<= 1
-      number |= (parseInt(data[i], 10))
-      i--
-    return number
-
-  numberToBinary: (number, length) ->
-    binary = ''
-    i = 0
-    while i < length
-      binary = (number & 1) + binary
-      number >>= 1
-      i++
-    return binary
+  numberToBinary: (number, length, direction = 'MSB-LSB') ->
+    if direction != 'MSB-LSB' and direction != 'LSB-MSB' then direction = 'MSB-LSB'
+    if direction is 'MSB-LSB'
+      binary = ''
+      i = 0
+      while i < length
+        binary = (number & 1) + binary
+        number >>= 1
+        i++
+      return binary
+    else
+      binary = ''
+      i = 0
+      while i < length
+        binary = binary + (number & 1)
+        number >>= 1
+        i++
+      return binary
 
   binaryToBoolean: (data, i) ->
     return (data[i] is '1')
