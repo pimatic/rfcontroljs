@@ -90,7 +90,7 @@ module.exports = (helper) ->
             windGust: windGust
           }
         else if substate is 3
-          rain = helper.binaryToNumber(binary, 16, 31, 'LSB-MSB') / 10.0
+          rain = helper.binaryToNumber(binary, 16, 31, 'LSB-MSB') / 4.0
           return result = {
             id: id
             battery : battery
