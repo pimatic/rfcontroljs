@@ -27,6 +27,8 @@ module.exports = (helper) ->
         type: "number"
       dimlevel:
         type: "number"
+        min: 0
+        max: 15
     brands: ["CoCo Technologies", "D-IO (Chacon)", "Intertechno", "KlikAanKlikUit", "Nexa"]
     pulseLengths: [255, 1079, 2904, 11346]
     pulseCount: 148
@@ -40,7 +42,6 @@ module.exports = (helper) ->
       #   00100100011111011100000110     0       N   0000    1111
       # | 00100011110100100010011010 |   0 |     1 | 0000 |  0001 |
       # | ID                         | All | State | unit | level |
-      level = Math.round(helper.binaryToNumber(binary, 32, 35) * 6.666)
       if binary[27] isnt "N"
         state = helper.binaryToBoolean(binary, 27)
 
@@ -48,7 +49,7 @@ module.exports = (helper) ->
         id: helper.binaryToNumber(binary, 0, 25)
         all: helper.binaryToBoolean(binary, 26)
         unit: helper.binaryToNumber(binary, 28, 31)
-        dimlevel: level
+        dimlevel: helper.binaryToNumber(binary, 32, 35)
         state: state
       }
       return result;
@@ -61,6 +62,6 @@ module.exports = (helper) ->
       else
         state = binaryToPulse['N']
       unit = helper.map(helper.numberToBinary(message.unit, 4), binaryToPulse)
-      dimlevel = helper.map(helper.numberToBinary(Math.round(message.dimlevel / 6.666), 4), binaryToPulse)
+      dimlevel = helper.map(helper.numberToBinary(message.dimlevel, 4), binaryToPulse)
       return "02#{id}#{all}#{state}#{unit}#{dimlevel}13"
   }
