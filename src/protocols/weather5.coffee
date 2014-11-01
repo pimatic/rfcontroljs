@@ -25,7 +25,7 @@ module.exports = (helper) ->
       rain:
         type: "number"
     brands: ["Auriol", "Ventus", "Hama", "Meteoscan", "Alecto", "Balance"]
-    pulseLengths:  [ 534, 959, 1951, 5942 ]
+    pulseLengths:  [ 534, 959, 1951, 9000 ]
     pulseCount: 74
     decodePulses: (pulses) ->
       #Supportet stations
@@ -61,7 +61,7 @@ module.exports = (helper) ->
       id = helper.binaryToNumber(binary, 0, 7, 'LSB-MSB')
       battery = 1 - helper.binaryToNumber(binary, 8, 8)
       if (states is 0 or states is 1 or states is 2)
-        temperature = helper.binaryToNumber(binary, 12, 23, 'LSB-MSB') / 10.0
+        temperature = helper.binaryToNumberSigned(binary, 12, 23, 'LSB-MSB') / 10.0
         h0 = helper.binaryToNumber(binary, 28, 31, 'LSB-MSB')
         h1 = helper.binaryToNumber(binary, 24, 27, 'LSB-MSB')
         humidity = h0 * 10 + h1
@@ -90,7 +90,7 @@ module.exports = (helper) ->
             windGust: windGust
           }
         else if substate is 3
-          rain = helper.binaryToNumber(binary, 16, 31, 'LSB-MSB') / 10.0
+          rain = helper.binaryToNumber(binary, 16, 31, 'LSB-MSB') / 4.0
           return result = {
             id: id
             battery : battery
