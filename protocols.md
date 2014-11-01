@@ -1,7 +1,7 @@
 <!-- This file is generated automatically don't edit it -->
 Supported Protocols
 ===================
-<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr></table>
+<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr></table>
 weather1
 ---------
 __Type__: weather
@@ -59,6 +59,28 @@ __Protocol Options__:
 
   * **id** (number)
   * **channel** (number)
+
+
+__Supports__:
+
+  * temperature
+  * humidity
+  * battery
+
+
+weather5
+---------
+__Type__: weather
+
+__Brands__: Auriol, Ventus, Hama, Meteoscan, Alecto, Balance
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **avgAirspeed** (number)
+  * **windGust** (number)
+  * **windDirection** (number)
+  * **rain** (number)
 
 
 __Supports__:
@@ -147,6 +169,42 @@ __Protocol Options__:
 
   * **id** (number)
   * **unit** (number)
+
+
+__Supports__:
+
+  * state
+  * all
+
+
+switch6
+---------
+__Type__: switch
+
+__Brands__: Impuls
+
+__Protocol Options__:
+
+  * **systemcode** (number)
+  * **programcode** (number)
+
+
+__Supports__:
+
+  * state
+
+
+dimmer1
+---------
+__Type__: dimmer
+
+__Brands__: CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa
+
+__Protocol Options__:
+
+  * **id** (binary)
+  * **unit** (number)
+  * **dimlevel** (number)
 
 
 __Supports__:
