@@ -29,7 +29,7 @@ module.exports = {
       result += mapping[parseInt(d, 10)]
     return result
 
-  # converts the binary data to a singed number. 
+  # converts the binary data to a singed number.
   binaryToSignedNumberMSBLSB: (data, b, e) ->
     signedPos = b
     b++ #increment b to remove the signedbit from the data
@@ -49,7 +49,7 @@ module.exports = {
       return @_binaryToSignedNumberLSBMSB(data, b, e)
     else
       #it isnt negativ
-      return @binaryToNumberLSBMSB(data, b, e)    
+      return @binaryToNumberLSBMSB(data, b, e)
 
 
   #b is MSB   e is LSB    MSB-LSB
@@ -98,7 +98,7 @@ module.exports = {
       binary = (number & 1) + binary
       number >>= 1
       i++
-    return binary 
+    return binary
 
   numberToBinaryLSBMSB: (number, length) ->
     binary = ''
