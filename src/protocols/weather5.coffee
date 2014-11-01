@@ -52,18 +52,18 @@ module.exports = (helper) ->
       # the states showing which data is transmitted
       # 0  1  0  0
       # |  |  |  |-> 0: Scheduled transmission.
-      # |  |  |  |-> 1: The transmission was initiated by pressing the button inside the sensor unit.
+      # |  |  |  |-> 1: The transmission was initiated by pressing the button inside the sensor unit
       # |  |--|----> 00,01,10: Temperatur and Humidity is transmitted. 11: Non temp/hum data
       # |----------> 0: Sensor's battery voltage is normal. 1: Battery voltage is below ~2.6 V.
       #
-      states = helper.binaryToNumber(binary, 9, 10, 'LSB-MSB')
+      states = helper.binaryToNumberLSBMSB(binary, 9, 10)
       #temprature and humidity
-      id = helper.binaryToNumber(binary, 0, 7, 'LSB-MSB')
-      battery = 1 - helper.binaryToNumber(binary, 8, 8)
+      id = helper.binaryToNumberLSBMSB(binary, 0, 7)
+      battery = 1 - helper.binaryToNumberLSBMSB(binary, 8, 8)
       if (states is 0 or states is 1 or states is 2)
-        temperature = helper.binaryToNumberSigned(binary, 12, 23, 'LSB-MSB') / 10.0
-        h0 = helper.binaryToNumber(binary, 28, 31, 'LSB-MSB')
-        h1 = helper.binaryToNumber(binary, 24, 27, 'LSB-MSB')
+        temperature = helper.binaryToSignedNumberLSBMSB(binary, 12, 23) / 10.0
+        h0 = helper.binaryToNumberLSBMSB(binary, 28, 31)
+        h1 = helper.binaryToNumberLSBMSB(binary, 24, 27)
         humidity = h0 * 10 + h1
         return result = {
           id: id
@@ -72,17 +72,17 @@ module.exports = (helper) ->
           humidity: humidity
         }
       else if states is 3
-        substate = helper.binaryToNumber(binary, 12, 14, 'LSB-MSB')
+        substate = helper.binaryToNumberLSBMSB(binary, 12, 14)
         if substate is 1
-          avgAirspeed = helper.binaryToNumber(binary, 24, 31, 'LSB-MSB') / 5.0
+          avgAirspeed = helper.binaryToNumberLSBMSB(binary, 24, 31) / 5.0
           return result = {
             id: id
             battery : battery
             avgAirspeed: avgAirspeed
           }
         else if substate is 7
-          windDirection = helper.binaryToNumber(binary, 15, 23, 'LSB-MSB')
-          windGust = helper.binaryToNumber(binary, 15, 23, 'LSB-MSB') / 5.0
+          windDirection = helper.binaryToNumberLSBMSB(binary, 15, 23)
+          windGust = helper.binaryToNumberLSBMSB(binary, 15, 23) / 5.0
           return result = {
             id: id
             battery : battery
@@ -90,7 +90,7 @@ module.exports = (helper) ->
             windGust: windGust
           }
         else if substate is 3
-          rain = helper.binaryToNumber(binary, 16, 31, 'LSB-MSB') / 4.0
+          rain = helper.binaryToNumberLSBMSB(binary, 16, 31) / 4.0
           return result = {
             id: id
             battery : battery

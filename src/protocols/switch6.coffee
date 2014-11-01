@@ -35,13 +35,13 @@ module.exports = (helper) ->
       # | 01110      | 01000       | 0              | 1
       # | SystemCode | ProgramCode | invertes state | state
       return result = {
-        systemcode: helper.binaryToNumber(binary, 0, 4, 'LSB-MSB')
-        programcode: helper.binaryToNumber(binary, 5, 9, 'LSB-MSB')
+        systemcode: helper.binaryToNumberLSBMSB(binary, 0, 4)
+        programcode: helper.binaryToNumberLSBMSB(binary, 5, 9)
         state: helper.binaryToBoolean(binary, 11)
       }
     encodeMessage: (message) ->
-      systemcode = helper.map(helper.numberToBinary(message.systemcode, 5, 'LSB-MSB'), binaryToPulse)
-      programcode = helper.map(helper.numberToBinary(message.programcode, 5, 'LSB-MSB'), binaryToPulse2)
+      systemcode = helper.map(helper.numberToBinaryLSBMSB(message.systemcode, 5), binaryToPulse)
+      programcode = helper.map(helper.numberToBinaryLSBMSB(message.programcode, 5), binaryToPulse2)
       inverseState = (if message.state then binaryToPulse2['0'] else binaryToPulse2['1'])
       state = (if message.state then binaryToPulse2['1'] else binaryToPulse2['0'])
       return "#{systemcode}#{programcode}#{inverseState}#{state}02"
