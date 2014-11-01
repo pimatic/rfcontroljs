@@ -1,7 +1,7 @@
 assert = require 'assert'
 
 controller = require '../src/controller.coffee'
-controller.debug = yes
+controller.debug = no
 
 describe '#decodePulses()', ->
   tests = [
@@ -102,13 +102,31 @@ describe '#decodePulses()', ->
       ]
     },
     {
-      protocol: 'dimmer1'
-      pulseLengths: [255, 750, 1390, 2900, 11350]
+      protocol: 'weather5'
+      pulseLengths: [ 534, 959, 1951, 9120  ]
       pulses: [
-        '0300020002020000020002020000020002000202000200020002000200000202000200020000020002000200020002020002000002000200000002000200020002020002000200020014'
+        '01020101010201020102010101020202020202010101010102020201010202010202020203'
+        '01010101010101010102020102020101020202010201010101010101010101010101010203'
+        '01020202010101020102020102020101020102020202010101010101010101010102020103'
+        '01020202010202020101010102010201020202010101010102010102020101020201020103'
+        '01020202010202020101020101020101020202020202020202010102010202010101010103'
+      ]
+      values: [
+        { id: 162, temperature: 12.6, humidity: 67, battery: 1 }
+        { id: 0, rain: 5.75, battery: 1 }
+        { id: 142, rain: 15.25, battery: 1 }
+        { id: 238, temperature: 11.7, humidity: 99,  battery: 1 }
+        { id: 238, temperature: -1.4, humidity: 69,  battery: 1 }
+      ]
+    },
+    {
+      protocol: 'dimmer1'
+      pulseLengths: [259, 1293, 2641, 10138]
+      pulses: [
+        '0200010001010000010001010000010001000101000100010001000100000101000100010000010001000100010001010001000001000101000001000100010001010001000100010013'
       ],
       values: [
-        {id: 9565958, all: false, unit: 0, dimlevel: 15}
+        {id: 9565958, all: false, unit: 0, dimlevel: 15, state: true}
       ]
     },
     {
@@ -171,6 +189,18 @@ describe '#decodePulses()', ->
         { id: 465695, unit: 4, all: false, state: off }
         { id: 465695, unit: 0, all: true, state: off }
         { id: 465695, unit: 0, all: true, state: on }
+      ]
+    },
+    { 
+      protocol: 'switch6'
+      pulseLengths: [ 150, 453, 4733],
+      pulses: [
+        '10101010101010101010010101100110011001100110010102'
+        '10101010101010100110011001010110011001100110010102'
+      ],  
+      values: [
+         { systemcode: 31, programcode: 1, state: true }
+         { systemcode: 15, programcode: 2, state: true }
       ]
     },
     {
@@ -302,6 +332,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch5'
       message: { id: 465695, unit: 2, all: false, state: on }
       pulses: '10010101101010010110010110101001010101011010011002'
+    },
+    {
+      protocol: 'switch6'
+      message: {systemcode: 15, programcode: 2, state: true }
+      pulses: '10101010101010100110011001010110011001100110010102'
     }
   ]
 

@@ -1,16 +1,16 @@
 module.exports = (helper) ->
   # mapping for decoding
   pulsesToBinaryMapping = {
-    '03': ''    #header
-    '0200': '1' #binary 1
-    '0002': '0' #binary 0
+    '02': ''    #header
+    '0100': '1' #binary 1
+    '0001': '0' #binary 0
     '0000': 'N' #state = don't change
-    '14': ''    #footer
+    '13': ''    #footer
   }
   # same for send
   binaryToPulse = {
-    '1': '0200'
-    '0': '0002'
+    '1': '0100'
+    '0': '0001'
     'N': '0000'
   }
   return protocolInfo = {
@@ -27,12 +27,14 @@ module.exports = (helper) ->
         type: "number"
       dimlevel:
         type: "number"
+        min: 0
+        max: 15
     brands: ["CoCo Technologies", "D-IO (Chacon)", "Intertechno", "KlikAanKlikUit", "Nexa"]
-    pulseLengths: [255, 750, 1390, 2900, 11350]
+    pulseLengths: [255, 1079, 2904, 11346]
     pulseCount: 148
     decodePulses: (pulses) ->
-      # pulses is something like: '03000200020200000200020200000200020002020002000200020002000002
-      #  02000200020000020002000200020002020002000002000200000002000200020002020002000200020014'
+      # pulses is something like: '0200010001010000010001010000010001000101000100010001000100
+      # 000101000100010000010001000100010001010001000001000100000001000100010001010001000100010013'
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '001000111101001000100110100100000001'
@@ -40,14 +42,16 @@ module.exports = (helper) ->
       #   00100100011111011100000110     0       N   0000    1111
       # | 00100011110100100010011010 |   0 |     1 | 0000 |  0001 |
       # | ID                         | All | State | unit | level |
+      if binary[27] isnt "N"
+        state = helper.binaryToBoolean(binary, 27)
+
       result = {
         id: helper.binaryToNumber(binary, 0, 25)
         all: helper.binaryToBoolean(binary, 26)
         unit: helper.binaryToNumber(binary, 28, 31)
         dimlevel: helper.binaryToNumber(binary, 32, 35)
+        state: state
       }
-      if binary[27] isnt "N" 
-        result.state = helper.binaryToBoolean(binary, 27)
       return result;
 
     encodeMessage: (message) ->
@@ -58,6 +62,6 @@ module.exports = (helper) ->
       else
         state = binaryToPulse['N']
       unit = helper.map(helper.numberToBinary(message.unit, 4), binaryToPulse)
-      dimlevel = helper.map(helper.numberToBinary(message.level, 4), binaryToPulse)
-      return "03#{id}#{all}#{state}#{unit}#{dimlevel}14"
+      dimlevel = helper.map(helper.numberToBinary(message.dimlevel, 4), binaryToPulse)
+      return "02#{id}#{all}#{state}#{unit}#{dimlevel}13"
   }
