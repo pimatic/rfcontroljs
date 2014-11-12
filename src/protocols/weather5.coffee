@@ -25,7 +25,7 @@ module.exports = (helper) ->
       rain:
         type: "number"
     brands: ["Auriol", "Ventus", "Hama", "Meteoscan", "Alecto", "Balance"]
-    pulseLengths:  [ 534, 959, 1951, 9000 ]
+    pulseLengths:  [ 534, 2000, 4000, 9000 ]
     pulseCount: 74
     decodePulses: (pulses) ->
       #Supportet stations
