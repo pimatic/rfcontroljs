@@ -38,6 +38,16 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'pir2'
+      pulseLengths: [451, 1402, 14356]
+      pulses: [
+        '01100110010110011001010110100101010101011010010102'
+      ]
+      values: [
+        { unit: 21, id: 21, presence: true }
+      ]
+    },
+    {
       protocol: 'weather1'
       pulseLengths: [456, 1990, 3940, 9236]
       pulses: [
