@@ -60,8 +60,8 @@ module.exports = (helper) ->
       #temprature and humidity
       id = helper.binaryToNumberLSBMSB(binary, 0, 7)
       battery = helper.binaryToNumberLSBMSB(binary, 8, 8)
-	  if battery is 0 then battery = 'Good'
-	  else battery = 'Bad'
+      if battery is 0 then battery = 'Good'
+      else battery = 'Bad'
       if (states is 0 or states is 1 or states is 2)
         temperature = helper.binaryToSignedNumberLSBMSB(binary, 12, 23) / 10.0
         h0 = helper.binaryToNumberLSBMSB(binary, 28, 31)
