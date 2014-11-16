@@ -217,12 +217,12 @@ describe '#decodePulses()', ->
       protocol: 'switch7'
       pulseLengths: [307, 944, 9712],
       pulses: [
+        '01010101010101100110011001100110011001100110011002'
         '01010101010101100101010101010110011001100110011002'
-        '10100101010101100101010101010110011001100110011002'
       ],  
       values: [
-         { id: 24, unit: 29, state: true }
-         { id: 24, unit: 29, state: false }
+         { id: 42, unit: 63, state: true }
+         { id: 63, unit: 63, state: true }
       ]
     },
     {

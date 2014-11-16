@@ -1,12 +1,12 @@
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
-    '10100': '0' #binary 0
-    '01010': '1' #binary 1
-    '110011001100110011002': ''    #footer
+    '10': '0' #binary 0
+    '01': '1' #binary 1
+    '02': ''    #footer
   }
   binaryToPulse = {
-    '0': '10100'
-    '1': '01010'
+    '0': '10'
+    '1': '01'
   }
   return protocolInfo = {
     name: 'switch7'
@@ -24,9 +24,9 @@ module.exports = (helper) ->
     decodePulses: (pulses) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
-        unit: helper.binaryToNumber(binary, 0, 4)
-        id: helper.binaryToNumber(binary, 5, 9)
-        state: not helper.binaryToBoolean(binary, 11)
+        unit: helper.binaryToNumber(binary, 1, 6)
+        id: helper.binaryToNumber(binary, 7, 13)
+        state: helper.binaryToBoolean(binary, 0)
       }
     encodeMessage: (message) ->
       unit = helper.map(helper.numberToBinary(message.unit, 5), binaryToPulse)
