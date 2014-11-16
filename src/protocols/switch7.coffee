@@ -1,12 +1,12 @@
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
-    '0110': '0' #binary 0
-    '0101': '1' #binary 1
-    '02': ''    #footer
+    '10100': '0' #binary 0
+    '01010': '1' #binary 1
+    '110011001100110011002': ''    #footer
   }
   binaryToPulse = {
-    '0': '0110'
-    '1': '0101'
+    '0': '10100'
+    '1': '01010'
   }
   return protocolInfo = {
     name: 'switch7'
@@ -19,7 +19,7 @@ module.exports = (helper) ->
       state:
         type: "boolean"
     brands: ["eHome"]
-    pulseLengths: [ 306, 307, 945, 947, 9720, 9752]
+    pulseLengths: [307, 944, 9712]
     pulseCount: 50
     decodePulses: (pulses) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
