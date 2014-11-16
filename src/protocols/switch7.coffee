@@ -9,35 +9,29 @@ module.exports = (helper) ->
     '1': '0101'
   }
   return protocolInfo = {
-    name: 'switch4'
+    name: 'switch7'
     type: 'switch'
     values:
-      unit:
-        type: "number"
       id:
+        type: "number"
+      systemcode:
         type: "number"
       state:
         type: "boolean"
-    brands: ["Cogex", "KlikAanKlikUit", "Intertechno", "Düwi Terminal"]
-    pulseLengths: [ 295, 1180, 11210 ]
+    brands: ["eHome"]
+    pulseLengths: [ 306, 307, 945, 947, 9720, 9752]
     pulseCount: 50
     decodePulses: (pulses) ->
-      # pulses is something like: '01010110010101100110011001100110010101100110011002'
-      # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
-      # binary is now something like: '10100 00010 00'
-      # now we extract the temperature and humidity from that string
-      # |    10100 | 00010 |      0 |             0 |
-      # |     Unit |    ID |  fixed | inverted state|
       return result = {
-        unit: helper.binaryToNumber(binary, 0, 4)
-        id: helper.binaryToNumber(binary, 5, 9)
+        id: helper.binaryToNumber(binary, 0, 4)
+        systemcode: helper.binaryToNumber(binary, 5, 9)
         state: not helper.binaryToBoolean(binary, 11)
       }
     encodeMessage: (message) ->
-      unit = helper.map(helper.numberToBinary(message.unit, 5), binaryToPulse)
       id = helper.map(helper.numberToBinary(message.id, 5), binaryToPulse)
+      systemcode = helper.map(helper.numberToBinary(message.systemcode, 5), binaryToPulse)
       fixed = binaryToPulse['0']
       invertedState = (if message.state then binaryToPulse['0'] else binaryToPulse['1'])
-      return "#{unit}#{id}#{fixed}#{invertedState}02"
+      return "#{id}#{systemcode}#{fixed}#{invertedState}02"
   }
