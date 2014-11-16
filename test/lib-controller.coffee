@@ -213,6 +213,18 @@ describe '#decodePulses()', ->
          { systemcode: 15, programcode: 2, state: true }
       ]
     },
+    { 
+      protocol: 'switch7'
+      pulseLengths: [ 306, 307, 945, 947, 9720, 9752],
+      pulses: [
+        '01010101010101100101010101010110011001100110011002'
+        '10100101010101100101010101010110011001100110011002'
+      ],  
+      values: [
+         { systemcode: 10, id: 1, state: true }
+         { systemcode: 10, id: 1, state: false }
+      ]
+    },
     {
       protocol: 'contact1'
       pulseLengths: [268, 1282, 2632, 10168]
