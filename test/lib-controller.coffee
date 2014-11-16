@@ -221,8 +221,8 @@ describe '#decodePulses()', ->
         '10100101010101100101010101010110011001100110011002'
       ],  
       values: [
-         { systemcode: 10, id: 1, state: true }
-         { systemcode: 10, id: 1, state: false }
+         { id: 10, unit: 1, state: true }
+         { id: 10, unit: 1, state: false }
       ]
     },
     {

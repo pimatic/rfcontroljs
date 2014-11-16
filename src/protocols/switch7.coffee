@@ -12,9 +12,9 @@ module.exports = (helper) ->
     name: 'switch7'
     type: 'switch'
     values:
-      id:
+      unit:
         type: "number"
-      systemcode:
+      id:
         type: "number"
       state:
         type: "boolean"
@@ -24,14 +24,14 @@ module.exports = (helper) ->
     decodePulses: (pulses) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
-        id: helper.binaryToNumber(binary, 0, 4)
-        systemcode: helper.binaryToNumber(binary, 5, 9)
+        unit: helper.binaryToNumber(binary, 0, 4)
+        id: helper.binaryToNumber(binary, 5, 9)
         state: not helper.binaryToBoolean(binary, 11)
       }
     encodeMessage: (message) ->
+      unit = helper.map(helper.numberToBinary(message.unit, 5), binaryToPulse)
       id = helper.map(helper.numberToBinary(message.id, 5), binaryToPulse)
-      systemcode = helper.map(helper.numberToBinary(message.systemcode, 5), binaryToPulse)
       fixed = binaryToPulse['0']
       invertedState = (if message.state then binaryToPulse['0'] else binaryToPulse['1'])
-      return "#{id}#{systemcode}#{fixed}#{invertedState}02"
+      return "#{unit}#{id}#{fixed}#{invertedState}02"
   }
