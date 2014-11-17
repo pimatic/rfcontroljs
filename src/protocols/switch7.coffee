@@ -1,12 +1,13 @@
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
-    '10': '0' #binary 0
-    '01': '1' #binary 1
+    '0110': '0' #binary 0
+    '1010': '0' #state  0
+    '0101': '1' #binary 1
     '02': ''    #footer
   }
   binaryToPulse = {
-    '0': '10'
-    '1': '01'
+    '0': '0110'
+    '1': '0101'
   }
   return protocolInfo = {
     name: 'switch7'
@@ -24,14 +25,13 @@ module.exports = (helper) ->
     decodePulses: (pulses) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
-        unit: helper.binaryToNumber(binary, 1, 6)
-        id: helper.binaryToNumber(binary, 7, 13)
+        unit: helper.binaryToNumberLSBMSB(binary, 1, 3)
+        id: helper.binaryToNumberLSBMSB(binary, 4, 6)
         state: helper.binaryToBoolean(binary, 0)
       }
     encodeMessage: (message) ->
-      unit = helper.map(helper.numberToBinary(message.unit, 5), binaryToPulse)
-      id = helper.map(helper.numberToBinary(message.id, 5), binaryToPulse)
-      fixed = binaryToPulse['0']
-      invertedState = (if message.state then binaryToPulse['0'] else binaryToPulse['1'])
-      return "#{unit}#{id}#{fixed}#{invertedState}02"
+      unit = helper.map(helper.numberToBinaryLSBMSB(message.unit, 3), binaryToPulse)
+      id = helper.map(helper.numberToBinaryLSBMSB(message.id, 3), binaryToPulse)
+      state = (if message.state then '0101' else '1010')
+      return "#{state}#{unit}#{id}0110011001100110011002"
   }
