@@ -51,14 +51,16 @@ describe '#decodePulses()', ->
       protocol: 'weather1'
       pulseLengths: [456, 1990, 3940, 9236]
       pulses: [
-        '01020102020201020101010101010102010101010202020101020202010102010101020103'
-        '01020102020201020101010101010102010101010202020102010102010102010101020103'
         '01020102020201020101010101010102010101010202020102010101010102010101020103'
+        '01020102010201010101020202020101010101020101010101020101010102020202010203'
+        '01020102020201010102020102020101010101020101010101010101010102020202010103'
+        '01020102010102020102020102020201010101010202020201020101010201010101020203'
       ]
       values: [
-        { temperature: 23.1, humidity: 34 }
-        { temperature: 23.3, humidity: 34 }
-        { temperature: 23.2, humidity: 34 }
+        { id: 208 ,channel: 2 ,battery: 'Bad' ,temperature: 23.2, humidity: 34 }
+        { id: 67  ,channel: 1 ,battery: 'Good' ,temperature: 26.0, humidity: 61 }
+        { id: 198 ,channel: 1 ,battery: 'Good' ,temperature: 25.6, humidity: 60 }
+        { id: 54 ,channel: 3 ,battery: 'Good' ,temperature: 24.4, humidity: 67 }
       ]
     },
     {
@@ -222,9 +224,9 @@ describe '#decodePulses()', ->
         '10100101011001100101010101010110011001100110011002'
       ],  
       values: [
-         { id: 42, unit: 63, state: true }
-         { id: 63, unit: 63, state: true }
-         { id: 63, unit: 29, state: false }
+         { id: 0, unit: 3, state: true }
+         { id: 7, unit: 3, state: true }
+         { id: 7, unit: 1, state: false }
       ]
     },
     {
@@ -364,7 +366,7 @@ describe '#encodeMessage()', ->
     },
     {
       protocol: 'switch7'
-      message: {unit: 63, id: 63, state: true }
+      message: {id: 7, unit: 3, state: true }
       pulses: '01010101010101100101010101010110011001100110011002'
     }
   ]
