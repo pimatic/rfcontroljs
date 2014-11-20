@@ -28,7 +28,7 @@ module.exports = (helper) ->
     pulseLengths:  [ 534, 2000, 4000, 9000 ]
     pulseCount: 74
     decodePulses: (pulses) ->
-      #Supportet stations
+      #Supported stations
       #- Auriol H13726
       #- Ventus WS155
       #- Hama EWS 1500
@@ -53,11 +53,11 @@ module.exports = (helper) ->
       # 0  1  0  0
       # |  |  |  |-> 0: Scheduled transmission.
       # |  |  |  |-> 1: The transmission was initiated by pressing the button inside the sensor unit
-      # |  |--|----> 00,01,10: Temperatur and Humidity is transmitted. 11: Non temp/hum data
+      # |  |--|----> 00,01,10: Temperature and Humidity is transmitted. 11: Non temp/hum data
       # |----------> 0: Sensor's battery voltage is normal. 1: Battery voltage is below ~2.6 V.
       #
       states = helper.binaryToNumberLSBMSB(binary, 9, 10)
-      #temprature and humidity
+      #temperature and humidity
       id = helper.binaryToNumberLSBMSB(binary, 0, 7)
       battery = helper.binaryToNumberLSBMSB(binary, 8, 8)
       if battery is 0 then battery = 'Good'
