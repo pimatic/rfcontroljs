@@ -84,7 +84,7 @@ module.exports = (helper) ->
           }
         else if substate is 7
           windDirection = helper.binaryToNumberLSBMSB(binary, 15, 23)
-          windGust = helper.binaryToNumberLSBMSB(binary, 15, 23) / 5.0
+          windGust = helper.binaryToNumberLSBMSB(binary, 24, 31) / 5.0
           return result = {
             id: id
             battery : battery
