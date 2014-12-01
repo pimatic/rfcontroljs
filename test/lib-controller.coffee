@@ -215,6 +215,20 @@ describe '#decodePulses()', ->
          { systemcode: 15, programcode: 2, state: true }
       ]
     },
+    { 
+      protocol: 'switch7'
+      pulseLengths: [307, 944, 9712],
+      pulses: [
+        '01010101010101100110011001100110011001100110011002'
+        '01010101010101100101010101010110011001100110011002'
+        '10100101011001100101010101010110011001100110011002'
+      ],  
+      values: [
+         { id: 0, unit: 3, state: true }
+         { id: 7, unit: 3, state: true }
+         { id: 7, unit: 1, state: false }
+      ]
+    },
     {
       protocol: 'contact1'
       pulseLengths: [268, 1282, 2632, 10168]
@@ -349,6 +363,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch6'
       message: {systemcode: 15, programcode: 2, state: true }
       pulses: '10101010101010100110011001010110011001100110010102'
+    },
+    {
+      protocol: 'switch7'
+      message: {id: 7, unit: 3, state: true }
+      pulses: '01010101010101100101010101010110011001100110011002'
     }
   ]
 
