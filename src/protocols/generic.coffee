@@ -29,7 +29,7 @@ module.exports = (helper) ->
       return result = {
         id: helper.binaryToNumber(binary, 0, 13)
         type: helper.binaryToNumber(binary, 14 , 17)
-        positive: helper.binaryToNumber(binary, 18, 18)
+        positive: helper.binaryToBoolean(binary, 18, 18)
         value: helper.binaryToNumber(binary, 19, 48)
       }
   }
