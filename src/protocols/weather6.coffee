@@ -4,7 +4,7 @@ module.exports = (helper) ->
     '02': "1"
     '03': ""
   return protocolInfo = {
-    name: "weather9"
+    name: "weather6"
     type: "weather"
     values:
       temperature:
