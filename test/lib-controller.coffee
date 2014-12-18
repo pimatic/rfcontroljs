@@ -1,7 +1,7 @@
 assert = require 'assert'
 
 controller = require '../src/controller.coffee'
-controller.debug = no
+controller.debug = yes
 
 describe '#decodePulses()', ->
   tests = [
@@ -230,6 +230,18 @@ describe '#decodePulses()', ->
       ]
     },
     { 
+      protocol: 'switch8'
+      pulseLengths: [ 173, 563, 5740],
+      pulses: [
+        '01010101010101010110011001100110101001011010010102'
+        '01010101010101010110011001101010010101010101101002'
+      ],  
+      values: [
+         { systemcode: 30, programcode: 'B1', state: false }
+         { systemcode: 30, programcode: 'C3', state: true }
+      ]
+    },
+    { 
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
       pulses: [
@@ -382,6 +394,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch7'
       message: {id: 7, unit: 3, state: true }
       pulses: '01010101010101100101010101010110011001100110011002'
+    },
+    {
+      protocol: 'switch8'
+      message: {systemcode: 30, programcode: 'C3', state: true }
+      pulses: '01010101010101010110011001101010010101010101101002'
     },
     {
       protocol: 'rolling1'
