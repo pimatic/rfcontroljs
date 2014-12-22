@@ -5,7 +5,7 @@ module.exports = (helper) ->
     '0100': '1' #binary 1
     '0001': '0' #binary 0
     '0000': 'N' #state = don't change
-    '13': ''    #footer
+    '03': ''    #footer
   }
   # same for send
   binaryToPulse = {
@@ -30,7 +30,7 @@ module.exports = (helper) ->
         min: 0
         max: 15
     brands: ["CoCo Technologies", "D-IO (Chacon)", "Intertechno", "KlikAanKlikUit", "Nexa"]
-    pulseLengths: [255, 1079, 2904, 11346]
+    pulseLengths: [260, 1300, 2700, 10400]
     pulseCount: 148
     decodePulses: (pulses) ->
       # pulses is something like: '0200010001010000010001010000010001000101000100010001000100
@@ -63,5 +63,5 @@ module.exports = (helper) ->
         state = binaryToPulse['N']
       unit = helper.map(helper.numberToBinary(message.unit, 4), binaryToPulse)
       dimlevel = helper.map(helper.numberToBinary(message.dimlevel, 4), binaryToPulse)
-      return "02#{id}#{all}#{state}#{unit}#{dimlevel}13"
+      return "02#{id}#{all}#{state}#{unit}#{dimlevel}03"
   }

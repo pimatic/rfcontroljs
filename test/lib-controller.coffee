@@ -1,7 +1,7 @@
 assert = require 'assert'
 
 controller = require '../src/controller.coffee'
-controller.debug = no
+controller.debug = yes
 
 describe '#decodePulses()', ->
   tests = [
@@ -124,18 +124,18 @@ describe '#decodePulses()', ->
         '01020202010202020101020101020101020202020202020202010102010202010101010103'
       ]
       values: [
-        { id: 162, temperature: 12.6, humidity: 67, battery: 1 }
-        { id: 0, rain: 5.75, battery: 1 }
-        { id: 142, rain: 15.25, battery: 1 }
-        { id: 238, temperature: 11.7, humidity: 99,  battery: 1 }
-        { id: 238, temperature: -1.4, humidity: 69,  battery: 1 }
+        { id: 162, temperature: 12.6, humidity: 67, battery: 'Good' }
+        { id: 0, rain: 5.75, battery: 'Good' }
+        { id: 142, rain: 15.25, battery: 'Good' }
+        { id: 238, temperature: 11.7, humidity: 99,  battery: 'Good' }
+        { id: 238, temperature: -1.4, humidity: 69,  battery: 'Good' }
       ]
     },
     {
       protocol: 'dimmer1'
       pulseLengths: [259, 1293, 2641, 10138]
       pulses: [
-        '0200010001010000010001010000010001000101000100010001000100000101000100010000010001000100010001010001000001000101000001000100010001010001000100010013'
+        '0200010001010000010001010000010001000101000100010001000100000101000100010000010001000100010001010001000001000101000001000100010001010001000100010003'
       ],
       values: [
         {id: 9565958, all: false, unit: 0, dimlevel: 15, state: true}
@@ -227,6 +227,32 @@ describe '#decodePulses()', ->
          { id: 0, unit: 3, state: true }
          { id: 7, unit: 3, state: true }
          { id: 7, unit: 1, state: false }
+      ]
+    },
+    { 
+      protocol: 'switch8'
+      pulseLengths: [ 173, 563, 5740],
+      pulses: [
+        '01010101010101010110011001100110101001011010010102'
+        '01010101010101010110011001101010010101010101101002'
+      ],  
+      values: [
+         { systemcode: 30, programcode: 'B1', state: false }
+         { systemcode: 30, programcode: 'C3', state: true }
+      ]
+    },
+    { 
+      protocol: 'rolling1'
+      pulseLengths: [500, 1000, 3000, 7250],
+      pulses: [
+        '01101010100101011001101010010110100110100101100123'
+        '01101010011010011010011010010101100110011010100123'
+        '01101010011010011010011010010101100110011010010123'
+      ],  
+      values: [
+         { code: "011110001011100110110010"}
+         { code: "011101101101100010101110"}
+         { code: "011101101101100010101100"}
       ]
     },
     {
@@ -368,6 +394,29 @@ describe '#encodeMessage()', ->
       protocol: 'switch7'
       message: {id: 7, unit: 3, state: true }
       pulses: '01010101010101100101010101010110011001100110011002'
+    },
+    {
+      protocol: 'switch8'
+      message: {systemcode: 30, programcode: 'C3', state: true }
+      pulses: '01010101010101010110011001101010010101010101101002'
+    },
+    {
+      protocol: 'rolling1'
+      message: {
+        codeOn: [
+          "011111110000111001011100",
+          "011101101101100010101100",
+          "011111011110001001101100",
+          "011110011010111100011100"
+        ],
+        codeOff: [
+          "011110001011100110111100",
+          "011110101001110001111100",
+          "011100010001011100101100",
+          "011101110011101010001100"
+        ],
+        state: true }
+      pulses: '01101010101010100101010110101001011001101010010123'
     }
   ]
 
