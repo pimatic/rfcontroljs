@@ -5,7 +5,7 @@ protocols = [
   'rolling1'
   'dimmer1',
   'pir1', 'pir2',
-  'contact1',
+  'contact1', 'contact2',
   'generic'
 ]
 # load protocol files:
