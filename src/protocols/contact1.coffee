@@ -19,7 +19,7 @@ module.exports = (helper) ->
         type: "binary"
       all:
         type: "boolean"
-      state:
+      contact:
         type: "boolean"
       unit:
         type: "number"
@@ -38,7 +38,7 @@ module.exports = (helper) ->
       return result = {
         id: helper.binaryToNumber(binary, 0, 25)
         all: helper.binaryToBoolean(binary, 26)
-        state: helper.binaryToBoolean(binary, 27)
+        contact: not helper.binaryToBoolean(binary, 27)
         unit: helper.binaryToNumber(binary, 28, 31)
       }
   }

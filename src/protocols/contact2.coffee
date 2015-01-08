@@ -14,7 +14,7 @@ module.exports = (helper) ->
     values:
       id:
         type: "number"
-      presence:
+      contact:
         type: "boolean"
     brands: ["No brand"]
     pulseLengths: [295, 886, 9626]
@@ -23,6 +23,6 @@ module.exports = (helper) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
         id: helper.binaryToNumber(binary, 0, 19)
-        presence: true
+        contact: false
       }
   }
