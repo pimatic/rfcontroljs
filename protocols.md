@@ -327,12 +327,12 @@ __Brands__: KlikAanKlikUit
 __Protocol Options__:
 
   * **id** (binary)
+  * **contact** (boolean)
   * **unit** (number)
 
 
 __Supports__:
 
-  * state
   * all
 
 
@@ -345,12 +345,11 @@ __Brands__: No brand
 __Protocol Options__:
 
   * **id** (number)
+  * **contact** (boolean)
 
 
 __Supports__:
-
-  * presence
-
+none
 
 generic
 ---------
