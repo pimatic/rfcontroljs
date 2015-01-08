@@ -267,6 +267,18 @@ describe '#decodePulses()', ->
         { id: 13040182, all: false, state: false, unit: 9 }
       ]
     },
+    {
+      protocol: 'contact2'
+      pulseLengths: [295, 886, 9626]
+      pulses: [
+        '10010110100101011010101010011001010101011001010102'
+        '10010110100110011010010101101001010101011001010102'
+     ],
+      values: [
+        { id: 421983, presence: true }
+        { id: 414623, presence: true }
+      ]
+    },
   ]
 
   runTest = ( (t) ->
