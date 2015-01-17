@@ -18,10 +18,10 @@ module.exports = (helper) ->
       # we first map: 01 => 0, 02 => 1, 03 => nothing
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '000111101000000011101010111100000000'
-      # now we extract the temperature and humidity from that string
-      # | 000111101000000 | 011101010 | 111100000000 |
-      # | ?               | Temp.     | ?            |
+      # now we extract the temperature from that string
+      # | 000111101000| 000011101010 | 111100000000 |
+      # | ?           | Temp.        | ?            |
       return result = {
-        temperature: helper.binaryToNumber(binary, 15, 23) / 10
+        temperature: helper.binaryToSignedNumber(binary, 12, 23) / 10
       }
   }
