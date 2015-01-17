@@ -25,7 +25,7 @@ weather2
 ---------
 __Type__: weather
 
-__Brands__: Auriol
+__Brands__: Auriol, Pollin (EWS-151)
 
 __Protocol Options__:
 none
