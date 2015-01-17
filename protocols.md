@@ -1,7 +1,7 @@
 <!-- This file is generated automatically don't edit it -->
 Supported Protocols
 ===================
-<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>weather6</td><td>weather</td><td>Sempre (Aldi) GT-WT-02</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>switch7</td><td>switch</td><td>eHome</td></tr><tr><td>switch8</td><td>switch</td><td>Rev</td></tr><tr><td>rolling1</td><td>switch</td><td>rollingCode</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>pir2</td><td>pir</td><td>?</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>contact2</td><td>pir</td><td>No brand</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr></table>
+<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol, Pollin (EWS-151)</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>weather6</td><td>weather</td><td>Sempre (Aldi) GT-WT-02</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>switch7</td><td>switch</td><td>eHome</td></tr><tr><td>switch8</td><td>switch</td><td>Rev</td></tr><tr><td>switch9</td><td>switch</td><td>DRU Heaters</td></tr><tr><td>rolling1</td><td>switch</td><td>rollingCode</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>pir2</td><td>pir</td><td>?</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>contact2</td><td>pir</td><td>No brand</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr></table>
 weather1
 ---------
 __Type__: weather
@@ -25,7 +25,7 @@ weather2
 ---------
 __Type__: weather
 
-__Brands__: Auriol
+__Brands__: Auriol, Pollin (EWS-151)
 
 __Protocol Options__:
 none
@@ -244,6 +244,23 @@ __Protocol Options__:
 
   * **systemcode** (number)
   * **programcode** (number)
+
+
+__Supports__:
+
+  * state
+
+
+switch9
+---------
+__Type__: switch
+
+__Brands__: DRU Heaters
+
+__Protocol Options__:
+
+  * **id** (binary)
+  * **unit** (number)
 
 
 __Supports__:
