@@ -22,6 +22,6 @@ module.exports = (helper) ->
       # | 000111101000000 | 011101010 | 111100000000 |
       # | ?               | Temp.     | ?            |
       return result = {
-        temperature: helper.binaryToNumber(binary, 15, 23) / 10
+        temperature: helper.binaryToSignedNumber(binary, 15, 23) / 10
       }
   }
