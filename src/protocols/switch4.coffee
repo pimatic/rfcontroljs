@@ -19,7 +19,7 @@ module.exports = (helper) ->
       state:
         type: "boolean"
     brands: ["Cogex", "KlikAanKlikUit", "Intertechno", "Düwi Terminal"]
-    pulseLengths: [ 295, 1180, 11210 ]
+    pulseLengths: [306, 957, 9808]
     pulseCount: 50
     decodePulses: (pulses) ->
       # pulses is something like: '01010110010101100110011001100110010101100110011002'
