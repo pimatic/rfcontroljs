@@ -32,7 +32,7 @@ module.exports = (helper) ->
       return result = {
         houseCode: helper.binaryToNumber(binary, 0, 4)
         unitCode: helper.binaryToNumber(binary, 5, 9)
-        state: helper.binaryToBoolean(binary, 10)
+        state: not helper.binaryToBoolean(binary, 11)
       }
     encodeMessage: (message) ->
       houseCode = helper.map(helper.numberToBinary(message.houseCode, 5), binaryToPulse)

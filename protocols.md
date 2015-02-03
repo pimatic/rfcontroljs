@@ -1,7 +1,7 @@
 <!-- This file is generated automatically don't edit it -->
 Supported Protocols
 ===================
-<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr></table>
+<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol, Pollin (EWS-151)</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>weather6</td><td>weather</td><td>Sempre (Aldi) GT-WT-02</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>switch7</td><td>switch</td><td>eHome</td></tr><tr><td>switch8</td><td>switch</td><td>Rev</td></tr><tr><td>switch9</td><td>switch</td><td>DRU Heaters</td></tr><tr><td>rolling1</td><td>switch</td><td>rollingCode</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>pir2</td><td>pir</td><td>?</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>contact2</td><td>pir</td><td>No brand</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr></table>
 weather1
 ---------
 __Type__: weather
@@ -9,19 +9,23 @@ __Type__: weather
 __Brands__: ?
 
 __Protocol Options__:
-none
+
+  * **channel** (number)
+  * **id** (number)
+
 
 __Supports__:
 
   * temperature
   * humidity
+  * battery
 
 
 weather2
 ---------
 __Type__: weather
 
-__Brands__: Auriol
+__Brands__: Auriol, Pollin (EWS-151)
 
 __Protocol Options__:
 none
@@ -81,6 +85,25 @@ __Protocol Options__:
   * **windGust** (number)
   * **windDirection** (number)
   * **rain** (number)
+
+
+__Supports__:
+
+  * temperature
+  * humidity
+  * battery
+
+
+weather6
+---------
+__Type__: weather
+
+__Brands__: Sempre (Aldi) GT-WT-02
+
+__Protocol Options__:
+
+  * **channel** (number)
+  * **id** (number)
 
 
 __Supports__:
@@ -194,6 +217,71 @@ __Supports__:
   * state
 
 
+switch7
+---------
+__Type__: switch
+
+__Brands__: eHome
+
+__Protocol Options__:
+
+  * **unit** (number)
+  * **id** (number)
+
+
+__Supports__:
+
+  * state
+
+
+switch8
+---------
+__Type__: switch
+
+__Brands__: Rev
+
+__Protocol Options__:
+
+  * **systemcode** (number)
+  * **programcode** (number)
+
+
+__Supports__:
+
+  * state
+
+
+switch9
+---------
+__Type__: switch
+
+__Brands__: DRU Heaters
+
+__Protocol Options__:
+
+  * **id** (binary)
+  * **unit** (number)
+
+
+__Supports__:
+
+  * state
+
+
+rolling1
+---------
+__Type__: switch
+
+__Brands__: rollingCode
+
+__Protocol Options__:
+
+  * **code** (string)
+
+
+__Supports__:
+none
+
 dimmer1
 ---------
 __Type__: dimmer
@@ -230,6 +318,23 @@ __Supports__:
   * presence
 
 
+pir2
+---------
+__Type__: pir
+
+__Brands__: ?
+
+__Protocol Options__:
+
+  * **unit** (number)
+  * **id** (number)
+
+
+__Supports__:
+
+  * presence
+
+
 contact1
 ---------
 __Type__: contact
@@ -239,14 +344,29 @@ __Brands__: KlikAanKlikUit
 __Protocol Options__:
 
   * **id** (binary)
+  * **contact** (boolean)
   * **unit** (number)
 
 
 __Supports__:
 
-  * state
   * all
 
+
+contact2
+---------
+__Type__: pir
+
+__Brands__: No brand
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **contact** (boolean)
+
+
+__Supports__:
+none
 
 generic
 ---------
