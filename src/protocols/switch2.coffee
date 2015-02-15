@@ -19,7 +19,7 @@ module.exports = (helper) ->
       state:
         type: "boolean"
     brands: ["Elro", "Elro Home Easy"]
-    pulseLengths: [306, 957, 9808]
+    pulseLengths: [306, 903, 10200]
     pulseCount: 50
     decodePulses: (pulses) ->
       # pulses is something like: '01010101011001100101010101100110011001100101011002'
@@ -32,7 +32,7 @@ module.exports = (helper) ->
       return result = {
         houseCode: helper.binaryToNumber(binary, 0, 4)
         unitCode: helper.binaryToNumber(binary, 5, 9)
-        state: helper.binaryToBoolean(binary, 10)
+        state: (if helper.binaryToBoolean(binary, 11) then false else true)
       }
     encodeMessage: (message) ->
       houseCode = helper.map(helper.numberToBinary(message.houseCode, 5), binaryToPulse)
