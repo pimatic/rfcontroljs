@@ -64,9 +64,10 @@ module.exports = (helper) ->
       
       unit = helper.map(helper.numberToBinary(message.unit, 6), binaryToPulse)
       
-      if message.all? is true
-        groupcode = helper.map(helper.numberToBinary(11, 4), binaryToPulse)
-        groupcode2 =  helper.map(helper.numberToBinary(1, 2), binaryToPulse)
+      if message.all?
+        if message.all is true
+          groupcode = helper.map(helper.numberToBinary(11, 4), binaryToPulse)
+          groupcode2 =  helper.map(helper.numberToBinary(1, 2), binaryToPulse)
       else
         groupcode = helper.map(helper.numberToBinary(12, 4), binaryToPulse)
         groupcode2 =  helper.map(helper.numberToBinary(3, 2), binaryToPulse)
