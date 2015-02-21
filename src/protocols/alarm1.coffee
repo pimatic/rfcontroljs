@@ -15,7 +15,7 @@ module.exports = (helper) ->
     values:
       id:
         type: "number"
-      presence:
+      state:
         type: "boolean"
     brands: ["FA20RF"]
     pulseLengths: [ 800, 1423, 2760, 8040, 13000 ]
@@ -30,7 +30,7 @@ module.exports = (helper) ->
         state: true
       }
     encodeMessage: (message) ->
-      if message.state? is false then return "0"
+      if message.state is false then return "0"
       unit = helper.map(helper.numberToBinary(message.id, 24), binaryToPulse)
       return "30#{unit}04"
   }
