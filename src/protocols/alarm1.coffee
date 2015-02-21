@@ -1,9 +1,9 @@
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
-    '30': ''
+    '30': ''  #header
     '01': '0' #binary 0
     '02': '1' #binary 1
-    '04': ''    #footer
+    '04': ''  #footer
   }
   binaryToPulse = {
     '0': '01'
@@ -13,8 +13,6 @@ module.exports = (helper) ->
     name: 'alarm1'
     type: 'switch'
     values:
-      unit:
-        type: "number"
       id:
         type: "number"
       presence:
@@ -28,21 +26,11 @@ module.exports = (helper) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       
       return result = {
-        unit: helper.binaryToNumber(binary, 0, 23)
+        id: helper.binaryToNumber(binary, 0, 23)
         state: true
       }
     encodeMessage: (message) ->
-      if message.state == false then return "0"
-      
-      unit = helper.map(helper.numberToBinary(message.unit, 24), binaryToPulse)
-      
-      pulses = ""
-      pulse = "30#{unit}0430#{unit}"
-      
-      i = 0
-      while i <= 5
-        i++
-        pulses += "#{pulses}#{pulse}"
-      
-      return  pulses;
+      if message.state? is false then return "0"
+      unit = helper.map(helper.numberToBinary(message.id, 24), binaryToPulse)
+      return "30#{unit}04"
   }
