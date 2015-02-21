@@ -26,13 +26,13 @@ module.exports = (helper) ->
     pulseLengths: [ 271, 1254, 10092 ]
     pulseCount: 116
     decodePulses: (pulses) ->
-      # pulses is something like: '01100110011010101001101010010101100112'
+      # pulses is something like: '01010000000101010100000100010101010000000101010100000101000100000101000101010001000100010001010001000101000000010102'
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
-      # binary is now something like: '101010000100011101'
+      # binary is now something like: '11000111100 1011110001111001101001101110101010110101100011'
       # now we extract the data from that string
-      # | 10101000|01000111| 0     |1
-      # | ID?     |unit?   | State |?
+      # | 11000111100 10111100011110011010011011101010   1011    01       01      100011
+      # | ?          |     systemcode                  | group | state | group2 |  unit
       
       groupRes = 1
       groupcode = helper.binaryToNumber(binary, 43, 46)
