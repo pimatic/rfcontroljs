@@ -23,13 +23,10 @@ module.exports = (helper) ->
     pulseLengths: [ 800, 1423, 2760, 8040, 13000 ]
     pulseCount: 52
     decodePulses: (pulses) ->
-      # pulses is something like: '01010110010101100110011001100110010101100110011002'
+      # pulses is something like: '3002020101010102020201010101020101010102020202010204'
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
-      # binary is now something like: '10100 00010 00'
-      # now we extract the temperature and humidity from that string
-      # |    10100 | 00010 |      0 |    0 |
-      # |     Unit |    ID |  fixed | State|
+      
       return result = {
         unit: helper.binaryToNumber(binary, 0, 23)
         state: true
