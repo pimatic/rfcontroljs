@@ -12,8 +12,10 @@ module.exports = (helper) ->
     name: 'pir3'
     type: 'pir'
     values:
+      id:
+        type: "number"
       unit:
-        type: "binary"
+        type: "number"
       presence:
         type: "boolean"
     brands: []
@@ -25,7 +27,8 @@ module.exports = (helper) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like '10010011000011100010101001101100'
       return result = {
-        unit: binary
+        id: helper.binaryToNumber(binary, 0, 15)
+        unit: helper.binaryToNumber(binary, 16, 31)
         presence: true
       }
   }
