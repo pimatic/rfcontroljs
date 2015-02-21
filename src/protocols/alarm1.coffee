@@ -32,5 +32,5 @@ module.exports = (helper) ->
     encodeMessage: (message) ->
       if message.state is false then return "0"
       unit = helper.map(helper.numberToBinary(message.id, 24), binaryToPulse)
-      return "30#{unit}04"
+      return "30#{unit}0430#{unit}0430#{unit}04"
   }
