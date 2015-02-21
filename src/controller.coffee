@@ -5,7 +5,7 @@ protocols = [
   'switch10', 'switch11', 'switch12'
   'rolling1'
   'dimmer1',
-  'pir1', 'pir2',
+  'pir1', 'pir2', 'pir3'
   'contact1', 'contact2',
   'generic'
 ]
