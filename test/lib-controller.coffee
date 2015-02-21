@@ -138,7 +138,7 @@ describe '#decodePulses()', ->
         '010202010201010202010101010101010101010202020102020202010202010103'
       ]
       values: [
-        { id: 105, temperature: 2.9, humidity: 59, channel: 0, battery: 'Good' }
+        { id: 105, temperature: 2.9, channel: 0, battery: 'Good' }
       ]
     },
     {
@@ -265,6 +265,16 @@ describe '#decodePulses()', ->
          { id: 152, unit: 169, state: false }
          { id: 152, unit: 168, state: true }
          { id: 152, unit: 168, state: false }
+      ]
+    },
+    { 
+      protocol: 'switch10'
+      pulseLengths: [ 271, 1254, 10092 ],
+      pulses: [
+        '01010000000101010100000100010101010000000101010100000101000100000101000101010001000100010001010001000101000000010102'
+      ],  
+      values: [
+         { id:3162089194, unit:35, all:false, state:false }
       ]
     },
     { 
@@ -458,6 +468,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch9'
       message: {id: 152, unit: 169, state: true }
       pulses: '01101001011010100110011001101001011012'
+    },
+    {
+      protocol: 'switch10'
+      message: {id:3162089194, unit:35, all:false, state:false }
+      pulses: '01010000000101010100000100010101010000000101010100000101000100000101000101010001000100010001010001000101000000010102'
     },
     {
       protocol: 'rolling1'
