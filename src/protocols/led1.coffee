@@ -1,25 +1,23 @@
 module.exports = (helper) ->
   # mapping for decoding
   pulsesToBinaryMapping = {
-    '10': '0',
-    '01': '1',
+    '10': '1',
+    '01': '0',
     '02': ''
   }
   # same for send
   binaryToPulse = {
-    '1': '01',
-    '0': '10',
+    '0': '01',
+    '1': '10',
   }
   return protocolInfo = {
     name: 'led1'
-    type: 'switch'
+    type: 'command'
     values:
       id:
         type: "number"
-      unit:
-        type: "number"
-      state:
-        type: "boolean"
+      command:
+        type: "string"
     brands: ["LED Stripe RF Dimmer (no name)"]
     pulseLengths: [348, 1051, 10864]
     pulseCount: 50
@@ -29,18 +27,25 @@ module.exports = (helper) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '101000010101000001000010'
       # now we extract the data from that string
-      # | 101000010101000001000 | 010  |
-      # | ID                    | unit |
-	   
+      # | 101000010101000001000 |   010   |
+      # | ID                    | command |
+      commandcode = binary[21..23]
+      switch commandcode
+        when "001" then command = "on/off"
+        when "100" then command = "up"
+        when "010" then command = "down"
+        else command = "unkown command #{commandcode}"
       return result= {
         id: helper.binaryToNumber(binary, 0, 20)
-        unit: helper.binaryToNumber(binary, 21, 23)
-        state: true
+        command: command
       }
 
     encodeMessage: (message) ->
-      if message.state is false then return "0"
       id = helper.map(helper.numberToBinary(message.id, 21), binaryToPulse)
-      unit = helper.map(helper.numberToBinary(message.unit, 3), binaryToPulse)
-      return "#{id}#{unit}02"
+      switch message.command
+        when "on/off" then commandcode = "001"
+        when "up" then commandcode = "100"
+        when "down" then commandcode = "010"
+        else return "0" #it would be better to throw a failure there
+      return "#{id}#{commandcode}02"
   }
