@@ -16,8 +16,8 @@ module.exports = (helper) ->
         type: "number"
       id:
         type: "number"
-      battery:
-        type: "string"
+      lowBattery:
+        type: "boolean"
     brands: ["Auriol"]
     pulseLengths: [456, 1990, 3940, 9236]
     pulseCount: 66
@@ -30,14 +30,12 @@ module.exports = (helper) ->
       #   0-----7     8  14-15   16--------27   28----35
       # | 10001101 | 11 | 000100001001 | 00111101 |
       # |    ID    | BT | Temp.        | Humid.   |
-      battery = helper.binaryToBoolean(binary, 8)
-      if battery is true then battery = "Good"
-      else battery = "Bad"
+      lowBattery = not helper.binaryToBoolean(binary, 8)
       return result = {
         id: helper.binaryToNumberMSBLSB(binary, 0, 7)
         channel: helper.binaryToNumberMSBLSB(binary, 10, 11)
         temperature: helper.binaryToSignedNumberMSBLSB(binary, 12, 23) / 10
         #humidity: helper.binaryToNumberMSBLSB(binary, 24, 29)
-        battery: battery
+        lowBattery: lowBattery
       }
   }

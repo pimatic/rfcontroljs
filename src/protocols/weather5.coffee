@@ -24,6 +24,8 @@ module.exports = (helper) ->
         type: "number"
       rain:
         type: "number"
+      lowBattery:
+        type: "boolean"
     brands: ["Auriol", "Ventus", "Hama", "Meteoscan", "Alecto", "Balance"]
     pulseLengths:  [ 534, 2000, 4000, 9000 ]
     pulseCount: 74
@@ -59,9 +61,7 @@ module.exports = (helper) ->
       states = helper.binaryToNumberLSBMSB(binary, 9, 10)
       #temperature and humidity
       id = helper.binaryToNumberLSBMSB(binary, 0, 7)
-      battery = helper.binaryToNumberLSBMSB(binary, 8, 8)
-      if battery is 0 then battery = 'Good'
-      else battery = 'Bad'
+      lowBattery = helper.binaryToNumberLSBMSB(binary, 8, 8) isnt 0
       if (states is 0 or states is 1 or states is 2)
         temperature = helper.binaryToSignedNumberLSBMSB(binary, 12, 23) / 10.0
         h0 = helper.binaryToNumberLSBMSB(binary, 28, 31)
@@ -69,7 +69,7 @@ module.exports = (helper) ->
         humidity = h0 * 10 + h1
         return result = {
           id: id
-          battery : battery
+          lowBattery: lowBattery
           temperature: temperature
           humidity: humidity
         }
@@ -79,7 +79,7 @@ module.exports = (helper) ->
           avgAirspeed = helper.binaryToNumberLSBMSB(binary, 24, 31) / 5.0
           return result = {
             id: id
-            battery : battery
+            lowBattery: lowBattery
             avgAirspeed: avgAirspeed
           }
         else if substate is 7
@@ -87,7 +87,7 @@ module.exports = (helper) ->
           windGust = helper.binaryToNumberLSBMSB(binary, 24, 31) / 5.0
           return result = {
             id: id
-            battery : battery
+            lowBattery: lowBattery
             windDirection: windDirection
             windGust: windGust
           }
@@ -95,11 +95,11 @@ module.exports = (helper) ->
           rain = helper.binaryToNumberLSBMSB(binary, 16, 31) / 4.0
           return result = {
             id: id
-            battery : battery
+            lowBattery: lowBattery
             rain: rain
           }
       return result = {
         id: id
-        battery : battery
+        lowBattery: lowBattery
       }
   }
