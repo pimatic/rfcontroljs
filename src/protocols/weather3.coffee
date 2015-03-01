@@ -18,10 +18,10 @@ module.exports = (helper) ->
         type: "number"
     brands: ["tfa", "conrad"]
     pulseLengths: [508, 2012, 3908, 7726]
-    pulseCount: 88
+    pulseCount: 86
     decodePulses: (pulses) ->
       # pulses could be:
-      # '0202010101010201010202020102010102020201010202010102020201010201020202010202020101010303'
+      # '02020101010102010102020201020101020202010102020101020202010102010202020102020201010103'
       # we first map the pulse sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '001111011000101100011001100011010001000111'
