@@ -19,10 +19,10 @@ module.exports = (helper) ->
       command:
         type: "string"
     brands: ["LED Controller"]
-    pulseLengths: [ 441, 1218, 13012 ]
+    pulseLengths: [ 439, 1240, 12944 ]
     pulseCount: 50
     decodePulses: (pulses) ->
-      # pulses is something like: '01011010010101100110011010101001010110010101100102'
+      # pulses is something like: '01011010011010100110010110010101010101010101011002'
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '101000010101000001000010'
@@ -64,7 +64,7 @@ module.exports = (helper) ->
         when "speed-"  then commandcode = "00001101"
         else #this gives the ability for personal commands
           if message.command[0..4] is "code:"
-            return "#{id}#{message.command[5..]}02"
-          else return "0" #it would be better to throw a failure there
+            commandcode = message.command[5..]
+      commandcode = helper.map(helper.numberToBinary(commandcode, 8), binaryToPulse)
       return "#{id}#{commandcode}02"
   }
