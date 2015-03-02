@@ -77,6 +77,6 @@ module.exports = (helper) ->
         else #this gives the ability for personal commands
           if message.command[0..4] is "code:"
             commandcode = message.command[5..]
-      commandcode = helper.map(helper.numberToBinary(commandcode, 8), binaryToPulse)
+      commandcode = helper.map(commandcode, binaryToPulse)
       return "#{id}#{commandcode}02"
   }
