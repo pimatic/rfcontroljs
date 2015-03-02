@@ -19,7 +19,7 @@ module.exports = (helper) ->
       command:
         type: "string"
     brands: ["LED Stripe RF Dimmer (no name)"]
-    pulseLengths: [348, 1051, 10864]
+    pulseLengths: [ 439, 1240, 12944 ]
     pulseCount: 50
     decodePulses: (pulses) ->
       # pulses is something like: '01011010010101100110011010101001010110010101100102'
@@ -29,23 +29,26 @@ module.exports = (helper) ->
       # now we extract the data from that string
       # | 101000010101000001000 |   010   |
       # | ID                    | command |
-      commandcode = binary[21..23]
+      commandcode = binary[16..23]
       switch commandcode
-        when "001" then command = "on/off"
-        when "100" then command = "up"
-        when "010" then command = "down"
-        else command = "unkown command #{commandcode}"
+        when "00100001" then command = "on/off"
+        when "00100100" then command = "up"
+        when "00100010" then command = "down"
+        else command = "code:#{commandcode}"
       return result= {
-        id: helper.binaryToNumber(binary, 0, 20)
+        id: helper.binaryToNumber(binary, 0, 15)
         command: command
       }
 
     encodeMessage: (message) ->
-      id = helper.map(helper.numberToBinary(message.id, 21), binaryToPulse)
+      id = helper.map(helper.numberToBinary(message.id, 16), binaryToPulse)
       switch message.command
-        when "on/off" then commandcode = "001"
-        when "up" then commandcode = "100"
-        when "down" then commandcode = "010"
-        else return "0" #it would be better to throw a failure there
+        when "on/off" then commandcode = "00100001"
+        when "up"     then commandcode = "00100100"
+        when "down"   then commandcode = "00100010"
+        else #this gives the ability for personal commands
+          if message.command[0..4] is "code:"
+            commandcode = message.command[5..]
+      commandcode = helper.map(helper.numberToBinary(commandcode, 8), binaryToPulse)
       return "#{id}#{commandcode}02"
   }
