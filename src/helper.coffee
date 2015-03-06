@@ -111,6 +111,16 @@ module.exports = {
 
   binaryToBoolean: (data, i) ->
     return (data[i] is '1')
+
+  createParityBit: (stringForParity) ->
+    parity = 0
+    for bit in stringForParity
+      if bit is '1' then parity++
+    if parity < 2
+      paritybitRef = (parity is 1)
+    else
+      paritybitRef = ((parity % 2) isnt 0)
+    return paritybitRef
 }
 
 module.exports.binaryToNumber = module.exports.binaryToNumberMSBLSB
