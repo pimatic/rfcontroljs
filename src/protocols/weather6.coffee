@@ -15,8 +15,8 @@ module.exports = (helper) ->
         type: "number"
       id:
         type: "number"
-      battery:
-        type: "string"
+      lowBattery:
+        type: "boolean"
     brands: ["Sempre (Aldi) GT-WT-02"]
     pulseLengths: [552, 2089, 4137, 9032]
     pulseCount: 80
@@ -30,16 +30,12 @@ Pulse like:|0102010201020202|01010101|010101010102010202010201|02010102020101|02
            |87              |        |90 (9.0)                |76            |            |  |  |  |
       ###
       binary = helper.map(pulses, pulsesToBinaryMapping)
-      battery = helper.binaryToNumber(binary, 37, 37)
-      if battery is 1
-        battery = "Good"
-      else
-        battery = "Bad"
+      lowBattery = helper.binaryToNumber(binary, 37, 37) isnt 1
       return result = {
         id: helper.binaryToNumber(binary, 0, 7)
         channel: helper.binaryToNumber(binary, 8, 9) + 1
         temperature: helper.binaryToSignedNumber(binary, 12, 23) / 10
         humidity: helper.binaryToNumber(binary, 24, 30)
-        battery: battery
+        lowBattery: lowBattery
       }
   }

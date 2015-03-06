@@ -57,10 +57,10 @@ describe '#decodePulses()', ->
         '01020102010102020102020102020201010101010202020201020101010201010101020203'
       ]
       values: [
-        { id: 208 ,channel: 2 ,battery: 'Bad' ,temperature: 23.2, humidity: 34 }
-        { id: 67  ,channel: 1 ,battery: 'Good' ,temperature: 26.0, humidity: 61 }
-        { id: 198 ,channel: 1 ,battery: 'Good' ,temperature: 25.6, humidity: 60 }
-        { id: 54 ,channel: 3 ,battery: 'Good' ,temperature: 24.4, humidity: 67 }
+        { id: 208 ,channel: 2 ,lowBattery: true ,temperature: 23.2, humidity: 34 }
+        { id: 67  ,channel: 1 ,lowBattery: false ,temperature: 26.0, humidity: 61 }
+        { id: 198 ,channel: 1 ,lowBattery: false ,temperature: 25.6, humidity: 60 }
+        { id: 54 ,channel: 3 ,lowBattery: false ,temperature: 24.4, humidity: 67 }
       ]
     },
     {
@@ -87,12 +87,12 @@ describe '#decodePulses()', ->
       protocol: 'weather3'
       pulseLengths: [508, 2012, 3908, 7726]
       pulses: [
-        '0101020202020102020101010201010202020102020201020201020101010101020201020101010102010303'
-        '0101020202020102020101010201020102020102020201020201020101010101020201020101020201010303'
-        '0101020102010202010201010101010101010102010101020201010101020102010101010101010201020303'
-        '0101020102010202010201010101010202020102010101020201010101020102010101010101010201010303'
-        '0101010101020202020101010102020101020101010101020201020202010101020201020101010101020303'
-        '0101010101020202020101010102010201020101010201020201020202020101020201010101020201010303'
+        '01010202020201020201010102010102020201020202010202010201010101010202010201010101020103'
+        '01010202020201020201010102010201020201020202010202010201010101010202010201010202010103'
+        '01010201020102020102010101010101010101020101010202010101010201020101010101010102010203'
+        '01010201020102020102010101010102020201020101010202010101010201020101010101010102010103'
+        '01010101010202020201010101020201010201010101010202010202020101010202010201010101010203'
+        '01010101010202020201010101020102010201010102010202010202020201010202010101010202010103'
       ]
       values: [
         { id: 246, channel: 3, temperature: 24.2, humidity: 56 }
@@ -124,11 +124,11 @@ describe '#decodePulses()', ->
         '01020202010202020101020101020101020202020202020202010102010202010101010103'
       ]
       values: [
-        { id: 162, temperature: 12.6, humidity: 67, battery: 'Good' }
-        { id: 0, rain: 5.75, battery: 'Good' }
-        { id: 142, rain: 15.25, battery: 'Good' }
-        { id: 238, temperature: 11.7, humidity: 99,  battery: 'Good' }
-        { id: 238, temperature: -1.4, humidity: 69,  battery: 'Good' }
+        { id: 162, temperature: 12.6, humidity: 67, lowBattery: false }
+        { id: 0, rain: 5.75, lowBattery: false }
+        { id: 142, rain: 15.25, lowBattery: false }
+        { id: 238, temperature: 11.7, humidity: 99,  lowBattery: false }
+        { id: 238, temperature: -1.4, humidity: 69,  lowBattery: false }
       ]
     },
     {
@@ -138,7 +138,7 @@ describe '#decodePulses()', ->
         '010202010201010202010101010101010101010202020102020202010202010103'
       ]
       values: [
-        { id: 105, temperature: 2.9, channel: 0, battery: 'Good' }
+        { id: 105, temperature: 2.9, channel: 0, lowBattery: false }
       ]
     },
     {
