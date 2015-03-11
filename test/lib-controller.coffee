@@ -294,6 +294,22 @@ describe '#decodePulses()', ->
       ]
     },
     { 
+      protocol: 'switch12'
+      pulseLengths: [ 564, 1307, 3237, 51535 ],
+      pulses: [
+        '12021212121212121212021212121212121212121203'
+        '12021212121212121212021212120202121202021203'
+        '12021212121212121212121212021212121202120203'
+        '12021212121212121212121202121212121202120203'
+      ],  
+      values: [
+         { id: 767, unit: 3, state: true }
+         { id: 767, unit: 3, state: false }
+         { id: 767, unit: 2, state: true }
+         { id: 767, unit: 1, state: true }
+      ]
+    },
+    { 
       protocol: 'switch13'
       pulseLengths: [ 700, 1400, 81000 ]
       pulses: [
@@ -357,10 +373,10 @@ describe '#decodePulses()', ->
         '01100110100101011001100110101001010110010101100102'
      ],
       values: [
-        { id: 726468, command: "on/off" }
-        { id: 404420, command: "on/off" }
-        { id: 726468, command: "up" }
-        { id: 726468, command: "down" }
+        { id: 22702, command: "on/off" }
+        { id: 12638, command: "on/off" }
+        { id: 22702, command: "up" }
+        { id: 22702, command: "down" }
       ]
     },
     {
@@ -523,6 +539,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch10'
       message: {id:3162089194, unit:35, all:false, state:false }
       pulses: '01010000000101010100000100010101010000000101010100000101000100000101000101010001000100010001010001000101000000010102'
+    },
+    {
+      protocol: 'switch12'
+      message: {id: 767, unit: 2, state: true }
+      pulses: '12021212121212121212121212021212121202120203'
     },
     {
       protocol: 'switch13'

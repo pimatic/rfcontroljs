@@ -33,14 +33,14 @@ module.exports = (helper) ->
       # | ID?       |unit?    | State |Channel
       return result = {
         id: helper.binaryToNumber(binary, 0, 9)
-        unit: helper.binaryToNumber(binary, 20, 21)
-        state: helper.binaryToBoolean(binary, 19)
+        unit: helper.binaryToNumber(binary, 12, 13)
+        state: helper.binaryToBoolean(binary, 15)
       }
     encodeMessage: (message) ->
-      id = helper.map(helper.numberToBinary(message.id, 10), binaryToPulse)
-      state = (if message.state then binaryToPulse['1'] else binaryToPulse['0'])
-      state_inv = (if message.state then binaryToPulse['0'] else binaryToPulse['1'])
-      unit2 = helper.map(helper.numberToBinary(message.unit, 2), binaryToPulse)
-      unit1 = helper.map(helper.numberToBinary(message.unit+1, 2), binaryToPulse)
-      return "#{id}#{state}1#{unit2}1#{state}11#{state_inv}#{state}#{unit2}03"
+      id = helper.numberToBinary(message.id, 10)
+      state = (if message.state then '1' else '0')
+      state_inv = (if message.state then '0' else '1')
+      unit1 = helper.numberToBinary(message.unit, 2)
+      rfstring = helper.map("#{id}#{state}1#{unit1}1#{state}11#{state_inv}#{state}0", binaryToPulse)
+      return "#{rfstring}03"
   }
