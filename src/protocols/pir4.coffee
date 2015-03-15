@@ -12,8 +12,8 @@ module.exports = (helper) ->
     '0': '0001'
   }
   return protocolInfo = {
-    name: 'contact1'
-    type: 'contact'
+    name: 'pir4'
+    type: 'pir'
     values:
       id:
         type: "binary"
