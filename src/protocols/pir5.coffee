@@ -12,7 +12,7 @@ module.exports = (helper) ->
     '0': '0001'
   }
   return protocolInfo = {
-    name: 'pir4'
+    name: 'pir5'
     type: 'pir'
     values:
       id:
