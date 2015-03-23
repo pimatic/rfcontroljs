@@ -352,6 +352,22 @@ describe '#decodePulses()', ->
       ]
     },
     { 
+      protocol: 'switch15'
+      pulseLengths: [ 300, 914, 9624 ]
+      pulses: [
+        '01101001011001100110010110011010101001011010101002'
+        '01101001011001100110010110011010101001010110101002'
+        '01101001011001100110010110011010101001011001101002'
+        '01101001011001100110010110011010101001011001010102'
+      ],  
+      values: [
+         { id:414908, unit:1, all:false, state:true }
+         { id:414908, unit:1, all:false, state:false}
+         { id:414908, unit:2, all:false, state:true }
+         { id:414908, unit:0, all:true , state:true }
+      ]
+    },
+    { 
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
       pulses: [
@@ -580,6 +596,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch14'
       message: { id:0, unit:4, all:false, state:false}
       pulses: '01010101010101010101010101010101010101010101100102'
+    },
+    {
+      protocol: 'switch15'
+      message: { id:414908, unit:1, all:false, state:true }
+      pulses: '01101001011001100110010110011010101001011010101002'
     },
     {
       protocol: 'led3'
