@@ -9,7 +9,7 @@ protocols = [
   'contact1', 'contact2',
   'generic'
   'alarm1'
-  'led1', 'led2', 'led3'
+  'led1', 'led2', 'led3', 'led4'
 ]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
