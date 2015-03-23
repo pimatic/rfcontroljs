@@ -313,10 +313,10 @@ describe '#decodePulses()', ->
         '1202021212021212121212121212121202121212121202120203'
       ],  
       values: [
-         { id: 9983, unit: 3, state: true }
-         { id: 9983, unit: 3, state: false }
-         { id: 9983, unit: 2, state: true }
          { id: 9983, unit: 1, state: true }
+         { id: 9983, unit: 1, state: false }
+         { id: 9983, unit: 2, state: true }
+         { id: 9983, unit: 3, state: true }
       ]
     },
     { 
@@ -569,7 +569,7 @@ describe '#encodeMessage()', ->
     {
       protocol: 'switch12'
       message: {id: 9983, unit: 1, state: true }
-      pulses: '1202021212021212121212121212121202121212121202120203'
+      pulses: '1202021212021212121212121212021212121212121212121203'
     },
     {
       protocol: 'switch13'
