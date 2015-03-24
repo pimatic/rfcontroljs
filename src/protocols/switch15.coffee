@@ -33,14 +33,20 @@ module.exports = (helper) ->
       # now we extract the data from that string
       # 00000000000000000000| 1   |100
       #    ID               |State|Unit
-      unit = (8 - helper.binaryToNumberLSBMSB(binary, 21, 23))
+      unitCode = helper.binaryToNumberLSBMSB(binary, 21, 23)
       state = helper.binaryToBoolean(binary, 20)
       all = false
-      if unit is 8
-        unit = 0
-        all = true
-        state = !state
-
+      unit = (
+        switch unitCode
+          when 7 then 1
+          when 6 then 2
+          when 5 then 3
+          when 3 then 4
+          else
+            all = true
+            state = !state
+            0 #return value for unit
+      )
       return result = {
         id:    helper.binaryToNumber(binary, 0, 19)
         unit:  unit
@@ -49,13 +55,20 @@ module.exports = (helper) ->
       }
     encodeMessage: (message) ->
       id = helper.numberToBinary(message.id, 20)
-      state = (if message.state then '1' else '0')
-      unit = helper.numberToBinaryLSBMSB(8 - message.unit, 3)
-      if message.all?
-        if message.all is true
-          unit = helper.numberToBinaryLSBMSB(0, 3)
-          state = (if message.state then '0' else '1')
-
+      if message.all
+        unitCode = 0
+        state = not message.state
+      else
+        unitCode = (
+          switch message.unit
+            when 1 then 7
+            when 2 then 6
+            when 3 then 5
+            when 4 then 3
+        )
+        state = message.state
+      state = (if state then '1' else '0')
+      unit = helper.numberToBinaryLSBMSB(unitCode, 3)
       rfstring = "#{id}#{state}#{unit}"
       rfstring = helper.map(rfstring, binaryToPulse)
       return "#{rfstring}02"
