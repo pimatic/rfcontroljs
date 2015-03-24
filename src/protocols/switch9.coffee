@@ -22,7 +22,7 @@ module.exports = (helper) ->
         type: "number"
     brands: ["DRU Heaters"]
     pulseLengths: [300, 600, 23000]
-    pulseCount: 38
+    pulseCount: 46
     decodePulses: (pulses) ->
       # pulses is something like: '01100110011010101001101010010101100112'
       # we first map the sequences to binary
@@ -32,12 +32,12 @@ module.exports = (helper) ->
       # | 10101000|01000111| 0     |1
       # | ID?     |unit?   | State |?
       return result = {
-        id: helper.binaryToNumber(binary, 0, 7)
-        unit: helper.binaryToNumber(binary, 8, 15)
-        state: helper.binaryToBoolean(binary, 16)
+        id: helper.binaryToNumber(binary, 0, 11)
+        unit: helper.binaryToNumber(binary, 12, 19)
+        state: helper.binaryToBoolean(binary, 20)
       }
     encodeMessage: (message) ->
-      id = helper.map(helper.numberToBinary(message.id, 8), binaryToPulse)
+      id = helper.map(helper.numberToBinary(message.id, 12), binaryToPulse)
       state = (if message.state then binaryToPulse['1'] else binaryToPulse['0'])
       unit = helper.map(helper.numberToBinary(message.unit, 8), binaryToPulse)
       return "#{id}#{unit}#{state}1012"
