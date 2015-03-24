@@ -364,7 +364,7 @@ describe '#decodePulses()', ->
          { id:414908, unit:1, all:false, state:true }
          { id:414908, unit:1, all:false, state:false}
          { id:414908, unit:2, all:false, state:true }
-         { id:414908, unit:0, all:true , state:true }
+         { id:414908, unit:0, all:true , state:false }
       ]
     },
     { 

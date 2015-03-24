@@ -34,15 +34,17 @@ module.exports = (helper) ->
       # 00000000000000000000| 1   |100
       #    ID               |State|Unit
       unit = (8 - helper.binaryToNumberLSBMSB(binary, 21, 23))
+      state = helper.binaryToBoolean(binary, 20)
       all = false
       if unit is 8
         unit = 0
         all = true
+        state = !state
 
       return result = {
         id:    helper.binaryToNumber(binary, 0, 19)
         unit:  unit
-        state: helper.binaryToBoolean(binary, 20)
+        state: state
         all:   all
       }
     encodeMessage: (message) ->
@@ -52,6 +54,7 @@ module.exports = (helper) ->
       if message.all?
         if message.all is true
           unit = helper.numberToBinaryLSBMSB(0, 3)
+          state = (if message.state then '0' else '1')
 
       rfstring = "#{id}#{state}#{unit}"
       rfstring = helper.map(rfstring, binaryToPulse)
