@@ -17,8 +17,8 @@ module.exports = (helper) ->
         type: "number"
       humidity:
         type: "number"
-      battery:
-        type: "number"
+      lowBattery:
+        type: "boolean"
     brands: ["Auriol"]
     pulseLengths:  [ 526, 990, 1903, 4130, 7828, 16076 ]
     pulseCount: 92
@@ -47,12 +47,15 @@ module.exports = (helper) ->
       h0 = helper.binaryToNumber(binary, 28, 31)
       h1 = helper.binaryToNumber(binary, 32, 35)
       humidity = h0 * 10 + h1
-      battery = 3 - (helper.binaryToNumber(binary, 12, 15)/10)
+      if (3 - (helper.binaryToNumber(binary, 12, 15)/10)) < 2.5
+        lowBattery = true
+      else
+        lowBattery = false
       return result = {
         id: helper.binaryToNumber(binary, 0, 7),
         channel: helper.binaryToNumber(binary, 36, 39),
         temperature: temperature
         humidity: humidity
-        battery: battery
+        lowBattery: lowBattery
   }
 }
