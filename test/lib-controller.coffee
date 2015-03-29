@@ -382,6 +382,16 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'doorbell1'
+      pulseLengths: [ 217, 648, 6696 ],
+      pulses: [
+        '01101010011001100110011010101010101010101010101002'
+      ],
+      values: [
+         { id: 1361, unit: 0, state: true }
+      ]
+    },
+    {
       protocol: 'contact1'
       pulseLengths: [268, 1282, 2632, 10168]
       pulses: [
@@ -629,6 +639,11 @@ describe '#encodeMessage()', ->
       protocol: 'led4'
       message: {id:796, command:"on/off" }
       pulses: '01010101010110100101011010100101100101010110011002'
+    },
+    {
+      protocol: 'doorbell1'
+      message: { id: 1361, unit: 0, state: true }
+      pulses: '01101010011001100110011010101010101010101010101002'
     },
     {
       protocol: 'rolling1'
