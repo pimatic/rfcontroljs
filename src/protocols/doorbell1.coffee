@@ -9,17 +9,13 @@ module.exports = (helper) ->
     '0': '0110'
     '1': '1010'
   }
-  binaryToPulse2 = {
-    '0': '0110'
-    '1': '0101'
-  }
   return protocolInfo = {
     name: 'doorbell1'
     type: 'switch'
     values:
-      systemcode:
+      id:
         type: "number"
-      programcode:
+      unit:
         type: "number"
       state:
         type: "boolean"
@@ -29,13 +25,14 @@ module.exports = (helper) ->
     decodePulses: (pulses) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
-        systemcode: helper.binaryToNumberLSBMSB(binary, 0, 4)
-        programcode: helper.binaryToNumberLSBMSB(binary, 5, 9)
+        id: helper.binaryToNumberLSBMSB(binary, 0, 4)
+        unit: helper.binaryToNumberLSBMSB(binary, 5, 9)
         state: helper.binaryToBoolean(binary, 11)
       }
     encodeMessage: (message) ->
-      systemcode  = helper.map(helper.numberToBinaryLSBMSB(message.systemcode, 5), binaryToPulse)
-      programcode = helper.map(helper.numberToBinaryLSBMSB(message.programcode, 5), binaryToPulse)
+      id  = helper.map(helper.numberToBinaryLSBMSB(message.id, 5), binaryToPulse)
+      unit = helper.map(helper.numberToBinaryLSBMSB(message.unit, 5), binaryToPulse)
       state = (if message.state then binaryToPulse['1'] else binaryToPulse['0'])
-      return "#{systemcode}#{programcode}1010#{state}02"
+      return "#{id}#{unit}1010#{state}02"
   }
+

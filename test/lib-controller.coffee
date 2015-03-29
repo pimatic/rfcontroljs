@@ -242,7 +242,7 @@ describe '#decodePulses()', ->
         '01101010011001100110011010101010101010101010101002'
       ],
       values: [
-         { systemcode: 2, programcode: 30, state: true }
+         { id: 2, unit: 30, state: true }
       ]
     },
     { 
@@ -642,7 +642,7 @@ describe '#encodeMessage()', ->
     },
     {
       protocol: 'doorbell1'
-      message: {systemcode:2, programcode:30, state:true }
+      message: {id:2, unit:30, state:true }
       pulses: '01101010011001100110011010101010101010101010101002'
     },
     {
