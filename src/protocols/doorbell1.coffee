@@ -1,13 +1,12 @@
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
-    '0101': '1' #binary 1
-    '1010': '1' #binary 1
-    '0110': '0' #binary 0
+    '01': '1' #binary 1
+    '10': '0' #binary 0
     '02': ''    #footer
   }
   binaryToPulse = {
-    '0': '0110'
-    '1': '1010'
+    '0': '10'
+    '1': '01'
   }
   return protocolInfo = {
     name: 'doorbell1'
@@ -23,16 +22,17 @@ module.exports = (helper) ->
     pulseLengths: [217, 648, 6696]
     pulseCount: 50
     decodePulses: (pulses) ->
+      # pulses is something like: '01101010011001100110011010101010101010101010101002'
+      # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       return result = {
-        id: helper.binaryToNumberLSBMSB(binary, 0, 4)
-        unit: helper.binaryToNumberLSBMSB(binary, 5, 9)
-        state: helper.binaryToBoolean(binary, 11)
+        id: helper.binaryToNumberLSBMSB(binary, 0, 11)
+        unit: helper.binaryToNumberLSBMSB(binary, 12, 22)
+        state: !helper.binaryToBoolean(binary, 23)
       }
     encodeMessage: (message) ->
-      id  = helper.map(helper.numberToBinaryLSBMSB(message.id, 5), binaryToPulse)
-      unit = helper.map(helper.numberToBinaryLSBMSB(message.unit, 5), binaryToPulse)
-      state = (if message.state then binaryToPulse['1'] else binaryToPulse['0'])
-      return "#{id}#{unit}1010#{state}02"
+      id  = helper.map(helper.numberToBinaryLSBMSB(message.id, 12), binaryToPulse)
+      unit = helper.map(helper.numberToBinaryLSBMSB(message.unit, 11), binaryToPulse)
+      state = (if message.state then binaryToPulse['0'] else binaryToPulse[''])
+      return "#{id}#{unit}#{state}02"
   }
-

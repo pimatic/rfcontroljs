@@ -235,16 +235,6 @@ describe '#decodePulses()', ->
          { systemcode: 15, programcode: 2, state: true }
       ]
     },
-    {
-      protocol: 'doorbell1'
-      pulseLengths: [ 217, 648, 6696 ],
-      pulses: [
-        '01101010011001100110011010101010101010101010101002'
-      ],
-      values: [
-         { id: 2, unit: 30, state: true }
-      ]
-    },
     { 
       protocol: 'switch7'
       pulseLengths: [307, 944, 9712],
@@ -389,6 +379,16 @@ describe '#decodePulses()', ->
          { code: "011110001011100110110010"}
          { code: "011101101101100010101110"}
          { code: "011101101101100010101100"}
+      ]
+    },
+    {
+      protocol: 'doorbell1'
+      pulseLengths: [ 217, 648, 6696 ],
+      pulses: [
+        '01101010011001100110011010101010101010101010101002'
+      ],
+      values: [
+         { id: 1361, unit: 0, state: true }
       ]
     },
     {
@@ -642,7 +642,7 @@ describe '#encodeMessage()', ->
     },
     {
       protocol: 'doorbell1'
-      message: {id:2, unit:30, state:true }
+      message: { id: 1361, unit: 0, state: true }
       pulses: '01101010011001100110011010101010101010101010101002'
     },
     {
