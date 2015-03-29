@@ -10,6 +10,7 @@ protocols = [
   'generic'
   'alarm1'
   'led1', 'led2', 'led3', 'led4'
+  'doorbell1'
 ]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
