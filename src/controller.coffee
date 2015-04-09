@@ -83,6 +83,9 @@ module.exports = {
       .filter( (puls) -> puls isnt '0' )
       .map( (puls) -> parseInt(puls, 10) )
     # next sort the pulses from short to long and update indces in pulse
+    return @sortCompressedPulses(pulseLengths, pulses)
+
+  sortCompressedPulses: (pulseLengths, pulses) ->
     sortedIndices = sortIndices(pulseLengths)
     pulseLengths.sort( (l,r) -> l-r )
     pulses = helper.mapByArray(pulses, sortedIndices)
