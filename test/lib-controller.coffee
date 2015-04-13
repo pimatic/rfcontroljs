@@ -367,6 +367,16 @@ describe '#decodePulses()', ->
          { id:414908, unit:0, all:true , state:false }
       ]
     },
+    {
+      protocol: 'switch16'
+      pulseLengths: [260, 2680, 1275, 10550],
+      pulses: [
+        '010200020002000002000200020200020002000200020000020200000202000200020002000200020002000200000200020200000200020200020002000200020003'
+      ],
+      values: [
+         { id: 10, unit: 10, state: true }
+      ]
+    },
     { 
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
