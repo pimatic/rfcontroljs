@@ -5,7 +5,7 @@ module.exports = (helper) ->
     '03': ''  #footer
   }
   return protocolInfo = {
-    name: 'weather1'
+    name: 'weather7'
     type: 'weather'
     values:
       temperature:
@@ -18,24 +18,24 @@ module.exports = (helper) ->
         type: "number"
       lowBattery:
         type: "boolean"
-    brands: []
+    brands: ["Auriol"]
     pulseLengths: [456, 1990, 3940, 9236]
-    pulseCount: 74
+    pulseCount: 66
     decodePulses: (pulses) ->
       # pulses is something like: '01020102020201020101010101010102010101010202020101020202010102010101020103'
       # we first map the pulse sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '010111010000000100001110011100100010'
       # now we extract the temperature and humidity from that string
-      #   0--3   4-----11  12-13  14-15   16--------27   28----35
-      # | 0101 | 10001101 | 11  |   00  | 000100001001 | 00111101 |
-      # | ?    |    ID    | BT  |Channel| Temp.        | Humid.   |
-      lowBattery = not helper.binaryToBoolean(binary, 12)
+      #   0-----7     8  14-15   16--------27   28----35
+      # | 10001101 | 11 | 000100001001 | 00111101 |
+      # |    ID    | BT | Temp.        | Humid.   |
+      lowBattery = not helper.binaryToBoolean(binary, 8)
       return result = {
-        id: helper.binaryToNumber(binary, 4, 11)
-        channel: helper.binaryToNumber(binary, 14, 15) + 1
-        temperature: helper.binaryToSignedNumber(binary, 16, 27) / 10
-        humidity: helper.binaryToNumber(binary, 28, 35)
+        id: helper.binaryToNumberMSBLSB(binary, 0, 7)
+        channel: helper.binaryToNumberMSBLSB(binary, 10, 11)
+        temperature: helper.binaryToSignedNumberMSBLSB(binary, 12, 23) / 10
+        #humidity: helper.binaryToNumberMSBLSB(binary, 24, 29)
         lowBattery: lowBattery
       }
   }

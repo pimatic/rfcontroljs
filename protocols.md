@@ -1,7 +1,7 @@
 <!-- This file is generated automatically don't edit it -->
 Supported Protocols
 ===================
-<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>weather6</td><td>weather</td><td>Sempre (Aldi) GT-WT-02</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>switch7</td><td>switch</td><td>eHome</td></tr><tr><td>switch8</td><td>switch</td><td>Rev</td></tr><tr><td>rolling1</td><td>switch</td><td>rollingCode</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>pir2</td><td>pir</td><td>?</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr></table>
+<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol, Pollin (EWS-151)</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>weather6</td><td>weather</td><td>Sempre (Aldi) GT-WT-02</td></tr><tr><td>weather7</td><td>weather</td><td>Auriol</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>switch7</td><td>switch</td><td>eHome</td></tr><tr><td>switch8</td><td>switch</td><td>Rev</td></tr><tr><td>switch9</td><td>switch</td><td>DRU Heaters</td></tr><tr><td>switch10</td><td>switch</td><td>Easy Home Advanced</td></tr><tr><td>switch11</td><td>switch</td><td>McPower</td></tr><tr><td>switch12</td><td>switch</td><td>Europe RS-200</td></tr><tr><td>switch13</td><td>switch</td><td>Aldi Quigg GT-7000, Globaltronics GT-FSI-04a</td></tr><tr><td>switch14</td><td>switch</td><td>UNITEC</td></tr><tr><td>switch15</td><td>switch</td><td>Daycom Switches</td></tr><tr><td>rolling1</td><td>switch</td><td>rollingCode</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>pir2</td><td>pir</td><td>?</td></tr><tr><td>pir3</td><td>pir</td><td>?</td></tr><tr><td>pir4</td><td>pir</td><td>?</td></tr><tr><td>pir5</td><td>pir</td><td>KlikAanKlikUit</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>contact2</td><td>pir</td><td>No brand</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr><tr><td>alarm1</td><td>switch</td><td>FA20RF</td></tr><tr><td>led1</td><td>command</td><td>LED Stripe RF Dimmer (no name)</td></tr><tr><td>led2</td><td>command</td><td>LED Controller</td></tr><tr><td>led3</td><td>command</td><td>LED Controller</td></tr><tr><td>led4</td><td>command</td><td>LED Controller</td></tr></table>
 weather1
 ---------
 __Type__: weather
@@ -12,20 +12,20 @@ __Protocol Options__:
 
   * **channel** (number)
   * **id** (number)
+  * **lowBattery** (boolean)
 
 
 __Supports__:
 
   * temperature
   * humidity
-  * battery
 
 
 weather2
 ---------
 __Type__: weather
 
-__Brands__: Auriol
+__Brands__: Auriol, Pollin (EWS-151)
 
 __Protocol Options__:
 none
@@ -85,6 +85,7 @@ __Protocol Options__:
   * **windGust** (number)
   * **windDirection** (number)
   * **rain** (number)
+  * **lowBattery** (boolean)
 
 
 __Supports__:
@@ -104,13 +105,32 @@ __Protocol Options__:
 
   * **channel** (number)
   * **id** (number)
+  * **lowBattery** (boolean)
 
 
 __Supports__:
 
   * temperature
   * humidity
-  * battery
+
+
+weather7
+---------
+__Type__: weather
+
+__Brands__: Auriol
+
+__Protocol Options__:
+
+  * **channel** (number)
+  * **id** (number)
+  * **lowBattery** (boolean)
+
+
+__Supports__:
+
+  * temperature
+  * humidity
 
 
 switch1
@@ -251,6 +271,130 @@ __Supports__:
   * state
 
 
+switch9
+---------
+__Type__: switch
+
+__Brands__: DRU Heaters
+
+__Protocol Options__:
+
+  * **id** (binary)
+  * **unit** (number)
+
+
+__Supports__:
+
+  * state
+
+
+switch10
+---------
+__Type__: switch
+
+__Brands__: Easy Home Advanced
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **unit** (number)
+
+
+__Supports__:
+
+  * state
+  * all
+
+
+switch11
+---------
+__Type__: switch
+
+__Brands__: McPower
+
+__Protocol Options__:
+
+  * **id** (binary)
+  * **unit** (number)
+
+
+__Supports__:
+
+  * state
+
+
+switch12
+---------
+__Type__: switch
+
+__Brands__: Europe RS-200
+
+__Protocol Options__:
+
+  * **id** (binary)
+  * **unit** (number)
+
+
+__Supports__:
+
+  * state
+
+
+switch13
+---------
+__Type__: switch
+
+__Brands__: Aldi Quigg GT-7000, Globaltronics GT-FSI-04a
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **unit** (number)
+  * **dimm** (boolean)
+
+
+__Supports__:
+
+  * state
+  * all
+
+
+switch14
+---------
+__Type__: switch
+
+__Brands__: UNITEC
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **unit** (number)
+
+
+__Supports__:
+
+  * state
+  * all
+
+
+switch15
+---------
+__Type__: switch
+
+__Brands__: Daycom Switches
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **unit** (number)
+
+
+__Supports__:
+
+  * state
+  * all
+
+
 rolling1
 ---------
 __Type__: switch
@@ -318,9 +462,42 @@ __Supports__:
   * presence
 
 
-contact1
+pir3
 ---------
-__Type__: contact
+__Type__: pir
+
+__Brands__: ?
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **unit** (number)
+
+
+__Supports__:
+
+  * presence
+
+
+pir4
+---------
+__Type__: pir
+
+__Brands__: ?
+
+__Protocol Options__:
+
+  * **id** (number)
+
+
+__Supports__:
+
+  * presence
+
+
+pir5
+---------
+__Type__: pir
 
 __Brands__: KlikAanKlikUit
 
@@ -332,9 +509,42 @@ __Protocol Options__:
 
 __Supports__:
 
-  * state
+  * all
+  * presence
+
+
+contact1
+---------
+__Type__: contact
+
+__Brands__: KlikAanKlikUit
+
+__Protocol Options__:
+
+  * **id** (binary)
+  * **contact** (boolean)
+  * **unit** (number)
+
+
+__Supports__:
+
   * all
 
+
+contact2
+---------
+__Type__: pir
+
+__Brands__: No brand
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **contact** (boolean)
+
+
+__Supports__:
+none
 
 generic
 ---------
@@ -348,6 +558,82 @@ __Protocol Options__:
   * **type** (number)
   * **positive** (boolean)
   * **value** (number)
+
+
+__Supports__:
+none
+
+alarm1
+---------
+__Type__: switch
+
+__Brands__: FA20RF
+
+__Protocol Options__:
+
+  * **id** (number)
+
+
+__Supports__:
+
+  * state
+
+
+led1
+---------
+__Type__: command
+
+__Brands__: LED Stripe RF Dimmer (no name)
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **command** (string)
+
+
+__Supports__:
+none
+
+led2
+---------
+__Type__: command
+
+__Brands__: LED Controller
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **command** (string)
+
+
+__Supports__:
+none
+
+led3
+---------
+__Type__: command
+
+__Brands__: LED Controller
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **command** (string)
+
+
+__Supports__:
+none
+
+led4
+---------
+__Type__: command
+
+__Brands__: LED Controller
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **command** (string)
 
 
 __Supports__:

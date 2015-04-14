@@ -12,14 +12,14 @@ module.exports = (helper) ->
     '0': '0001'
   }
   return protocolInfo = {
-    name: 'contact1'
-    type: 'contact'
+    name: 'pir5'
+    type: 'pir'
     values:
       id:
         type: "binary"
       all:
         type: "boolean"
-      contact:
+      presence:
         type: "boolean"
       unit:
         type: "number"
@@ -38,7 +38,7 @@ module.exports = (helper) ->
       return result = {
         id: helper.binaryToNumber(binary, 0, 25)
         all: helper.binaryToBoolean(binary, 26)
-        contact: not helper.binaryToBoolean(binary, 27)
+        presence: helper.binaryToBoolean(binary, 27)
         unit: helper.binaryToNumber(binary, 28, 31)
       }
   }
