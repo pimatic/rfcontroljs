@@ -368,13 +368,13 @@ describe '#decodePulses()', ->
       ]
     },
     {
-      protocol: 'switch16'
+      protocol: 'switch17'
       pulseLengths: [260, 2680, 1275, 10550],
       pulses: [
         '010200020002000002000200020200020002000200020000020200000202000200020002000200020002000200000200020200000200020200020002000002020003'
       ],
       values: [
-         { id: 52387812, unit: 13, state: true }
+         { id: 59748338, unit: 13, all:false, state: true }
       ]
     },
     { 

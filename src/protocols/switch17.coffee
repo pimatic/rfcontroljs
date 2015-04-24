@@ -12,23 +12,23 @@ module.exports = (helper) ->
     '0': '0002'
   }
   return protocolInfo = {
-    name: 'switch16'
+    name: 'switch17'
     type: 'switch'
     values:
       id:
         type: "number"
-	  all:
-	    type: "boolean"
+    all:
+      type: "boolean"
       state:
         type: "boolean"
       unit:
         type: "number"
-    brands: ["Intertek 22541673 (z.B. Bauhaus)"]
+    brands: ["Intertek 22541673 (e.g. Bauhaus)"]
     pulseLengths: [260, 2680, 1275, 10550]
     pulseCount: 132
     decodePulses: (pulses) ->
       # pulses is something like: '010200020002000002000200020200020002000200020000020200
-	  # 000202000200020002000200020002000200000200020200000200020200020002000002020003'
+      # 000202000200020002000200020002000200000200020200000200020200020002000002020003'
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '11100011111010111111110010011101'
