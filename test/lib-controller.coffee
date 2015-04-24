@@ -120,7 +120,7 @@ describe '#decodePulses()', ->
         '11111111040303030203030302020302030203020302030302020202030302020202030303020202030202020305'
       ]
       values: [
-        { id: 238, channel:1, temperature: 18.9, humidity: 71, battery: 2.5 }
+        { id: 238, channel:1, temperature: 18.9, humidity: 71, lowBattery: false }
       ]
     },
     {
@@ -368,6 +368,34 @@ describe '#decodePulses()', ->
       ]
     },
     { 
+      protocol: 'switch16'
+      pulseLengths: [330, 1000, 10500]
+      pulses: [
+        '01010110011001100101011001100110011001100110101002'
+        '01010110011001100101011001100110011001100110010102'
+        '01010110011001100110010101100110011001100110101002'
+        '01010110011001100110010101100110011001100110010102'
+        '01010110011001100110011001100110011001100110101002'
+        '01010110011001100110011001010110011001100110010102'
+        '01100101011001100101011001100110011001100110101002'
+        '01100101011001100101011001100110011001100110010102'
+        '01100101011001100110011001100110011001100110101002'
+        '01100101011001100110011001010110011001100110010102'
+      ],  
+      values: [
+         { id:'A', unit:1, state:true }
+         { id:'A', unit:1, state:false}
+         { id:'A', unit:2, state:true }
+         { id:'A', unit:2, state:false }
+         { id:'A', unit:3, state:true }
+         { id:'A', unit:3, state:false}
+         { id:'B', unit:1, state:true }
+         { id:'B', unit:1, state:false }
+         { id:'B', unit:3, state:true }
+         { id:'B', unit:3, state:false }
+      ]
+    },
+    { 
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
       pulses: [
@@ -379,6 +407,16 @@ describe '#decodePulses()', ->
          { code: "011110001011100110110010"}
          { code: "011101101101100010101110"}
          { code: "011101101101100010101100"}
+      ]
+    },
+    {
+      protocol: 'doorbell1'
+      pulseLengths: [ 217, 648, 6696 ],
+      pulses: [
+        '01101010011001100110011010101010101010101010101002'
+      ],
+      values: [
+         { id: 1361, unit: 0, state: true }
       ]
     },
     {
@@ -621,6 +659,11 @@ describe '#encodeMessage()', ->
       pulses: '01101001011001100110010110011010101001011010101002'
     },
     {
+      protocol: 'switch16'
+      message: { id:'A', unit:2, state:false }
+      pulses: '01010110011001100110010101100110011001100110010102'
+    },
+    {
       protocol: 'led3'
       message: {id:14152, command:"cyan" }
       pulses: '01011010011010100110010110010101010101100110010102'
@@ -629,6 +672,11 @@ describe '#encodeMessage()', ->
       protocol: 'led4'
       message: {id:796, command:"on/off" }
       pulses: '01010101010110100101011010100101100101010110011002'
+    },
+    {
+      protocol: 'doorbell1'
+      message: { id: 1361, unit: 0, state: true }
+      pulses: '01101010011001100110011010101010101010101010101002'
     },
     {
       protocol: 'rolling1'
