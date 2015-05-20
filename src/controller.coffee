@@ -6,11 +6,13 @@ protocols = [
   'rolling1'
   'dimmer1',
   'pir1', 'pir2', 'pir3', 'pir4', 'pir5'
-  'contact1', 'contact2',
+  'contact1', 'contact2'
   'generic'
   'alarm1'
   'led1', 'led2', 'led3', 'led4'
   'doorbell1'
+  'awning1'
+  'shutter1'
 ]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
