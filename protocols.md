@@ -434,7 +434,6 @@ __Brands__: MBO International Electronic GmbH
 
 __Protocol Options__:
 
-  * **header** (number)
   * **unitCode** (number)
 
 

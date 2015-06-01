@@ -12,14 +12,12 @@ module.exports = (helper) ->
     name: 'switch20'
     type: 'switch'
     values:
-      header:
-        type: "number"
       unitCode:
         type: "number"
       state:
         type: "boolean"
     brands: ["MBO International Electronic GmbH"]
-    pulseLengths: [132, 400, 4144]
+    pulseLengths: [128, 400, 4152]
     pulseCount: 50
     decodePulses: (pulses) ->
       # pulses is something like: '01100110010101100110011001100110011001100110011002'
@@ -31,14 +29,16 @@ module.exports = (helper) ->
       # | 001    | 0000       | 0              | 0        0 | 0              | 0    | 02
       # | header | unitCode   | inverted state | zero, zero | inverted state | zero | footer
       return result = {
-        header: helper.binaryToNumberLSBMSB(binary, 0, 2),
         unitCode: helper.binaryToNumberLSBMSB(binary, 3, 6),
         state: not helper.binaryToBoolean(binary, 7)
       }
     encodeMessage: (message) ->
-      header = helper.map(helper.numberToBinaryLSBMSB(message.header, 3), binaryToPulse)
-      unitCode = helper.map(helper.numberToBinaryLSBMSB(message.unitCode, 4), binaryToPulse)
-      inverseState = (if message.state then binaryToPulse['0'] else binaryToPulse['1'])
       zero = binaryToPulse['0']
+      one = binaryToPulse['1']
+
+      header = "#{zero}#{zero}#{one}"
+      unitCode = helper.map(helper.numberToBinaryLSBMSB(message.unitCode, 4), binaryToPulse)
+      inverseState = (if message.state then zero else one)
+
       return "#{header}#{unitCode}#{inverseState}#{zero}#{zero}#{inverseState}#{zero}02"
   }
