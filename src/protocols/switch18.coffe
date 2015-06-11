@@ -12,7 +12,7 @@ module.exports = (helper) ->
     '0': '10'
   }
   return protocolInfo = {
-    name: 'switch16'
+    name: 'switch18'
     type: 'switch'
     values:
       id:
