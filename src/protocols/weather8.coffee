@@ -25,7 +25,7 @@ module.exports = (helper) ->
       # now we extract the temperature and humidity from that string
       #   0-----7   8-----15     16----23   24------------35
       # | 01010101 | 10001101 | 11000000  | 000100001001000
-      # |   id     | battery ?|  Humid.   |  Signed temperature 
+      # |   id     | battery ?|  Humid.   |  Signed temperature
       return result = {
         id: helper.binaryToNumber(binary, 0, 7)
         temperature: helper.binaryToSignedNumber(binary, 24, 35)/10.0
