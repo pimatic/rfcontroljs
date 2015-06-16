@@ -14,6 +14,7 @@ protocols = [
   'doorbell1'
   'awning1'
   'shutter1'
+  'screen1'
 ]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
