@@ -724,7 +724,7 @@ describe '#encodeMessage()', ->
       protocol: 'screen1'
       message: { id: 281971, command: "down" }
       pulses: '02210202022102022121022102212121020221210221020203'
-    },
+    }
   ]
 
   runTest = ( (t) ->
