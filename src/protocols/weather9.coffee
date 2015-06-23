@@ -14,8 +14,8 @@ module.exports = (helper) ->
         type: "number"
       channel:
         type: "number"
-	  Sync:
-		type: "number"
+      Sync:
+        type: "number"
       id:
         type: "number"
       lowBattery:
@@ -32,13 +32,13 @@ module.exports = (helper) ->
       # TCM | 01011000 | 11 |  01   |  11   | 000100001001 | 00111101 |  0  |  0   |  10  |   1001    | ''
       # TCM |    ID    |  ? |   ?   |Channel|     Temp.    | Humid.   | Bat | Sync |  ?   | Prüfsumme | Footer
       lowBattery = helper.binaryToBoolean(binary, 34)
-	  Sync = helper.binaryToBoolean(binary, 35)
-	     t0 = helper.binaryToNumber(binary, 22, 25)
-         t1 = helper.binaryToNumber(binary, 18, 21)
-         t2 = helper.binaryToNumber(binary, 14, 17)
+      Sync = helper.binaryToBoolean(binary, 35)
+          t0 = helper.binaryToNumber(binary, 22, 25)
+          t1 = helper.binaryToNumber(binary, 18, 21)
+          t2 = helper.binaryToNumber(binary, 14, 17)
         temperature = Math.round(((t0 * 256 + t1 * 16 + t2) * 10 - 12200) / 18 ) / 10
-         h0 = helper.binaryToNumber(binary, 30, 33)
-         h1 = helper.binaryToNumber(binary, 26, 29)
+          h0 = helper.binaryToNumber(binary, 30, 33)
+          h1 = helper.binaryToNumber(binary, 26, 29)
         humidity = h0 * 16 + h1
       return result = {
         id: helper.binaryToNumber(binary, 0, 7)
@@ -46,6 +46,6 @@ module.exports = (helper) ->
         temperature: temperature
         humidity: humidity
         lowBattery: lowBattery
-		Sync: Sync
+        Sync: Sync
       }
   }
