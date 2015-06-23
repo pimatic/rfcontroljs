@@ -721,7 +721,7 @@ describe '#encodeMessage()', ->
       pulses: '01101010101010100101010110101001011001101010010123'
     },
     {
-      protocol: 'screen1'
+      protocol: 'shutter5'
       message: { id: 281971, command: "down" }
       pulses: '02210202022102022121022102212121020221210221020203'
     }

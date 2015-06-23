@@ -9,7 +9,7 @@ module.exports = (helper) ->
     '1': '21'
   }
   return protocolInfo = {
-    name: 'screen1'
+    name: 'shutter5'
     type: 'command'
     values:
       id:
