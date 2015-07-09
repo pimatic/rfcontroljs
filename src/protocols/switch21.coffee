@@ -25,29 +25,21 @@ module.exports = (helper) ->
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
 
-      _remoteCode = helper.binaryToNumber(binary, 29, 35)
-      remoteCode = nibbleToNumber(_remoteCode) * 1048576
-      _remoteCode = helper.binaryToNumber(binary, 36, 42)
-      remoteCode = remoteCode + nibbleToNumber(_remoteCode) * 65536
-      _remoteCode = helper.binaryToNumber(binary, 43, 49)
-      remoteCode = remoteCode + nibbleToNumber(_remoteCode) * 4096
-      _remoteCode = helper.binaryToNumber(binary, 50, 56)
-      remoteCode = remoteCode + nibbleToNumber(_remoteCode) * 256
-      _remoteCode = helper.binaryToNumber(binary, 57, 63)
-      remoteCode = remoteCode + nibbleToNumber(_remoteCode) * 16
-      _remoteCode = helper.binaryToNumber(binary, 64, 70)
-      remoteCode = remoteCode + nibbleToNumber(_remoteCode)
-      
-      _unitCode = helper.binaryToNumber(binary, 15, 21)
-      unitCode = nibbleToNumber(_unitCode)
+      unitCode = nibbleToNumber(helper.binaryToNumber(binary, 15, 21))
 
-      _state = helper.binaryToNumber(binary, 22, 28)
-      nstate = nibbleToNumber(_state)
+      nstate = nibbleToNumber(helper.binaryToNumber(binary, 22, 28))
       if nstate
         state = true
       else
         state = false
 
+      remoteCode = nibbleToNumber(helper.binaryToNumber(binary, 29, 35)) * 1048576
+      remoteCode += nibbleToNumber(helper.binaryToNumber(binary, 36, 42)) * 65536
+      remoteCode += nibbleToNumber(helper.binaryToNumber(binary, 43, 49)) * 4096
+      remoteCode += nibbleToNumber(helper.binaryToNumber(binary, 50, 56)) * 256
+      remoteCode += nibbleToNumber(helper.binaryToNumber(binary, 57, 63)) * 16
+      remoteCode += nibbleToNumber(helper.binaryToNumber(binary, 64, 70))
+      
       return result = {
         remoteCode: remoteCode,
         unitCode: unitCode,
@@ -57,28 +49,21 @@ module.exports = (helper) ->
       # level should be 0 when switching on/off
       level = helper.map(helper.numberToBinary(0x7A, 7), binaryToPulse)
 
-      _unitCode = numberToNibble(message.unitCode)
-      unitCode = helper.map(helper.numberToBinary(_unitCode, 7), binaryToPulse)
+      unitCode = helper.map(helper.numberToBinary(numberToNibble(message.unitCode), 7), binaryToPulse)
 
       if message.state
-        command = helper.map(helper.numberToBinary(0x76, 7), binaryToPulse)
+        state = helper.map(helper.numberToBinary(0x76, 7), binaryToPulse)
       else
-        command = helper.map(helper.numberToBinary(0x7A, 7), binaryToPulse)
+        state = helper.map(helper.numberToBinary(0x7A, 7), binaryToPulse)
 
-      _id1 = numberToNibble((message.remoteCode//1048576) & 0x0F)
-      id1 = helper.map(helper.numberToBinary(_id1, 7), binaryToPulse)
-      _id2 = numberToNibble((message.remoteCode//65536) & 0x0F)
-      id2 = helper.map(helper.numberToBinary(_id2, 7), binaryToPulse)
-      _id3 = numberToNibble((message.remoteCode//4096) & 0x0F)
-      id3 = helper.map(helper.numberToBinary(_id3, 7), binaryToPulse)
-      _id4 = numberToNibble((message.remoteCode//256) & 0x0F)
-      id4 = helper.map(helper.numberToBinary(_id4, 7), binaryToPulse)
-      _id5 = numberToNibble((message.remoteCode//16) & 0x0F)
-      id5 = helper.map(helper.numberToBinary(_id5, 7), binaryToPulse)
-      _id6 = numberToNibble(message.remoteCode & 0x0F)
-      id6 = helper.map(helper.numberToBinary(_id6, 7), binaryToPulse)
+      id1 = helper.map(helper.numberToBinary(numberToNibble((message.remoteCode//1048576) & 0x0F), 7), binaryToPulse)
+      id2 = helper.map(helper.numberToBinary(numberToNibble((message.remoteCode//65536) & 0x0F), 7), binaryToPulse)
+      id3 = helper.map(helper.numberToBinary(numberToNibble((message.remoteCode//4096) & 0x0F), 7), binaryToPulse)
+      id4 = helper.map(helper.numberToBinary(numberToNibble((message.remoteCode//256) & 0x0F), 7), binaryToPulse)
+      id5 = helper.map(helper.numberToBinary(numberToNibble((message.remoteCode//16) & 0x0F), 7), binaryToPulse)
+      id6 = helper.map(helper.numberToBinary(numberToNibble(message.remoteCode & 0x0F), 7), binaryToPulse)
 
-      return "01#{level}#{level}#{unitCode}#{command}#{id1}#{id2}#{id3}#{id4}#{id5}#{id6}03"
+      return "01#{level}#{level}#{unitCode}#{state}#{id1}#{id2}#{id3}#{id4}#{id5}#{id6}03"
   }
 
 nibbleToNumber = (nibble) ->
