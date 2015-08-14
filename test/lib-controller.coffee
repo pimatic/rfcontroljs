@@ -152,6 +152,16 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'weather11'
+      pulseLengths: [544, 1056, 1984, 3880]
+      pulses: [
+        '020202010202010102010101010101020101010202010201020202020101020201020201010101010103'
+      ]
+      values: [
+        { id: 236, channel: 1, temperature: 28.2, humidity: 54, lowBattery: false }
+      ]
+    },
+    {
       protocol: 'dimmer1'
       pulseLengths: [259, 1293, 2641, 10138]
       pulses: [
