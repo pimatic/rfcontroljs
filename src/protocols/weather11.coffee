@@ -18,7 +18,7 @@ module.exports = (helper) ->
         type: "number"
       lowBattery:
         type: "boolean"
-    brands: ["Xîron Temperature & Humidity Sensor"]
+    brands: ["Xiron Temperature & Humidity Sensor"]
     pulseLengths: [544, 1056, 1984, 3880]
     pulseCount: 84
     decodePulses: (pulses) ->
