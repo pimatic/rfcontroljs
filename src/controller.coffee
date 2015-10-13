@@ -9,7 +9,7 @@ protocols = [
   'dimmer1', 'dimmer2'
   'pir1', 'pir2', 'pir3', 'pir4', 'pir5'
   'contact1', 'contact2', 'contact3'
-  'generic'
+  'generic', 'generic2'
   'alarm1', 'alarm2'
   'led1', 'led2', 'led3', 'led4'
   'doorbell1', 'doorbell2'
