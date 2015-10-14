@@ -12,7 +12,7 @@ module.exports = (helper) ->
         type: "number"
       node_type:
         type: "number"
-      data:
+      value:
         type: "number"
       freq:
         type: "number"
@@ -31,7 +31,7 @@ module.exports = (helper) ->
       return result = {
         id: helper.binaryToNumberLSBMSB(binary, 24, 31)
         node_type: helper.binaryToNumberLSBMSB(binary, 20, 23)
-        data: helper.binaryToNumberLSBMSB(binary, 10, 19)
+        value: helper.binaryToNumberLSBMSB(binary, 10, 19)
         freq: helper.binaryToNumberLSBMSB(binary, 6, 9)
         battery_level: helper.binaryToNumberLSBMSB(binary, 4, 5)
         checksum: helper.hexChecksum(binary)
