@@ -121,6 +121,14 @@ module.exports = {
     else
       paritybitRef = ((parity % 2) isnt 0)
     return paritybitRef
+	
+  hexChecksum: (data) ->
+    checksum = 0
+    number = @binaryToNumberLSBMSB(data, 0, 31)
+    while data > 0
+      checksum ^= (data & 0x0F)
+      data >>= 4
+    return checksum == 0
 }
 
 module.exports.binaryToNumber = module.exports.binaryToNumberMSBLSB
