@@ -125,9 +125,9 @@ module.exports = {
   hexChecksum: (data) ->
     checksum = 0
     number = @binaryToNumberLSBMSB(data, 0, 31)
-    while data > 0
-      checksum ^= (data & 0x0F)
-      data >>= 4
+    while number > 0
+      checksum ^= (number & 0x0F)
+      number >>= 4
     return checksum == 0
 }
 
