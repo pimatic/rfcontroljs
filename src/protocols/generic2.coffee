@@ -33,7 +33,7 @@ module.exports = (helper) ->
         type: helper.binaryToNumberLSBMSB(binary, 20, 23)
         value: helper.binaryToNumberLSBMSB(binary, 10, 19)
         freq: helper.binaryToNumberLSBMSB(binary, 6, 9)
-        battery: helper.binaryToNumberLSBMSB(binary, 4, 5)
+        battery: 33 * helper.binaryToNumberLSBMSB(binary, 4, 5)
         checksum: helper.hexChecksum(binary)
       }
   }

@@ -31,8 +31,8 @@ describe '#decodePulses()', ->
           '010110101010101001011010101010101010101010010101101001101010100102'        
       ]
       values: [
-        { id: 123, type: 1, value: 1023, freq: 3, battery: 3, checksum: true}
-        { id: 123, type: 1, value: 1023, freq: 3, battery: 3, checksum: false}
+        { id: 123, type: 1, value: 1023, freq: 3, battery: 99, checksum: true}
+        { id: 123, type: 1, value: 1023, freq: 3, battery: 99, checksum: false}
       ]
     },
     {
