@@ -40,10 +40,9 @@ H: 7bit     73% (1001 001 = 73)
         lowBattery = false
       return result = {
         id: helper.binaryToNumber(binary, 0, 7)
-        lowBattery = binaryToNumber(binary, 8, 8) is 1
         channel: helper.binaryToNumber(binary, 10, 11) + 1
         temperature: helper.binaryToSignedNumber(binary, 12, 23) / 10
-        humidity: helper.binaryToNumber(binary, 24, 29)
+        humidity: helper.binaryToNumber(binary, 24, 30)
         lowBattery: lowBattery
       }
   }
