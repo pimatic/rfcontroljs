@@ -183,7 +183,7 @@ describe '#decodePulses()', ->
       ]
       values: [
         { id: 113, channel: 1, temperature: 12.3, humidity: 85, lowBattery: true }
-        { id: 155, channel: 1, temperature: 10.1, humidity: 110, lowBattery: false }
+        { id: 155, channel: 1, temperature: 10.2, humidity: 110, lowBattery: false }
         { id: 155, channel: 1, temperature: 11.9, humidity: 80, lowBattery: false }
       ]
     },

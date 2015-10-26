@@ -26,9 +26,9 @@ Pulse like: 02010102020102020101010101010101010202020102010102020102020201020202
 
 Bits like:
 0111 0001 1000 0000 1001 0001 1001 0011 0010 103
-IIII IIII BxCC TTTT TTTT TTTT HHHH HHHx 
+IIII IIII BxCC TTTT TTTT TTTT HHHH HHHx
 I: 8 bit ID
-B: 0 full battery; 1 low battery 
+B: 0 full battery; 1 low battery
 C: 2bit Channel: 00 -> Ch. 1; 01 -> Ch. 2; 10 -> Ch. 3 (channel 1 in this case)
 T: 12 bit Temperature : 0000 1001 0001 -> 145 -> 14.5 (correct)
 H: 7bit     73% (1001 001 = 73)
