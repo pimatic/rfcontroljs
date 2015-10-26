@@ -179,10 +179,12 @@ describe '#decodePulses()', ->
       pulses: [
         '0102020201010102020101010101010101020202020102020201020102010202020102020103'
         '0201010202010202010101010101010101020201010202010202010202020102020201010203'
+        '0201010202010202010101010101010101020202010202020201020101010102010202010103'
       ]
       values: [
         { id: 113, channel: 1, temperature: 12.3, humidity: 85, lowBattery: true }
         { id: 155, channel: 1, temperature: 10.1, humidity: 110, lowBattery: false }
+        { id: 155, channel: 1, temperature: 11.9, humidity: 80, lowBattery: false }
       ]
     },
     {
