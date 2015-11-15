@@ -24,7 +24,7 @@ module.exports = function(helper) {
     pulseLengths: [376, 1144, 11720],
     pulseCount: 50,
     decodePulses: function(pulses) {
-      # pulses is something like: '01 10 01 10 10 10 10 10 10 01 10 01 01 01 01 01 10 10 10 01 01 10 01 01 02'
+      # pulses is something like: '01100110101010101001100101010101101010010110010102'
       # we first map the sequences to binary
       var binary, command, commandcode, result;
       binary = helper.map(pulses, pulsesToBinaryMapping);
