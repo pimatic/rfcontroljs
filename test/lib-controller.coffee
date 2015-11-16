@@ -475,9 +475,9 @@ describe '#decodePulses()', ->
      ],
       values: [
         { id: 656881, command: 'A' }
-		    { id: 656881, command: 'B' }
-		    { id: 656881, command: 'C' }
-		    { id: 656881, command: 'D' }
+	{ id: 656881, command: 'B' }
+	{ id: 656881, command: 'C' }
+	{ id: 656881, command: 'D' }
       ]
     },
     { 
