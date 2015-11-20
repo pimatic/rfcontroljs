@@ -62,6 +62,16 @@ module.exports = {
       i++
     return number
 
+  #b is MSB   e is LSB    MSB-LSB
+  binaryToNumberInvertedMSBLSB: (data, b, e) ->
+    number = 0
+    i = b
+    while i <= e
+      number <<= 1
+      number |= (~(parseInt(data[i], 10)) & 1)
+      i++
+    return number
+
   #b is MSB   e is LSB    MSB-LSB    b isnt the signed bit!!
   _binaryToSignedNumberMSBLSB: (data, b, e) ->
     number = ~0  #fullfilled number its equal to -1
@@ -100,6 +110,16 @@ module.exports = {
       i++
     return binary
 
+
+  numberToBinaryInvertedMSBLSB: (number, length) ->
+    binary = ''
+    i = 0
+    while i < length
+      binary = (~(number & 1) & 1) + binary
+      number >>= 1
+      i++
+    return binary
+
   numberToBinaryLSBMSB: (number, length) ->
     binary = ''
     i = 0
@@ -133,4 +153,6 @@ module.exports = {
 
 module.exports.binaryToNumber = module.exports.binaryToNumberMSBLSB
 module.exports.numberToBinary = module.exports.numberToBinaryMSBLSB
+module.exports.binaryToNumberInverted = module.exports.binaryToNumberInvertedMSBLSB
+module.exports.numberToBinaryInverted = module.exports.numberToBinaryInvertedMSBLSB
 module.exports.binaryToSignedNumber = module.exports.binaryToSignedNumberMSBLSB

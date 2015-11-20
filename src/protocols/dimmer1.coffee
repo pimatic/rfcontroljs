@@ -52,7 +52,7 @@ module.exports = (helper) ->
         dimlevel: helper.binaryToNumber(binary, 32, 35)
         state: state
       }
-      return result;
+      return result
 
     encodeMessage: (message) ->
       id = helper.map(helper.numberToBinary(message.id, 26), binaryToPulse)
