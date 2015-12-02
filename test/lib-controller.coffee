@@ -803,6 +803,11 @@ describe '#encodeMessage()', ->
       protocol: 'shutter5'
       message: { id: 281971, command: "down" }
       pulses: '02210202022102022121022102212121020221210221020203'
+    },
+    {
+      protocol: 'weather13'
+      message: { id: 241, channel: 3, temperature: 23.7, humidity: 48, lowBattery: false }
+      pulses: '02020202010101020201020101010101020202010202010202020202010102020101010103'
     }
   ]
 

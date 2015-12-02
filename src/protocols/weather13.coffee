@@ -4,6 +4,10 @@ module.exports = (helper) ->
     '02': '1' #binary 1
     '03': ''  #footer
   }
+  binaryToPulse = {
+    '1': '02',
+    '0': '01'
+  }
   return protocolInfo = {
     name: 'weather13'
     type: 'weather'
@@ -44,4 +48,11 @@ module.exports = (helper) ->
         humidity: helper.binaryToNumber(binary, 28, 35)
         lowBattery: lowBattery
       }
+    encodeMessage: (message) ->
+      id = helper.numberToBinary(message.id, 8)
+      lowBattery = if message.lowBattery then 0 else 1
+      channel = helper.numberToBinary(message.channel - 1, 2)
+      temperature = helper.numberToBinary(message.temperature * 10, 12)
+      humidity = helper.numberToBinary(message.humidity, 8)
+      return helper.map("#{id}#{lowBattery}0#{channel}#{temperature}1111#{humidity}", binaryToPulse) + "03"
   }
