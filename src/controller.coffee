@@ -1,4 +1,16 @@
 helper = require './helper'
+fs = require 'fs'
+
+protocols = []
+#console.log __dirname
+this_path = __dirname + "/protocols"
+files = fs.readdirSync(this_path)
+#console.log files
+for file in files
+  protocols.push file.replace /\.js/, ""
+
+#console.log protocols
+###
 protocols = [
   'weather1', 'weather2', 'weather3', 'weather4', 'weather5', 'weather6', 'weather7',
   'weather8', 'weather9', 'weather10', 'weather11', 'weather12', 'weather13'
@@ -16,6 +28,7 @@ protocols = [
   'awning1', 'awning2'
   'shutter1', 'shutter3', 'shutter4', 'shutter5'
 ]
+###
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
 
