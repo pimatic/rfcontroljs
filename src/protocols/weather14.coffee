@@ -36,7 +36,6 @@ module.exports = (helper) ->
       # H: Humidity, 8-bit unsigned Int, is always 11001100 if no humidity sensor is available
       # C: Channel (2 bits + 1, 00=1, 01=2, 10=3)
       # x: Unused
-      lowBattery = not helper.binaryToBoolean(binary, 15)
       humidity = helper.binaryToNumber(binary, 28, 35)
       if humidity is 204
         humidity = 0
@@ -45,8 +44,7 @@ module.exports = (helper) ->
         channel: helper.binaryToNumber(binary, 12, 13) % 3 + 1
         temperature: helper.binaryToSignedNumber(binary, 16, 27) / 10
         humidity: humidity
-        lowBattery: lowBattery
+        lowBattery: not helper.binaryToBoolean(binary, 15)
       }
-      console.error result
       return result
   }

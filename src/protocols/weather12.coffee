@@ -34,15 +34,11 @@ T: 12 bit Temperature : 0000 1001 0001 -> 145 -> 14.5 (correct)
 H: 7bit     73% (1001 001 = 73)
       ###
       binary = helper.map(pulses, pulsesToBinaryMapping)
-      if helper.binaryToNumber(binary, 8, 8) == 1
-        lowBattery = true
-      else
-        lowBattery = false
       return result = {
         id: helper.binaryToNumber(binary, 0, 7)
         channel: helper.binaryToNumber(binary, 10, 11) + 1
         temperature: helper.binaryToSignedNumber(binary, 12, 23) / 10
         humidity: helper.binaryToNumber(binary, 24, 30)
-        lowBattery: lowBattery
+        lowBattery: helper.binaryToBoolean(binary, 8)
       }
   }
