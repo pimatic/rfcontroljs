@@ -201,16 +201,32 @@ describe '#decodePulses()', ->
       protocol: 'weather14'
       pulseLengths: [480, 1960, 3908, 8784]
       pulses: [
-        '0102020102010202010101020202020202020202010101010102010201010202010102020203',
-        '0102020102010202010101020202020201010101010102010102020101010202010102020203',
-        '0201010201020102010101010102020101010102010101010202020202020101020201010103',
+        '0102020102010202010101020202020202020202010101010102010201010202010102020203'
+        '0102020102010202010101020202020201010101010102010102020101010202010102020203'
+        '0201010201020102010101010102020101010102010101010202020202020101020201010103'
         '0201010201020102010101010102010201010102010101010202010102020101020201010103'
       ]
       values: [
-        { id: 78, channel: 1, temperature: 25, humidity: 0, lowBattery: true },
-        { id: 78, channel: 1, temperature: -3.9, humidity: 0, lowBattery: true },
-        { id: 175, channel: 3, temperature: -27.2, humidity: 51, lowBattery: false },
-        { id: 175, channel: 3, temperature: -26.9, humidity: 51, lowBattery: true },
+        { id: 78, channel: 1, temperature: 25, humidity: 0, lowBattery: true }
+        { id: 78, channel: 1, temperature: -3.9, humidity: 0, lowBattery: true }
+        { id: 175, channel: 3, temperature: -27.2, humidity: 51, lowBattery: false }
+        { id: 175, channel: 3, temperature: -26.9, humidity: 51, lowBattery: true }
+      ]
+    },
+    {
+      protocol: 'weather15'
+      pulseLengths: [480, 1960, 3908, 8784]
+      pulses: [
+        '0201010202010102010101010102010101010101020202010101020101020101010102010203'
+        '0201010202010102010101010102010201010101020202010101020101020101010102010203'
+        '0201010202010102010101010102020101010101020202010101020101020101010102010203'
+        '0201010201010202010102020201010102020202020201020201020201010101020102010203'
+      ]
+      values: [
+        { id: 2448, channel: 1, temperature: 22.6, humidity: 66, lowBattery: false }
+        { id: 2448, channel: 2, temperature: 22.6, humidity: 66, lowBattery: false }
+        { id: 2448, channel: 3, temperature: 22.6, humidity: 66, lowBattery: false }
+        { id: 2355, channel: 1, temperature: -3.7, humidity: 10, lowBattery: true }
       ]
     },
     {
