@@ -37,15 +37,19 @@ module.exports = (helper) ->
       # H: Humidity, 8-bit unsigned Int, is always 11001100 if no humidity sensor is available
       # C: Channel (2 bits + 1, 00=1, 01=2, 10=3)
       # x: Unused
-      humidity = helper.binaryToNumber(binary, 28, 35)
-      if humidity is 204
-        humidity = 0
       result = {
         id: helper.binaryToNumber(binary, 4, 11)
         channel: helper.binaryToNumber(binary, 12, 13) % 3 + 1
         temperature: helper.binaryToSignedNumber(binary, 16, 27) / 10
-        humidity: humidity
         lowBattery: not helper.binaryToBoolean(binary, 15)
       }
+      humidityVal = helper.binaryToNumber(binary, 28, 35)
+      if humidityVal isnt 204
+        # dont emit an humidity value when no humidity is received
+        extend(result, {humidity:humidityVal})
       return result
+
   }
+extend = (obj, mixin) ->
+  obj[name] = method for name, method of mixin
+  obj

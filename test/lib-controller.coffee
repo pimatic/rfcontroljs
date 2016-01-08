@@ -207,8 +207,8 @@ describe '#decodePulses()', ->
         '0201010201020102010101010102010201010102010101010202010102020101020201010103'
       ]
       values: [
-        { id: 78, channel: 1, temperature: 25, humidity: 0, lowBattery: true }
-        { id: 78, channel: 1, temperature: -3.9, humidity: 0, lowBattery: true }
+        { id: 78, channel: 1, temperature: 25, lowBattery: true }
+        { id: 78, channel: 1, temperature: -3.9, lowBattery: true }
         { id: 175, channel: 3, temperature: -27.2, humidity: 51, lowBattery: false }
         { id: 175, channel: 3, temperature: -26.9, humidity: 51, lowBattery: true }
       ]
