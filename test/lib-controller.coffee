@@ -210,13 +210,13 @@ describe '#decodePulses()', ->
         '0201010201020102010101010102010201010102010101010202010102020101020201010103'
       ]
       values: [
-        {"id":80,"channel":1,"temperature":22.9,"humidity":0,"lowBattery":true}
-        {"id":80,"channel":1,"temperature":22.5,"humidity":0,"lowBattery":true}
-        {"id":80,"channel":1,"temperature":22.1,"humidity":0,"lowBattery":true}
-        {"id":80,"channel":3,"temperature":27.1,"humidity":0,"lowBattery":true}
-        {"id":80,"channel":1,"temperature":26.8,"humidity":0,"lowBattery":false}
-        {"id":80,"channel":3,"temperature":26.7,"humidity":0,"lowBattery":true}
-        {"id":80,"channel":3,"temperature":26.8,"humidity":0,"lowBattery":false}
+        {"id":80,"channel":1,"temperature":22.9,"lowBattery":true}
+        {"id":80,"channel":1,"temperature":22.5,"lowBattery":true}
+        {"id":80,"channel":1,"temperature":22.1,"lowBattery":true}
+        {"id":80,"channel":3,"temperature":27.1,"lowBattery":true}
+        {"id":80,"channel":1,"temperature":26.8,"lowBattery":false}
+        {"id":80,"channel":3,"temperature":26.7,"lowBattery":true}
+        {"id":80,"channel":3,"temperature":26.8,"lowBattery":false}
       ]
     },
     {
