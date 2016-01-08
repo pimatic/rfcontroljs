@@ -201,16 +201,22 @@ describe '#decodePulses()', ->
       protocol: 'weather14'
       pulseLengths: [480, 1960, 3908, 8784]
       pulses: [
-        '0102020102010202010101020202020202020202010101010102010201010202010102020203'
-        '0102020102010202010101020202020201010101010102010102020101010202010102020203'
+        '0201010201020102010101010101010101010101020202010102010202020101020201010103'
+        '0201010201020102010101010101010101010101020202010101010202020101020201010103'
+        '0201010201020102010101010101010101010101020201020202010202020101020201010103'
         '0201010201020102010101010102020101010102010101010202020202020101020201010103'
+        '0201010201020102010101010101010201010102010101010202010102020101020201010103'
+        '0201010201020102010101010102010101010102010101010201020202020101020201010103'
         '0201010201020102010101010102010201010102010101010202010102020101020201010103'
       ]
       values: [
-        { id: 78, channel: 1, temperature: 25, humidity: 0, lowBattery: true }
-        { id: 78, channel: 1, temperature: -3.9, humidity: 0, lowBattery: true }
-        { id: 175, channel: 3, temperature: -27.2, humidity: 51, lowBattery: false }
-        { id: 175, channel: 3, temperature: -26.9, humidity: 51, lowBattery: true }
+        {"id":80,"channel":1,"temperature":22.9,"humidity":0,"lowBattery":true}
+        {"id":80,"channel":1,"temperature":22.5,"humidity":0,"lowBattery":true}
+        {"id":80,"channel":1,"temperature":22.1,"humidity":0,"lowBattery":true}
+        {"id":80,"channel":3,"temperature":27.1,"humidity":0,"lowBattery":true}
+        {"id":80,"channel":1,"temperature":26.8,"humidity":0,"lowBattery":false}
+        {"id":80,"channel":3,"temperature":26.7,"humidity":0,"lowBattery":true}
+        {"id":80,"channel":3,"temperature":26.8,"humidity":0,"lowBattery":false}
       ]
     },
     {

@@ -1,7 +1,7 @@
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
-    '01': '1' #binary 0
-    '02': '0' #binary 1
+    '01': '0' #binary 0
+    '02': '1' #binary 1
     '03': ''  #footer
   }
   return protocolInfo = {
@@ -41,7 +41,7 @@ module.exports = (helper) ->
         humidity = 0
       result = {
         id: helper.binaryToNumber(binary, 4, 11)
-        channel: helper.binaryToNumber(binary, 12, 13) % 3 + 1
+        channel: helper.binaryToNumberLSBMSB(binary, 12, 13) + 1
         temperature: helper.binaryToSignedNumber(binary, 16, 27) / 10
         humidity: humidity
         lowBattery: not helper.binaryToBoolean(binary, 15)
