@@ -43,13 +43,8 @@ module.exports = (helper) ->
         temperature: helper.binaryToSignedNumber(binary, 16, 27) / 10
         lowBattery: not helper.binaryToBoolean(binary, 15)
       }
-      humidityVal = helper.binaryToNumber(binary, 28, 35)
-      if humidityVal isnt 204
-        # dont emit an humidity value when no humidity is received
-        extend(result, {humidity:humidityVal})
+      humidity = helper.binaryToNumber(binary, 28, 35)
+      if humidity isnt 204
+        result.humidity = humidity
       return result
-
   }
-extend = (obj, mixin) ->
-  obj[name] = method for name, method of mixin
-  obj
