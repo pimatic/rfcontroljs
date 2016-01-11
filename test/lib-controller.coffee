@@ -612,6 +612,16 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'shutter4'
+      pulseLengths: [ 352, 712, 1476, 5690 ]
+      pulses: [
+        '3201010110010101100101100101010101100101101010100101011001010101010101011001010113'
+     ],
+      values: [
+        {id:35918788,channel:0,all:true,command:"up"}
+       ]
+    }
+    {
       protocol: 'shutter5'
       pulseLengths: [ 160, 270, 665, 6856 ]
       pulses: [
@@ -831,6 +841,11 @@ describe '#encodeMessage()', ->
         state: true }
       pulses: '01101010101010100101010110101001011001101010010123'
     },
+    {
+      protocol: 'shutter4'
+      message: {id:35918788,channel:0,all:false,command:"up"}
+      pulses: '3201010110010101100101100101010101100101101010100101011001010101010101011010101003'
+    }
     {
       protocol: 'shutter5'
       message: { id: 281971, command: "down" }
