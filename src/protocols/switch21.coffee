@@ -39,7 +39,7 @@ module.exports = (helper) ->
       remoteCode += nibbleToNumber(helper.binaryToNumber(binary, 50, 56)) * 256
       remoteCode += nibbleToNumber(helper.binaryToNumber(binary, 57, 63)) * 16
       remoteCode += nibbleToNumber(helper.binaryToNumber(binary, 64, 70))
-      
+
       return result = {
         remoteCode: remoteCode,
         unitCode: unitCode,

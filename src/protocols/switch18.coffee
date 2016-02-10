@@ -39,5 +39,3 @@ module.exports = (helper) ->
       state = (if message.state then '1001' else '0110')
       return "1001#{state}#{id}03"
   }
-   
-
