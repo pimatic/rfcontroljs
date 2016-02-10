@@ -14,6 +14,8 @@ module.exports = (helper) ->
     values:
       id:
         type: "number"
+      unit:
+        type: "number"
       presence:
         type: "boolean"
     brands: []
