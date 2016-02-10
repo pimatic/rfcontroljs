@@ -2,7 +2,7 @@ module.exports = (helper) ->
   pulsesToBinaryMapping = {
     '01': '0' #binary 0
     '10': '1' #binary 1
-    '23': ''    #footer
+    '23': ''  #footer
   }
   binaryToPulse = {
     '0': '01'
@@ -12,7 +12,9 @@ module.exports = (helper) ->
     name: 'rolling1'
     type: 'switch'
     values:
-      code:
+      codeOn:
+        type: "string"
+      codeOff:
         type: "string"
     brands: ["rollingCode"]
     pulseLengths: [500, 1000, 3000, 7250]
