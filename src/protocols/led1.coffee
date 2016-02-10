@@ -13,6 +13,7 @@ module.exports = (helper) ->
   return protocolInfo = {
     name: 'led1'
     type: 'command'
+    commands: ["on/off","up","down"]
     values:
       id:
         type: "number"

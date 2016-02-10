@@ -11,6 +11,7 @@ module.exports = (helper) ->
   return protocolInfo = {
     name: 'shutter5'
     type: 'command'
+    commands: ["up","down","stop"]
     values:
       id:
         type: "number"
@@ -31,7 +32,7 @@ module.exports = (helper) ->
       # now we extract the data from that string
       # | 01000100110101110011 | 010     | 0 |
       # | id                   | command | ? |
-  
+
       commandcode = binary[20..22]
       command = (
         switch commandcode
