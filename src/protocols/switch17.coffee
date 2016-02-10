@@ -17,8 +17,8 @@ module.exports = (helper) ->
     values:
       id:
         type: "number"
-    all:
-      type: "boolean"
+      all:
+        type: "boolean"
       state:
         type: "boolean"
       unit:
