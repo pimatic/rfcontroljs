@@ -10,7 +10,7 @@ module.exports = (helper) ->
   }
   return protocolInfo = {
     name: 'contact2'
-    type: 'pir'
+    type: 'contact'
     values:
       id:
         type: "number"
