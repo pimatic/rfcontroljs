@@ -14,9 +14,9 @@ module.exports = (helper) ->
     name: 'switch16'
     type: 'switch'
     values:
-      systemcode:
-        type: "number"
-      programcode:
+      id:
+        type: "char"
+      unit:
         type: "number"
       state:
         type: "boolean"

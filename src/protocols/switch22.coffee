@@ -11,6 +11,7 @@ module.exports = (helper) ->
   return protocolInfo = {
     name: 'switch22'
     type: 'command'
+    commands: ["A","B","C","D"]
     values:
       id:
         type: "number"

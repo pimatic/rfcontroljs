@@ -13,6 +13,8 @@ module.exports = (helper) ->
   return protocolInfo = {
     name: 'led3'
     type: 'command'
+    commands: ["on/off","white","red","green","blue","yellow","cyan","magenta","demo",
+               "bright+","bright-","color-","color+","mode+","mode-","speed+","speed-"]
     values:
       id:
         type: "number"

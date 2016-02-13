@@ -12,6 +12,7 @@ module.exports = (helper) ->
   return protocolInfo = {
     name: 'shutter1'
     type: 'command'
+    commands: ["up","down","stop"]
     values:
       id:
         type: "number"

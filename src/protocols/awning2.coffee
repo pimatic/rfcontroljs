@@ -12,6 +12,7 @@ module.exports = (helper) ->
   return protocolInfo = {
     name: 'awning2'
     type: 'command'
+    commands: ["in", "out", "stop"]
     values:
       id:
         type: "number"

@@ -10,8 +10,8 @@ module.exports = (helper) ->
     values:
       temperature:
         type: "number"
-      humidity:
-        type: "number"
+      #humidity:
+      #  type: "number"
       channel:
         type: "number"
       id:

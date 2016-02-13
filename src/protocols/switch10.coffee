@@ -36,18 +36,18 @@ module.exports = (helper) ->
       # now we extract the data from that string
       # | 11000111100 10111100011110011010011011101010   1011    01       01      100011
       # | ?          |     systemcode                  | group | state | group2 |  unit
-      
+
       groupRes = true
       groupcode = helper.binaryToNumber(binary, 43, 46)
       groupcode2 = helper.binaryToNumber(binary, 49, 50)
-      
+
       if groupcode is 11 and groupcode2 is 1
         groupRes = false
       else if groupcode is 12 and groupcode2 is 3
         groupRes = true
-      
+
       id = helper.binaryToNumber(binary, 11, 42)>>>0
-      
+
       return result = {
         id: id
         unit: helper.binaryToNumber(binary, 51, 56)
@@ -56,21 +56,21 @@ module.exports = (helper) ->
       }
     encodeMessage: (message) ->
       id = helper.map(helper.numberToBinary(message.id, 32), binaryToPulse)
-      
+
       if message.state is true
         state = helper.map(helper.numberToBinary(2, 2), binaryToPulse)
       else
         state = helper.map(helper.numberToBinary(1, 2), binaryToPulse)
-      
+
       unit = helper.map(helper.numberToBinary(message.unit, 6), binaryToPulse)
-      
+
       if message.all is true
         groupcode = helper.map(helper.numberToBinary(12, 4), binaryToPulse)
         groupcode2 =  helper.map(helper.numberToBinary(3, 2), binaryToPulse)
       else
         groupcode = helper.map(helper.numberToBinary(11, 4), binaryToPulse)
         groupcode2 =  helper.map(helper.numberToBinary(1, 2), binaryToPulse)
-	  
+
       header = "0101000000010101010000"
 
       return "#{header}#{id}#{groupcode}#{state}#{groupcode2}#{unit}02"
