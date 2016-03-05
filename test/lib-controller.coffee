@@ -528,6 +528,16 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'switch24'
+      pulseLengths: [504, 1024, 6120]
+      pulses: [
+        '01101010010101011010101010011010100101010101011002'
+      ],
+      values: [
+        { houseCode: 17, unitCode: 1, state: true }
+      ]
+    },
+    {
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
       pulses: [
@@ -823,6 +833,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch21'
       message: { remoteCode: 0xF150FC, unitCode: 0, state: true }
       pulses: '010101010102010201010101020102010101010201020101010201010202010201010101010101020101020101020101020101010101020102020102010101010201010101020103'
+    },
+    {
+      protocol: 'switch24'
+      message: { houseCode: 17, unitCode: 1, state: true }
+      pulses: '01101010010101011010100110010110100101010101011002'
     },
     {
       protocol: 'led3'
