@@ -13,7 +13,7 @@ protocols = [
   'generic', 'generic2'
   'alarm1', 'alarm2'
   'led1', 'led2', 'led3', 'led4'
-  'doorbell1', 'doorbell2'
+  'doorbell1', 'doorbell2', 'doorbell3',
   'awning1', 'awning2'
   'shutter1', 'shutter3', 'shutter4', 'shutter5'
 ]

@@ -552,6 +552,16 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'doorbell3'
+      pulseLengths: [ 295, 590, 9864 ],
+      pulses: [
+        '01010101001010101100110012'
+      ],
+      values: [
+         { id: 15, unit: 10 }
+      ]
+    },
+    {
       protocol: 'contact1'
       pulseLengths: [268, 1282, 2632, 10168]
       pulses: [
