@@ -68,7 +68,7 @@ module.exports = (helper) ->
         switch message.channel
           when 'A' then '011'
           when 'B' then '101'
-          when 'B' then '110'
+          when 'C' then '110'
           else message.channel
       )
 
