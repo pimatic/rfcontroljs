@@ -577,7 +577,8 @@ describe '#decodePulses()', ->
         { channel: 'A', unit: '1', command: "on" }
         { channel: 'C', unit: '1', command: "on" }
         { channel: 'D', unit: '1', command: "on" }
-    }
+      ]
+    },
     {
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
