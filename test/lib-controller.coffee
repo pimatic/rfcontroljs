@@ -566,6 +566,19 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'switch27'
+      pulseLengths: [325, 972, 10130]
+      pulses: [
+        '01100110011001100101011001100110011001100110101002'
+        '01100110010101100101011001100110011001100110101002'
+        '01100110011001010101011001100110011001100110101002'
+      ],
+      values: [
+        { channel: 'A', unit: '1', command: "on" }
+        { channel: 'C', unit: '1', command: "on" }
+        { channel: 'D', unit: '1', command: "on" }
+    }
+    {
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
       pulses: [
