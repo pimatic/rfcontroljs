@@ -538,7 +538,7 @@ describe '#decodePulses()', ->
       ]
     },
     {
-      protocol: 'switch25'
+      protocol: 'switch28'
       pulseLengths: [350, 880, 10970]
       pulses: [
         '101010101010101010101010101010100101010101010101011010100110011002'
