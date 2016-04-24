@@ -892,7 +892,7 @@ describe '#encodeMessage()', ->
       pulses: '01101010010101011010100110010110100101010101011002'
     },
     {
-      protocol: 'switch25'
+      protocol: 'switch28'
       message: { unitCode: 14, state: true }
       pulses: '101010101010101010101010101010100101010101010101011010100110011002'
     },
