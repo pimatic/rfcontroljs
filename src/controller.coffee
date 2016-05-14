@@ -17,6 +17,7 @@ protocols = [
   'doorbell1', 'doorbell2', 'doorbell3',
   'awning1', 'awning2'
   'shutter1', 'shutter3', 'shutter4', 'shutter5'
+  'rawswitch'
 ]
 # load protocol files:
 protocols = protocols.map( (p) => require("./protocols/#{p}")(helper) )
@@ -167,8 +168,8 @@ module.exports = {
     unless protocol? then throw new Error("Could not find a protocol named #{protocolName}")
     unless protocol.encodeMessage? then throw new Error("The protocol has no send report.")
     return {
-      pulseLengths: protocol.pulseLengths
       pulses: protocol.encodeMessage(message)
+      pulseLengths: protocol.pulseLengths
     }
 
   getAllProtocols: ->
