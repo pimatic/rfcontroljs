@@ -1,6 +1,6 @@
 module.exports = (helper) ->
   return protocolInfo = {
-    name: 'raw'
+    name: 'rawswitch'
     type: 'switch'
     values:
       pulseCount:
