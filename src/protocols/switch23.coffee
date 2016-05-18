@@ -17,7 +17,7 @@ module.exports = (helper) ->
         type: "number"
       command:
         type: "string"
-    brands: ["Atag Cocking hood", "TXS4 Transmitter"]
+    brands: ["Atag Cooking hood", "TXS4 Transmitter"]
     pulseLengths: [350, 720, 16000]
     pulseCount: 38
     decodePulses: (pulses) ->
