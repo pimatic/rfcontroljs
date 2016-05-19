@@ -12,15 +12,14 @@ module.exports = (helper) ->
   }
   return protocolInfo = {
     name: 'switch27'
-    type: 'command'
-    commands: ["on", "off"]
+    type: 'switch'
     values:
       channel:
         type: "string"
       unit:
         type: "string"
-      command:
-        type: "string"
+      state:
+        type: "boolean"
     brands: ["Chacon Zen (EMW200TB)"]
     pulseLengths: [325, 972, 10130]
     pulseCount: 50
@@ -51,16 +50,12 @@ module.exports = (helper) ->
           else unitCode + binary.slice(9, 11) # could help someone
       )
 
-      commandCode = binary[11]
-      if commandCode == '2'
-        command = "on"
-      else
-        command = "off"
-      
+      state = binary[11] == '2'
+    
       return result= {
         channel: channel
         unit: unit
-        command: command
+        state: state
       }
 
     encodeMessage: (message) ->
@@ -81,7 +76,7 @@ module.exports = (helper) ->
           else message.unit
       )
       
-      if message.command == "on"
+      if message.state
         commandCode = '2'
       else
         commandCode = '0'

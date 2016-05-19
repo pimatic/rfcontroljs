@@ -12,15 +12,14 @@ module.exports = (helper) ->
   }
   return protocolInfo = {
     name: 'switch26'
-    type: 'command'
-    commands: ["on", "off"]
+    type: 'switch'
     values:
       channel:
         type: "string"
       unit:
         type: "string"
-      command:
-        type: "string"
+      state:
+        type: "boolean"
     brands: ["Chacon EMW200TC"]
     pulseLengths: [480, 1476, 15260]
     pulseCount: 50
@@ -53,14 +52,14 @@ module.exports = (helper) ->
 
       commandCode = binary[11]
       if commandCode == '2'
-        command = "on"
+        state = true
       else
-        command = "off"
+        state = false
       
       return result= {
         channel: channel
         unit: unit
-        command: command
+        state: state
       }
 
     encodeMessage: (message) ->
@@ -81,7 +80,7 @@ module.exports = (helper) ->
           else message.unit
       )
       
-      if message.command == "on"
+      if message.state
         commandCode = '2'
       else
         commandCode = '0'

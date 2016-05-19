@@ -574,9 +574,9 @@ describe '#decodePulses()', ->
         '01010110011001100110011001010110011001100110010102'
       ],
       values: [
-        { channel: 'A', unit: '3', command: "on" }
-        { channel: 'A', unit: '4', command: "on" }
-        { channel: 'A', unit: '4', command: "off" }
+        { channel: 'A', unit: '3', state: true }
+        { channel: 'A', unit: '4', state: true }
+        { channel: 'A', unit: '4', state: false }
       ]
     },
     {
@@ -588,9 +588,9 @@ describe '#decodePulses()', ->
         '01100110011001010101011001100110011001100110101002'
       ],
       values: [
-        { channel: 'A', unit: '1', command: "on" }
-        { channel: 'C', unit: '1', command: "on" }
-        { channel: 'D', unit: '1', command: "on" }
+        { channel: 'A', unit: '1', state: true }
+        { channel: 'C', unit: '1', state: true }
+        { channel: 'D', unit: '1', state: true }
       ]
     },
     {
