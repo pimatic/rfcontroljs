@@ -20,7 +20,7 @@
     "url": "git://github.com/pimatic/rfcontroljs.git"
   },
   "author": "Oliver Schneider <oliverschneider89+sweetpi@gmail.com>",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/pimatic/rfcontroljs/issues"
   },
