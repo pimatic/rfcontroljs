@@ -31,15 +31,15 @@ module.exports = (helper) ->
 	  #
 	  #  nibble:        T6    | |     T7    | |     T8    | |     T9
 	  #  bit:      F0|F1|F2|F3| |G0|G1|G2|G3| |H0|H1|H2|H3| |I0|I1|I2|I3
-	  #            1 |0 |0 |0 | |0 |0 |0 |0 | |0 |0 |1 |1 | |0 |1 |0 |1 
-	  #	
+	  #            1 |0 |0 |0 | |0 |0 |0 |0 | |0 |0 |1 |1 | |0 |1 |0 |1
+	  #
 	  #	A0-A3,B2-B3 - ID
 	  #	B0-B1 - Channel: 01 - 1, 10 - 2, 11 - 3
 	  #	C0 - battery: 0 -  ok, 1 - low
 	  #	C1-C3 - unknown
 	  #	D0-F3 - temperature
 	  #	G0-H3 - humidity
-	  #	I0-I3 - check sum
+    #	I0-I3 - check sum
       return result = {
         id: helper.binaryToNumberLSBMSB(binary, 0, 7)
         channel: helper.binaryToNumber(binary, 4, 5)
