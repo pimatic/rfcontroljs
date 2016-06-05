@@ -17,13 +17,14 @@ module.exports = (helper) ->
       unit: 
         type: "number"
     brands: ["WP515S"]
-    pulseLengths: [295, 590, 9864]
+    pulseLengths: [300, 580, 10224]
     pulseCount: 26
     decodePulses: (pulses) -> 
-      binary = helper.map(pulses, pulsesToBinaryMapping)
+      src = pulses.substring(1)
+      binary = helper.map(src, pulsesToBinaryMapping)
       return result = {
-        id: helper.binaryToNumber(binary, 1, 4),
-        unit: helper.binaryToNumber(binary, 5, 12),
+        id: helper.binaryToNumber(binary, 0, 3),
+        unit: helper.binaryToNumber(binary, 4, 11),
       }
     encodeMessage: (message) ->
       id = helper.map(helper.numberToBinary(message.id, 4), binaryToPulse)

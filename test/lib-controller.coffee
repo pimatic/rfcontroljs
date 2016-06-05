@@ -553,9 +553,9 @@ describe '#decodePulses()', ->
     },
     {
       protocol: 'doorbell3'
-      pulseLengths: [ 295, 590, 9864 ],
+      pulseLengths: [ 300, 580, 10224 ],
       pulses: [
-        '1010101001010101100110012'
+        '01010101001010101100110012'
       ],
       values: [
          { id: 15, unit: 10 }
@@ -667,14 +667,14 @@ describe '#decodePulses()', ->
     it "#{t.protocol} should decode the pulses", ->
       for pulses, i in t.pulses
         results = controller.decodePulses(t.pulseLengths, pulses)
-        assert(results.length >= 1, "pulse of #{t.protocol} should be detected.")
+        assert(results.length >= 1, "pulse of #{t.protocol} should be detected. pulseLengths: #{t.pulseLengths} pulses: #{pulses}")
         result = null
         for r in results
           if r.protocol is t.protocol
             result = r
             break
         assert(result, "pulse of #{t.protocol} should be detected as #{t.protocol}.")
-        assert.deepEqual(result.values, t.values[i])
+        assert.deepEqual(result.values, t.values[i], "result values #{result.values} differ from expected/actual values #{t.values[i]}")
   )
 
   runTest(t) for t in tests
