@@ -555,10 +555,40 @@ describe '#decodePulses()', ->
       protocol: 'doorbell3'
       pulseLengths: [ 300, 580, 10224 ],
       pulses: [
+        '00101010101010101100110012'
+        '01010010101010101100110012'
+        '00110010101010101100110012'
         '01010101001010101100110012'
+        '00110101001010101100110012'
+        '01001101001010101100110012'
+        '00101101001010101100110012'
+        '01001100101010101100110012'
+        '00101100101010101100110012'
+        '01010100101010101100110012'
+        '00110100101010101100110012'
+        '01010011001010101100110012'
+        '00110011001010101100110012'
+        '01001011001010101100110012'
+        '00101011001010101100110012'
+        '01001010101010101100110012'
       ],
       values: [
+         { id:  0, unit: 10 }
+         { id: 12, unit: 10 }
+         { id:  4, unit: 10 }
          { id: 15, unit: 10 }
+         { id:  7, unit: 10 }
+         { id: 11, unit: 10 }
+         { id:  3, unit: 10 }
+         { id: 10, unit: 10 }
+         { id:  2, unit: 10 }
+         { id: 14, unit: 10 }
+         { id:  6, unit: 10 }
+         { id: 13, unit: 10 }
+         { id:  5, unit: 10 }
+         { id:  9, unit: 10 }
+         { id:  1, unit: 10 }
+         { id:  8, unit: 10 }
       ]
     },
     {
@@ -667,14 +697,14 @@ describe '#decodePulses()', ->
     it "#{t.protocol} should decode the pulses", ->
       for pulses, i in t.pulses
         results = controller.decodePulses(t.pulseLengths, pulses)
-        assert(results.length >= 1, "pulse of #{t.protocol} should be detected. pulseLengths: #{t.pulseLengths} pulses: #{pulses}")
+        assert(results.length >= 1, "pulse of #{t.protocol} should be detected.")
         result = null
         for r in results
           if r.protocol is t.protocol
             result = r
             break
         assert(result, "pulse of #{t.protocol} should be detected as #{t.protocol}.")
-        assert.deepEqual(result.values, t.values[i], "result values #{result.values} differ from expected/actual values #{t.values[i]}")
+        assert.deepEqual(result.values, t.values[i])
   )
 
   runTest(t) for t in tests
