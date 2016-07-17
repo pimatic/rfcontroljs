@@ -708,6 +708,18 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'contact4'
+      pulseLengths: [468, 1364, 14096]
+      pulses: [
+        '10101001100110011001011010100101010101011001100102'
+        '10101001100110011001011010100101010101011010100102'
+      ],
+      values: [
+        { id: 960960, contact: false }
+        { id: 960960, contact: true }
+      ]
+    },
+    {
       protocol: 'led1'
       pulseLengths: [ 350, 1056, 10904 ]
       pulses: [
