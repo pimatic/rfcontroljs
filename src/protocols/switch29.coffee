@@ -19,6 +19,10 @@ module.exports = function(helper) {
       id: {
         type: "number"
       },
+      remoteid: {
+        type: "number",
+	default: 2275840
+      },
       state: {
         type: "boolean"
       }
@@ -37,7 +41,12 @@ module.exports = function(helper) {
     encodeMessage: function(message) {
       var remoteID, onPulse, newUnitCode, offPulse, prefix, state, unitCode;
       prefix = "1001";
-      remoteID = "010110010101100110011010100110010101010101010101";
+
+if (message.remoteid == null) { remoteID=2275840; } 
+else { remoteID = message.remoteid; }
+
+remoteID = helper.map(helper.numberToBinary(remoteID, 24), binaryToPulse);
+
 if (message.unit == 1) { newUnitCode=3; }
 if (message.unit == 2) { newUnitCode=0; }
 if (message.unit == 3) { newUnitCode=2; }
