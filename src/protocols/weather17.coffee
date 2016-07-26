@@ -30,9 +30,7 @@ module.exports = function(helper) {
     pulseCount: 74,
     decodePulses: function(pulses) {
       var binary, lowBattery, result;
-console.log("pulses="+pulses);
       binary = helper.map(pulses, pulsesToBinaryMapping);
-console.log("binary="+binary);
       lowBattery = !helper.binaryToBoolean(binary, 12);
       return result = {
         id: helper.binaryToNumber(binary, 4, 11),
