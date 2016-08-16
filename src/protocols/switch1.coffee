@@ -16,7 +16,7 @@ module.exports = (helper) ->
     type: 'switch'
     values:
       id:
-        type: "binary"
+        type: "number"
       all:
         type: "boolean"
       state:
