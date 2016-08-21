@@ -16,7 +16,7 @@ module.exports = (helper) ->
     type: 'pir'
     values:
       id:
-        type: "binary"
+        type: "number"
       all:
         type: "boolean"
       presence:
