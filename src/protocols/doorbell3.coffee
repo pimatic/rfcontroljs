@@ -2,7 +2,7 @@ module.exports = (helper) ->
   pulsesToBinaryMapping = {
     '01': '0'
     '10': '1'
-    '02': ''
+    '2': ''
   }
   binaryToPulse = {
     '0': '01'
@@ -13,17 +13,18 @@ module.exports = (helper) ->
     type: 'switch'
     values:
       id:
-        type: 'number'
+        type: "number"
       unit:
-        type: 'number'
-    brands: [ 'WP515S' ]
-    pulseLengths: [295, 590, 9864]
+        type: "number"
+    brands: ["WP515S"]
+    pulseLengths: [300, 580, 10224]
     pulseCount: 26
     decodePulses: (pulses) ->
-      binary = helper.map(pulses, pulsesToBinaryMapping)
+      src = pulses.substring(1)
+      binary = helper.map(src, pulsesToBinaryMapping)
       return result = {
-        id: helper.binaryToNumber(binary, 1, 4)
-        unit: helper.binaryToNumber(binary, 5, 12)
+        id: helper.binaryToNumber(binary, 0, 3),
+        unit: helper.binaryToNumber(binary, 4, 11),
       }
     encodeMessage: (message) ->
       id = helper.map(helper.numberToBinary(message.id, 4), binaryToPulse)
