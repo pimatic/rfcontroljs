@@ -300,7 +300,7 @@ __Supports__:
   * humidity
 
 
-weather16
+weather17
 ---------
 __Type__: weather
 
