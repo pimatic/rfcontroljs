@@ -7,7 +7,7 @@ module.exports = function(helper) {
 	'12': ''
   };
   return protocolInfo = {
-    name: 'weatherTFA30',
+    name: 'weather17',
     type: 'weather',
     values: {
       id: {
