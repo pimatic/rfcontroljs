@@ -13,7 +13,7 @@ module.exports = (helper) ->
   return protocolInfo = {
     name: 'shutter3'
     type: 'command'
-    commands: ["up","down","stop"]
+    commands: ["up","down","stop","program"]
     values:
       id:
         type: "number"
@@ -46,6 +46,7 @@ module.exports = (helper) ->
           when '001' then 'up'
           when '011' then 'down'
           when '101' then 'stop'
+          when '100' then 'program'
       )
       return result= {
         id: helper.binaryToNumber(binary, 0, 28)
@@ -61,6 +62,7 @@ module.exports = (helper) ->
           when 'up'  then '001000'
           when 'down' then '011001'
           when 'stop' then '101010'
+          when 'program' then '100110'
       )
       command = helper.map(commandcode, binaryToPulse)
 

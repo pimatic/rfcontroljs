@@ -810,6 +810,16 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'shutter3'
+      pulseLengths: [ 366, 736, 1600, 5204, 10896 ]
+      pulses: [
+        '3210010110010101010110011010011010010110100101011001011001100101101010010110100104'
+      ],
+      values: [
+        { id: 302736933, channel: 1, command: "program" }
+      ]
+    },
+    {
       protocol: 'shutter4'
       pulseLengths: [ 352, 712, 1476, 5690 ]
       pulses: [
