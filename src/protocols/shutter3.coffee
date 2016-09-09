@@ -66,5 +66,8 @@ module.exports = (helper) ->
       )
       command = helper.map(commandcode, binaryToPulse)
 
-      return "32#{id}#{channel}01#{command}14"
+      unless message.command is 'program'
+        return "32#{id}#{channel}01#{command}14"
+      else
+        return "32#{id}#{channel}10#{command}04"
   }
