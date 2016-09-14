@@ -1,7 +1,7 @@
 <!-- This file is generated automatically don't edit it -->
 Supported Protocols
 ===================
-<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol, Pollin (EWS-151)</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>weather6</td><td>weather</td><td>Sempre (Aldi) GT-WT-02</td></tr><tr><td>weather7</td><td>weather</td><td>Auriol</td></tr><tr><td>weather8</td><td>weather</td><td>?</td></tr><tr><td>weather9</td><td>weather</td><td>TCM</td></tr><tr><td>weather10</td><td>weather</td><td>Velleman WS8426S</td></tr><tr><td>weather11</td><td>weather</td><td>Xiron Temperature & Humidity Sensor</td></tr><tr><td>weather12</td><td>weather</td><td>Globaltronics GT-WT-01</td></tr><tr><td>weather13</td><td>weather</td><td>Xiron Temperature & Humidity Sensor 2</td></tr><tr><td>weather14</td><td>weather</td><td>Prologue Temperature & Humidity Sensor</td></tr><tr><td>weather15</td><td>weather</td><td>Globaltronics GT-WT-01 variant</td></tr><tr><td>weather16</td><td>weather</td><td>Ea2 labs Bl999</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>switch7</td><td>switch</td><td>eHome</td></tr><tr><td>switch8</td><td>switch</td><td>Rev</td></tr><tr><td>switch9</td><td>switch</td><td>DRU Heaters</td></tr><tr><td>switch10</td><td>switch</td><td>Easy Home Advanced</td></tr><tr><td>switch11</td><td>switch</td><td>McPower</td></tr><tr><td>switch12</td><td>switch</td><td>Europe RS-200</td></tr><tr><td>switch13</td><td>switch</td><td>Aldi Quigg GT-7000, Globaltronics GT-FSI-04a</td></tr><tr><td>switch14</td><td>switch</td><td>UNITEC</td></tr><tr><td>switch15</td><td>switch</td><td>Daycom Switches</td></tr><tr><td>switch16</td><td>switch</td><td>Everflourish</td></tr><tr><td>switch17</td><td>switch</td><td>Intertek 22541673 (e.g. Bauhaus)</td></tr><tr><td>switch18</td><td>switch</td><td>Otio, Advisen</td></tr><tr><td>switch19</td><td>switch</td><td>REV Switch 008342 and Dimmer 008343</td></tr><tr><td>switch20</td><td>switch</td><td>MBO International Electronic GmbH</td></tr><tr><td>switch21</td><td>switch</td><td>LightwaveRF</td></tr><tr><td>switch22</td><td>command</td><td>Relay 4CH switch</td></tr><tr><td>switch23</td><td>command</td><td>Atag Cooking hood, TXS4 Transmitter</td></tr><tr><td>switch24</td><td>switch</td><td>Power remote 1204380, Steffen 1204380</td></tr><tr><td>switch25</td><td>switch</td><td>Lidl 0655B</td></tr><tr><td>switch26</td><td>switch</td><td>Chacon EMW200TC</td></tr><tr><td>switch27</td><td>switch</td><td>Chacon Zen (EMW200TB)</td></tr><tr><td>switch28</td><td>command</td><td>oh!haus & Co.</td></tr><tr><td>rolling1</td><td>switch</td><td>rollingCode</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>dimmer2</td><td>dimmer</td><td>LightwaveRF</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>pir2</td><td>pir</td><td>?</td></tr><tr><td>pir3</td><td>pir</td><td>?</td></tr><tr><td>pir4</td><td>pir</td><td>?</td></tr><tr><td>pir5</td><td>pir</td><td>KlikAanKlikUit</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>contact2</td><td>contact</td><td>No brand</td></tr><tr><td>contact3</td><td>contact</td><td>Home Easy HE852</td></tr><tr><td>contact4</td><td>contact</td><td>GS-IWDS07</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr><tr><td>generic2</td><td>generic</td><td>homemade</td></tr><tr><td>alarm1</td><td>switch</td><td>FA20RF</td></tr><tr><td>alarm2</td><td>switch</td><td>FA21RF</td></tr><tr><td>led1</td><td>command</td><td>LED Stripe RF Dimmer (no name)</td></tr><tr><td>led2</td><td>command</td><td>LED Controller</td></tr><tr><td>led3</td><td>command</td><td>LED Controller</td></tr><tr><td>led4</td><td>command</td><td>LED Controller</td></tr><tr><td>doorbell1</td><td>switch</td><td>ADEO</td></tr><tr><td>doorbell2</td><td>pir</td><td>LIFETEC-MD13187</td></tr><tr><td>doorbell3</td><td>switch</td><td>WP515S</td></tr><tr><td>awning1</td><td>command</td><td>awningCode</td></tr><tr><td>awning2</td><td>command</td><td>Soluna</td></tr><tr><td>shutter1</td><td>command</td><td>Nobily</td></tr><tr><td>shutter3</td><td>command</td><td>Romotec</td></tr><tr><td>shutter4</td><td>command</td><td>ROHRMOTOR24</td></tr><tr><td>shutter5</td><td>command</td><td>eSmart</td></tr><tr><td>rawswitch</td><td>switch</td><td>RAW</td></tr><tr><td>rawshutter</td><td>command</td><td>RAW</td></tr></table>
+<table><tr><th>Protocol</th><th>Type</th><th>Brands</th></tr><tr><td>weather1</td><td>weather</td><td>?</td></tr><tr><td>weather2</td><td>weather</td><td>Auriol, Pollin (EWS-151)</td></tr><tr><td>weather3</td><td>weather</td><td>tfa, conrad</td></tr><tr><td>weather4</td><td>weather</td><td>Auriol</td></tr><tr><td>weather5</td><td>weather</td><td>Auriol, Ventus, Hama, Meteoscan, Alecto, Balance</td></tr><tr><td>weather6</td><td>weather</td><td>Sempre (Aldi) GT-WT-02</td></tr><tr><td>weather7</td><td>weather</td><td>Auriol</td></tr><tr><td>weather8</td><td>weather</td><td>?</td></tr><tr><td>weather9</td><td>weather</td><td>TCM</td></tr><tr><td>weather10</td><td>weather</td><td>Velleman WS8426S</td></tr><tr><td>weather11</td><td>weather</td><td>Xiron Temperature & Humidity Sensor</td></tr><tr><td>weather12</td><td>weather</td><td>Globaltronics GT-WT-01</td></tr><tr><td>weather13</td><td>weather</td><td>Xiron Temperature & Humidity Sensor 2</td></tr><tr><td>weather14</td><td>weather</td><td>Prologue Temperature & Humidity Sensor</td></tr><tr><td>weather15</td><td>weather</td><td>Globaltronics GT-WT-01 variant</td></tr><tr><td>weather16</td><td>weather</td><td>Ea2 labs Bl999</td></tr><tr><td>weather17</td><td>weather</td><td>TFA 30.3125</td></tr><tr><td>weather18</td><td>weather</td><td>Mebus/Renkforce E0190T</td></tr><tr><td>weather19</td><td>weather</td><td>Landmann BBQ Thermometer</td></tr><tr><td>switch1</td><td>switch</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>switch2</td><td>switch</td><td>Elro, Elro Home Easy</td></tr><tr><td>switch3</td><td>switch</td><td>Brennenstuhl Comfort, Elro Home Control</td></tr><tr><td>switch4</td><td>switch</td><td>Cogex, KlikAanKlikUit, Intertechno, Düwi Terminal</td></tr><tr><td>switch5</td><td>switch</td><td>Eurodomest</td></tr><tr><td>switch6</td><td>switch</td><td>Impuls</td></tr><tr><td>switch7</td><td>switch</td><td>eHome</td></tr><tr><td>switch8</td><td>switch</td><td>Rev</td></tr><tr><td>switch9</td><td>switch</td><td>DRU Heaters</td></tr><tr><td>switch10</td><td>switch</td><td>Easy Home Advanced</td></tr><tr><td>switch11</td><td>switch</td><td>McPower</td></tr><tr><td>switch12</td><td>switch</td><td>Europe RS-200</td></tr><tr><td>switch13</td><td>switch</td><td>Aldi Quigg GT-7000, Globaltronics GT-FSI-04a</td></tr><tr><td>switch14</td><td>switch</td><td>UNITEC</td></tr><tr><td>switch15</td><td>switch</td><td>Daycom Switches</td></tr><tr><td>switch16</td><td>switch</td><td>Everflourish</td></tr><tr><td>switch17</td><td>switch</td><td>Intertek 22541673 (e.g. Bauhaus)</td></tr><tr><td>switch18</td><td>switch</td><td>Otio, Advisen</td></tr><tr><td>switch19</td><td>switch</td><td>REV Switch 008342 and Dimmer 008343</td></tr><tr><td>switch20</td><td>switch</td><td>MBO International Electronic GmbH</td></tr><tr><td>switch21</td><td>switch</td><td>LightwaveRF</td></tr><tr><td>switch22</td><td>command</td><td>Relay 4CH switch</td></tr><tr><td>switch23</td><td>command</td><td>Atag Cooking hood, TXS4 Transmitter</td></tr><tr><td>switch24</td><td>switch</td><td>Power remote 1204380, Steffen 1204380</td></tr><tr><td>switch25</td><td>switch</td><td>Lidl 0655B</td></tr><tr><td>switch26</td><td>switch</td><td>Chacon EMW200TC</td></tr><tr><td>switch27</td><td>switch</td><td>Chacon Zen (EMW200TB)</td></tr><tr><td>switch28</td><td>command</td><td>oh!haus & Co.</td></tr><tr><td>switch29</td><td>switch</td><td>Meiantech, Atlantic, Aidebao, PB-403R</td></tr><tr><td>switch30</td><td>switch</td><td>JP-05</td></tr><tr><td>rolling1</td><td>switch</td><td>rollingCode</td></tr><tr><td>dimmer1</td><td>dimmer</td><td>CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa</td></tr><tr><td>dimmer2</td><td>dimmer</td><td>LightwaveRF</td></tr><tr><td>pir1</td><td>pir</td><td>?</td></tr><tr><td>pir2</td><td>pir</td><td>?</td></tr><tr><td>pir3</td><td>pir</td><td>?</td></tr><tr><td>pir4</td><td>pir</td><td>?</td></tr><tr><td>pir5</td><td>pir</td><td>KlikAanKlikUit</td></tr><tr><td>contact1</td><td>contact</td><td>KlikAanKlikUit</td></tr><tr><td>contact2</td><td>contact</td><td>No brand</td></tr><tr><td>contact3</td><td>contact</td><td>Home Easy HE852</td></tr><tr><td>contact4</td><td>contact</td><td>GS-IWDS07</td></tr><tr><td>generic</td><td>generic</td><td>homemade</td></tr><tr><td>generic2</td><td>generic</td><td>homemade</td></tr><tr><td>alarm1</td><td>switch</td><td>FA20RF</td></tr><tr><td>alarm2</td><td>switch</td><td>FA21RF</td></tr><tr><td>led1</td><td>command</td><td>LED Stripe RF Dimmer (no name)</td></tr><tr><td>led2</td><td>command</td><td>LED Controller</td></tr><tr><td>led3</td><td>command</td><td>LED Controller</td></tr><tr><td>led4</td><td>command</td><td>LED Controller</td></tr><tr><td>doorbell1</td><td>switch</td><td>ADEO</td></tr><tr><td>doorbell2</td><td>pir</td><td>LIFETEC-MD13187</td></tr><tr><td>doorbell3</td><td>switch</td><td>WP515S</td></tr><tr><td>awning1</td><td>command</td><td>awningCode</td></tr><tr><td>awning2</td><td>command</td><td>Soluna</td></tr><tr><td>shutter1</td><td>command</td><td>Nobily</td></tr><tr><td>shutter3</td><td>command</td><td>Romotec</td></tr><tr><td>shutter4</td><td>command</td><td>ROHRMOTOR24</td></tr><tr><td>shutter5</td><td>command</td><td>eSmart</td></tr><tr><td>rawswitch</td><td>switch</td><td>RAW</td></tr><tr><td>rawshutter</td><td>command</td><td>RAW</td></tr></table>
 weather1
 ---------
 __Type__: weather
@@ -300,6 +300,58 @@ __Supports__:
   * humidity
 
 
+weather17
+---------
+__Type__: weather
+
+__Brands__: TFA 30.3125
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **channel** (number)
+
+
+__Supports__:
+
+  * temperature
+  * humidity
+
+
+weather18
+---------
+__Type__: weather
+
+__Brands__: Mebus/Renkforce E0190T
+
+__Protocol Options__:
+
+  * **channel** (number)
+  * **id** (number)
+
+
+__Supports__:
+
+  * temperature
+
+
+weather19
+---------
+__Type__: weather
+
+__Brands__: Landmann BBQ Thermometer
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **channel** (number)
+
+
+__Supports__:
+
+  * temperature
+
+
 switch1
 ---------
 __Type__: switch
@@ -308,7 +360,7 @@ __Brands__: CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa
 
 __Protocol Options__:
 
-  * **id** (binary)
+  * **id** (number)
   * **unit** (number)
 
 
@@ -446,7 +498,7 @@ __Brands__: DRU Heaters
 
 __Protocol Options__:
 
-  * **id** (binary)
+  * **id** (number)
   * **unit** (number)
 
 
@@ -481,7 +533,7 @@ __Brands__: McPower
 
 __Protocol Options__:
 
-  * **id** (binary)
+  * **id** (number)
   * **unit** (number)
 
 
@@ -498,7 +550,7 @@ __Brands__: Europe RS-200
 
 __Protocol Options__:
 
-  * **id** (binary)
+  * **id** (number)
   * **unit** (number)
 
 
@@ -605,7 +657,7 @@ __Brands__: Otio, Advisen
 
 __Protocol Options__:
 
-  * **id** (binary)
+  * **id** (number)
 
 
 __Supports__:
@@ -776,6 +828,38 @@ __Protocol Options__:
 __Supports__:
 none
 
+switch29
+---------
+__Type__: switch
+
+__Brands__: Meiantech, Atlantic, Aidebao, PB-403R
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **unit** (number)
+  * **command** (number)
+
+
+__Supports__:
+none
+
+switch30
+---------
+__Type__: switch
+
+__Brands__: JP-05
+
+__Protocol Options__:
+
+  * **id** (number)
+  * **unit** (number)
+  * **command** (string)
+
+
+__Supports__:
+none
+
 rolling1
 ---------
 __Type__: switch
@@ -799,7 +883,7 @@ __Brands__: CoCo Technologies, D-IO (Chacon), Intertechno, KlikAanKlikUit, Nexa
 
 __Protocol Options__:
 
-  * **id** (binary)
+  * **id** (number)
   * **unit** (number)
   * **dimlevel** (number)
 
@@ -904,7 +988,7 @@ __Brands__: KlikAanKlikUit
 
 __Protocol Options__:
 
-  * **id** (binary)
+  * **id** (number)
   * **unit** (number)
 
 
@@ -922,7 +1006,7 @@ __Brands__: KlikAanKlikUit
 
 __Protocol Options__:
 
-  * **id** (binary)
+  * **id** (number)
   * **contact** (boolean)
   * **unit** (number)
 
