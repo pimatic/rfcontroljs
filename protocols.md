@@ -482,7 +482,7 @@ __Brands__: Rev
 __Protocol Options__:
 
   * **systemcode** (number)
-  * **programcode** (number)
+  * **programcode** (string)
 
 
 __Supports__:
