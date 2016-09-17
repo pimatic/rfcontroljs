@@ -23,7 +23,7 @@ module.exports = (helper) ->
         type: "boolean"
       unit:
         type: "number"
-    brands: ["KlikAanKlikUit"]
+    brands: ["Trust SmartHome", "COCO Technologies", "KlikAanKlikUit"]
     pulseLengths: [268, 1282, 2632, 10168]
     pulseCounts: [132, 148]
     decodePulses: (pulses) ->
