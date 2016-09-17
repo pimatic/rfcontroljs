@@ -4,7 +4,6 @@ module.exports = (helper) ->
     '10': '1'   #binary 1
     '01': '0'   #binary 0
     '02': ''    #footer
-    '03': ''    #footer
   }
   # same for send
   binaryToPulse = {
