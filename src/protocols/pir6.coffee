@@ -24,7 +24,6 @@ module.exports = (helper) ->
     pulseCounts: [50]
     decodePulses: (pulses) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
-      console.log "######", binary, helper.binaryToNumber(binary, 2, 24)
       # Pulses like: '001100001110100011000011'
       # Translate to the following sequence
       # 0011 0000 1110 1000 1100 0011
