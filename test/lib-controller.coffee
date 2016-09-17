@@ -70,6 +70,20 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'pir6'
+      pulseLengths: [ 288, 864, 8964 ]
+      pulses: [
+        '01011010010101011010100110010101101001010101101002'
+        '01011010010101011010100110010101101001010110010102'
+        '01011010010101011010100110010101101001011001010102'
+      ]
+      values: [
+        { id: 6410630, presence: true }
+        { id: 6410632, presence: true }
+        { id: 6410640, presence: true }
+      ]
+    },
+    {
       protocol: 'weather1'
       pulseLengths: [456, 1990, 3940, 9236]
       pulses: [
@@ -899,13 +913,13 @@ describe '#decodePulses()', ->
     it "#{t.protocol} should decode the pulses", ->
       for pulses, i in t.pulses
         results = controller.decodePulses(t.pulseLengths, pulses)
-        assert(results.length >= 1, "pulse of #{t.protocol} should be detected.")
+        assert(results.length >= 1, "pulse #{pulses} of #{t.protocol} should be detected.")
         result = null
         for r in results
           if r.protocol is t.protocol
             result = r
             break
-        assert(result, "pulse of #{t.protocol} should be detected as #{t.protocol}.")
+        assert(result, "pulse #{pulses} of #{t.protocol} should be detected as #{t.protocol}.")
         assert.deepEqual(result.values, t.values[i])
   )
 
