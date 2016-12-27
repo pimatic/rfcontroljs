@@ -7,7 +7,7 @@ coffeelint = require('gulp-coffeelint')
 istanbul = require('gulp-coffee-istanbul')
 
 gulp.task('default', ->
-  watch(glob: 'src/**/*.coffee', verbose: true)
+  watch('src/**/*.coffee', verbose: true)
     .pipe(plumber()) # This will keeps pipes working after error event
     .pipe(coffeelint({
       no_unnecessary_fat_arrows: {
