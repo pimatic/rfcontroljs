@@ -4,6 +4,7 @@ plumber = require('gulp-plumber')
 coffee = require('gulp-coffee')
 mocha = require('gulp-mocha')
 coffeelint = require('gulp-coffeelint')
+istanbul = require('gulp-coffee-istanbul')
 
 gulp.task('default', ->
   watch(glob: 'src/**/*.coffee', verbose: true)
@@ -28,16 +29,13 @@ gulp.task 'test', ->
     ))
 
 gulp.task 'coverage', ->
-  gulp.src('test/*.coffee', read: false)
-    .pipe(coffee(bare: yes))
-    .pipe(cover.instrument({
-      pattern: ['**/test/*'],
-      debugDirectory: 'debug'
-    }))
-    .pipe(mocha({}))
-    .pipe(cover.report({
-      outFile: 'coverage.html'
-    }));
+  gulp.src('src/**/*.coffee')
+  .pipe istanbul({includeUntested: true}) # Covering files
+  .pipe istanbul.hookRequire()
+  .on 'finish', ->
+    gulp.src 'test/*.coffee'
+    .pipe mocha reporter: 'spec'
+    .pipe istanbul.writeReports() # Creating the reports after tests run
 
 
 gulp.task 'docs', ->

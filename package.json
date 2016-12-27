@@ -25,13 +25,13 @@
     "url": "https://github.com/pimatic/rfcontroljs/issues"
   },
   "devDependencies": {
-    "coffee-script": "^1.7.1",
-    "gulp": "~3.8.8",
-    "gulp-coffee": "~2.1.1",
-    "gulp-coffeelint": "^0.3.4",
-    "gulp-coverage": "^0.1.24",
-    "gulp-mocha": "^1.0.0",
-    "gulp-plumber": "~0.6.4",
-    "gulp-watch": "~0.6.9"
+    "coffee-script": "^1.12.2",
+    "gulp": "~3.9.1",
+    "gulp-coffee": "~2.3.3",
+    "gulp-coffee-istanbul": "^0.9.1",
+    "gulp-coffeelint": "^0.6.0",
+    "gulp-mocha": "^3.0.1",
+    "gulp-plumber": "~1.1.0",
+    "gulp-watch": "~4.3.11"
   }
 }
