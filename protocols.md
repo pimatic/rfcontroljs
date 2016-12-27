@@ -1072,6 +1072,7 @@ __Protocol Options__:
 
   * **id** (number)
   * **contact** (boolean)
+  * **lowBattery** (boolean)
 
 
 __Supports__:

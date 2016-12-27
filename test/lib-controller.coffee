@@ -174,7 +174,7 @@ describe '#decodePulses()', ->
         '010202010201010202010101010101010101010202020102020202010202010103'
       ]
       values: [
-        { id: 105, temperature: 2.9, channel: 0, lowBattery: false }
+        { id: 105, temperature: 2.9, humidity: 59, channel: 0, lowBattery: false }
       ]
     },
     {
@@ -813,10 +813,12 @@ describe '#decodePulses()', ->
       pulses: [
         '10101001100110011001011010100101010101011001100102'
         '10101001100110011001011010100101010101011010100102'
+        '10101001100110011001011010100101010101010110100102'
       ],
       values: [
-        { id: 960960, contact: false }
-        { id: 960960, contact: true }
+        { id: 960960, contact: false, lowBattery: false }
+        { id: 960960, contact: true, lowBattery: false }
+        { id: 960960, contact: true, lowBattery: true }
       ]
     },
     {
