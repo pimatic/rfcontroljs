@@ -31,3 +31,4 @@ module.exports = (helper) ->
       unit = helper.map(helper.numberToBinary(message.unit, 8), binaryToPulse)
       return "0#{id}#{unit}2"
   }
+

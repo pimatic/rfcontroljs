@@ -70,6 +70,20 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'pir6'
+      pulseLengths: [ 288, 864, 8964 ]
+      pulses: [
+        '01011010010101011010100110010101101001010101101002'
+        '01011010010101011010100110010101101001010110010102'
+        '01011010010101011010100110010101101001011001010102'
+      ]
+      values: [
+        { id: 6410630, presence: true }
+        { id: 6410632, presence: true }
+        { id: 6410640, presence: true }
+      ]
+    },
+    {
       protocol: 'weather1'
       pulseLengths: [456, 1990, 3940, 9236]
       pulses: [
@@ -160,7 +174,7 @@ describe '#decodePulses()', ->
         '010202010201010202010101010101010101010202020102020202010202010103'
       ]
       values: [
-        { id: 105, temperature: 2.9, channel: 0, lowBattery: false }
+        { id: 105, temperature: 2.9, humidity: 59, channel: 0, lowBattery: false }
       ]
     },
     {
@@ -227,6 +241,66 @@ describe '#decodePulses()', ->
         { id: 2448, channel: 2, temperature: 22.6, humidity: 66, lowBattery: false }
         { id: 2448, channel: 3, temperature: 22.6, humidity: 66, lowBattery: false }
         { id: 2355, channel: 1, temperature: -3.7, humidity: 10, lowBattery: true }
+      ]
+    },
+    {
+      protocol: 'weather16'
+      pulseLengths: [472, 1964, 4052, 8904]
+      pulses: [
+        '02020202010202010101020101010201010101010201010101010101010102020102010203'
+        '02020202010202010101020101010101010101010201010102010101010102020202020103'
+      ]
+      values: [
+        { id: 111, channel: 1, temperature: 26, humidity: 36, lowBattery: false }
+        { id: 111, channel: 1, temperature: 25.6, humidity: 37, lowBattery: false }
+      ]
+    },
+    {
+      protocol: 'weather17'
+      pulseLengths: [444, 1160, 28580]
+      pulses: [
+        '1111111101110111111111111111010111111111110101011111111111111101110101011111111101011112'
+        '1111111101110111111111111111010111111101110101011111011101111111110101011111011101111112'
+        '1111111101110111010101111111010111111101110101111111011111111111110101111111011101011112'
+        '1111111101110111010101111111010111111101110101111111110111111111110101111111110101110112'
+      ]
+      values: [
+        { id: 24, channel: 0, temperature: 20.1 }
+        { id: 24, channel: 0, temperature: 22.8 }
+        { id: 24, channel: 7, humidity: 62 }
+        { id: 24, channel: 7, humidity: 61 }
+      ]
+    },
+    {
+      protocol: 'weather18'
+      pulseLengths: [496, 960, 1940, 3904]
+      pulses: [
+        '0101020102020102020101010101010102020201010102020202020201020202010202020003'
+        '0101020102020102020101010101010102020202010102020202020201010102020101020003'
+        '0101020102020102020101010101010201010201010101010202020202010202010202010003'
+        '0101020102020102020101010101010201010102010101010202020201010101010201010003'
+      ]
+      values: [
+        { id: 45, channel: 1, temperature: 22.7 }
+        { id: 45, channel: 1, temperature: 24.3 }
+        { id: 45, channel: 1, temperature: 28.8 }
+        { id: 45, channel: 1, temperature: 27.2 }
+      ]
+    },
+    {
+      protocol: 'weather19'
+      pulseLengths: [548, 1008, 1996, 3936]
+      pulses: [
+        '020202010101010101010101010101020101010102010201020101010201020203'
+        '020102020102010101010101010101020101020101020201010102020201020203'
+        '020102020102010101010101010101020101020201010101020102010102010203'
+        '020102020102010101010101010101020202010102020101020102010101010203'
+      ]
+      values: [
+        { id: 56, channel: 1, temperature: 26.6 }
+        { id: 45, channel: 1, temperature: 29.4 }
+        { id: 45, channel: 1, temperature: 30.4 }
+        { id: 45, channel: 1, temperature: 46.0 }
       ]
     },
     {
@@ -574,9 +648,9 @@ describe '#decodePulses()', ->
         '01010110011001100110011001010110011001100110010102'
       ],
       values: [
-        { channel: 'A', unit: '3', command: "on" }
-        { channel: 'A', unit: '4', command: "on" }
-        { channel: 'A', unit: '4', command: "off" }
+        { channel: 'A', unit: '3', state: true }
+        { channel: 'A', unit: '4', state: true }
+        { channel: 'A', unit: '4', state: false }
       ]
     },
     {
@@ -588,9 +662,9 @@ describe '#decodePulses()', ->
         '01100110011001010101011001100110011001100110101002'
       ],
       values: [
-        { channel: 'A', unit: '1', command: "on" }
-        { channel: 'C', unit: '1', command: "on" }
-        { channel: 'D', unit: '1', command: "on" }
+        { channel: 'A', unit: '1', state: true }
+        { channel: 'C', unit: '1', state: true }
+        { channel: 'D', unit: '1', state: true }
       ]
     },
     {
@@ -605,6 +679,44 @@ describe '#decodePulses()', ->
         { id: 11316396, unit: 26213, command: 'on' }
         { id: 11316396, unit: 26213, command: 'off' }
         { id: 11316396, unit: 26213, command: 'both' }
+      ]
+    },
+    {
+      protocol: 'switch29'
+      pulseLengths: [404, 804, 4028]
+      pulses: [
+                '00101011101010101101001010101010111000110010101010110010101011001011010102'
+                '00101011101010101101001010101010111000110010101010101011001011001010110012'
+                '00101011101010101101001010101010111000110010101011001010101011001100110102'
+                '00101011101010101101001010101010111000110010101010101100101011001010101102'
+                '00101011101010101101001010101010111000110010101011010010101011001101010102'
+                '00101011101010101101001010101010111000110010101011001100101011001100101102'
+                '00101011101010101101001010101010111000110010101011010100101011001101001102'
+      ],
+      values: [
+        { id: 5723557, unit: 5621333, command: "arm" }
+        { id: 5723557, unit: 5621333, command: "panic" }
+        { id: 5723557, unit: 5621333, command: "disarm" }
+        { id: 5723557, unit: 5621333, command: "home" }
+        { id: 5723557, unit: 5621333, command: "grp1" }
+        { id: 5723557, unit: 5621333, command: "grp2" }
+        { id: 5723557, unit: 5621333, command: "grp3" }
+      ]
+    },
+    {
+      protocol: 'switch30'
+      pulseLengths: [520, 1468, 13312]
+      pulses: [
+        '01010101010110100101101001001110101001010101010102'
+        '01010101010110100101101001001110010101011010010102'
+        '01010101010110100101101001001110010101010101101002'
+        '01010101010110100101101001001110010110100101010102'
+      ],
+      values: [
+        { id: 21850, unit: 23118, command: 'arm' }
+        { id: 21850, unit: 23118, command: 'dis' }
+        { id: 21850, unit: 23118, command: 'byp' }
+        { id: 21850, unit: 23118, command: 'sos' }
       ]
     },
     {
@@ -696,6 +808,20 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'contact4'
+      pulseLengths: [468, 1364, 14096]
+      pulses: [
+        '10101001100110011001011010100101010101011001100102'
+        '10101001100110011001011010100101010101011010100102'
+        '10101001100110011001011010100101010101010110100102'
+      ],
+      values: [
+        { id: 960960, contact: false, lowBattery: false }
+        { id: 960960, contact: true, lowBattery: false }
+        { id: 960960, contact: true, lowBattery: true }
+      ]
+    },
+    {
       protocol: 'led1'
       pulseLengths: [ 350, 1056, 10904 ]
       pulses: [
@@ -748,6 +874,18 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'shutter3'
+      pulseLengths: [ 366, 736, 1600, 5204, 10896 ]
+      pulses: [
+        '3210010110010101010110011010011010010110100101011001011001100101101010010110100104'
+        '3210011010100110010101101001010110011010011001100110010101010101101010010110100104'
+      ],
+      values: [
+        { id: 302736933, channel: 1, command: "program" }
+        { id: 390475088, channel: 1, command: "program" }
+      ]
+    },
+    {
       protocol: 'shutter4'
       pulseLengths: [ 352, 712, 1476, 5690 ]
       pulses: [
@@ -777,13 +915,13 @@ describe '#decodePulses()', ->
     it "#{t.protocol} should decode the pulses", ->
       for pulses, i in t.pulses
         results = controller.decodePulses(t.pulseLengths, pulses)
-        assert(results.length >= 1, "pulse of #{t.protocol} should be detected.")
+        assert(results.length >= 1, "pulse #{pulses} of #{t.protocol} should be detected.")
         result = null
         for r in results
           if r.protocol is t.protocol
             result = r
             break
-        assert(result, "pulse of #{t.protocol} should be detected as #{t.protocol}.")
+        assert(result, "pulse #{pulses} of #{t.protocol} should be detected as #{t.protocol}.")
         assert.deepEqual(result.values, t.values[i])
   )
 
@@ -953,6 +1091,16 @@ describe '#encodeMessage()', ->
       protocol: 'switch25'
       message: { unitCode: 14, state: true }
       pulses: '101010101010101010101010101010100101010101010101011010100110011002'
+    },
+    {
+      protocol: 'switch29'
+      message: { id: 5723557, unit: 5621333, command: 'panic' }
+      pulses: '00101011101010101101001010101010111000110010101010101011001011001010110012'
+    },
+    {
+      protocol: 'switch30'
+      message: { id: 21850, unit: 23118, command: 'arm' }
+      pulses: '01010101010110100101101001001110101001010101010102'
     },
     {
       protocol: 'led3'

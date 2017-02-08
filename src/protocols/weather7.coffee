@@ -35,7 +35,7 @@ module.exports = (helper) ->
         id: helper.binaryToNumberMSBLSB(binary, 0, 7)
         channel: helper.binaryToNumberMSBLSB(binary, 10, 11)
         temperature: helper.binaryToSignedNumberMSBLSB(binary, 12, 23) / 10
-        #humidity: helper.binaryToNumberMSBLSB(binary, 24, 29)
+        humidity: helper.binaryToNumberMSBLSB(binary, 24, 29)
         lowBattery: lowBattery
       }
   }
