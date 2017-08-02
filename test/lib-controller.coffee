@@ -890,9 +890,13 @@ describe '#decodePulses()', ->
       pulseLengths: [ 352, 712, 1476, 5690 ]
       pulses: [
         '3201010110010101100101100101010101100101101010100101011001010101010101011001010113'
+        '3201010110010101100101100101010101100101101010100101011001010110100110011001100114'
+        '3201010110010101100101100101010101100101101010100101011001011001100101101010100104'
      ],
       values: [
-        {id:35918788,channel:0,all:true,command:"up"}
+        {id:17959394,channel:0,all:true,command:"up"}
+        {id:17959394,channel:3,all:false,command:"stop"}
+        {id:17959394,channel:5,all:false,command:"down"}
        ]
     }
     {
@@ -1137,8 +1141,8 @@ describe '#encodeMessage()', ->
     },
     {
       protocol: 'shutter4'
-      message: {id:35918788,channel:0,all:false,command:"up"}
-      pulses: '3201010110010101100101100101010101100101101010100101011001010101010101011010101003'
+      message: {id:17959394,channel:0,all:true,command:"up"}
+      pulses: '3201010110010101100101100101010101100101101010100101011001010101010101011001010113'
     }
     {
       protocol: 'shutter5'
