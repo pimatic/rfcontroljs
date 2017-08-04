@@ -22,6 +22,23 @@ gulp.task('default', ->
     .pipe(gulp.dest('lib'))
 )
 
+
+gulp.task 'build', ->
+  gulp.src('src/**/*.coffee')
+  .pipe(plumber()) # This will keeps pipes working after error event
+  .pipe(coffeelint({
+    no_unnecessary_fat_arrows: {
+      level: 'ignore'
+    },
+    max_line_length: {
+      value: 120
+    }
+  }))
+  .pipe(coffeelint.reporter())
+  .pipe(coffee(bare: yes))
+  .pipe(gulp.dest('lib'))
+
+
 gulp.task 'test', ->
   gulp.src('test/*.coffee', read: false)
     .pipe(mocha(

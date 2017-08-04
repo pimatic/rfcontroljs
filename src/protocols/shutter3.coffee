@@ -13,7 +13,7 @@ module.exports = (helper) ->
   return protocolInfo = {
     name: 'shutter3'
     type: 'command'
-    commands: ["up","down","stop","program"]
+    commands: ["up", "down", "stop", "program"]
     values:
       id:
         type: "number"
@@ -37,34 +37,34 @@ module.exports = (helper) ->
       binary = helper.map(pulses, pulsesToBinaryMapping)
       # binary is now something like: '00111101010000001100101110010 001 0 001 000'
       # now we extract the data from that string
-      # | 00111101010000001100101110010 | 001     | 0   | 001     | 000                      |
-      # | id                            | channel | fix | command | command invers to footer |
+      # | 0011 1101 0100 0000 1100 1011 1001 | 0001     | 0   | 001     | 000                      |
+      # | id                                 | channel  | fix | command | command invers to footer |
 
-      commandcode = binary[33..35]
+      commandCode = binary[33..35]
       command = (
-        switch commandcode
+        switch commandCode
           when '001' then 'up'
           when '011' then 'down'
           when '101' then 'stop'
           when '100' then 'program'
       )
       return result= {
-        id: helper.binaryToNumber(binary, 0, 28)
-        channel: helper.binaryToNumber(binary, 29, 31)
+        id: helper.binaryToNumber(binary, 0, 27)
+        channel: helper.binaryToNumber(binary, 28, 31)
         command: command
       }
 
     encodeMessage: (message) ->
-      id = helper.map(helper.numberToBinary(message.id, 29), binaryToPulse)
-      channel = helper.map(helper.numberToBinary(message.channel, 3), binaryToPulse)
-      commandcode = (
+      id = helper.map(helper.numberToBinary(message.id, 28), binaryToPulse)
+      channel = helper.map(helper.numberToBinary(message.channel, 4), binaryToPulse)
+      commandCode = (
         switch message.command
           when 'up'  then '001000'
           when 'down' then '011001'
           when 'stop' then '101010'
           when 'program' then '100110'
       )
-      command = helper.map(commandcode, binaryToPulse)
+      command = helper.map(commandCode, binaryToPulse)
 
       unless message.command is 'program'
         return "32#{id}#{channel}01#{command}14"

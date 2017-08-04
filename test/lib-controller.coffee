@@ -881,8 +881,8 @@ describe '#decodePulses()', ->
         '3210011010100110010101101001010110011010011001100110010101010101101010010110100104'
       ],
       values: [
-        { id: 302736933, channel: 1, command: "program" }
-        { id: 390475088, channel: 1, command: "program" }
+        { id: 151368466, channel: 9, command: "program" }
+        { id: 195237544, channel: 1, command: "program" }
       ]
     },
     {
@@ -892,12 +892,14 @@ describe '#decodePulses()', ->
         '3201010110010101100101100101010101100101101010100101011001010101010101011001010113'
         '3201010110010101100101100101010101100101101010100101011001010110100110011001100114'
         '3201010110010101100101100101010101100101101010100101011001011001100101101010100104'
+        '3201011001010101010110010101010101010110100101011001100101100101100101011001010114'
      ],
       values: [
         {id:17959394,channel:0,all:true,command:"up"}
         {id:17959394,channel:3,all:false,command:"stop"}
         {id:17959394,channel:5,all:false,command:"down"}
-       ]
+        {id:33817364,channel:9,all:false,command: 'up'}
+      ]
     }
     {
       protocol: 'shutter5'
@@ -1139,6 +1141,11 @@ describe '#encodeMessage()', ->
         state: true }
       pulses: '01101010101010100101010110101001011001101010010123'
     },
+    {
+      protocol: 'shutter3'
+      message: { id: 151368466, channel: 9, command: "program" }
+      pulses: '3210010110010101010110011010011010010110100101011001011001100101101010010110100104'
+    }
     {
       protocol: 'shutter4'
       message: {id:17959394,channel:0,all:true,command:"up"}
