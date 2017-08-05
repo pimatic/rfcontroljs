@@ -5,8 +5,6 @@ module.exports = (helper) ->
     '10': '1' #binary 1
     '03': ''  #footer1
     '13': ''  #footer2
-    '04': ''  #footer3
-    '14': ''  #footer4
   }
   binaryToPulse = {
     '0': '01'
@@ -35,7 +33,7 @@ module.exports = (helper) ->
       #010101
       #01
       #010110010101
-      #13, 03, 14, or 04
+      #13, 03
 
       # we first map the sequences to binary
       binary = helper.map(pulses, pulsesToBinaryMapping)
