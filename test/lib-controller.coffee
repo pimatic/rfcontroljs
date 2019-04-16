@@ -720,6 +720,18 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'switch31'
+      pulseLengths: [452, 1336, 3392, 10124],
+      pulses: [
+        '0000220100010101000000010101000001000100010000000101010000000101000100010000000001010103'
+        '0000220100010101000000010101000001000100010000000101010000000101000100000101010100000003'
+      ],
+      values: [
+        { id: 47333, channel: 1, state: true, all: false }
+        { id: 47333, channel: 1, state: false, all: false }
+      ]
+    },
+    {
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
       pulses: [
@@ -1107,6 +1119,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch30'
       message: { id: 21850, unit: 23118, command: 'arm' }
       pulses: '01010101010110100101101001001110101001010101010102'
+    },
+    { 
+      protocol: 'switch31'
+      message: { all: false, channel: 1, id: 47333, state: true }
+      pulses: '0000220100010101000000010101000001000100010000000101010000000101000100010000000001010103'
     },
     {
       protocol: 'led3'
