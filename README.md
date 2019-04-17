@@ -5,7 +5,7 @@ rfcontroljs is a node.js module written to parse and construct 433mhz On-off key
 signals for various devices switches or weather stations. 
 
 It works well together with the [RFControl](https://github.com/pimatic/RFControl) Arduino library
-for receving the signals.
+for receiving the signals.
 
 You can find a list of all supported protocols [here](protocols.md).
 
@@ -14,7 +14,7 @@ The Processing Pipeline
 
 ### 1. Receiving
 
-The arduino is connecte via serial bus to the processing computer (for example a raspberry pi)
+The arduino is connected via serial bus to the processing computer (for example a raspberry pi)
 and waits for rf signal. 
 
 > Mostly all 433mhzw OOK signals from devices are send multiple times directly in row and have a
@@ -23,8 +23,8 @@ and waits for rf signal.
 
 [RFControl](https://github.com/pimatic/RFControl) running on the arduino detects the start of a 
 signal by its longer footer pulse and verifies it one time by comparing it with the next signal. 
-It does nothing know about the specific protocol, it just uses the stated fact above. Also we aren't
-interested in if the pulse was a high or low pulse (presence or absence of a carrier wave), 
+It it unaware of the specific protocol, it just uses the stated fact above. Also we are 
+not interested in it if the pulse was a high or low pulse (presence or absence of a carrier wave), 
 because the information is decoded in the pulse lengths.
 
 We will call the received sequence of pulse lengths now **timings sequence**. For example a timing
@@ -84,7 +84,7 @@ The binary reprsentation now looks like this:
 110011000010
 ```
 
-As last step the protocol dependend information must be extracted from the binary representation:
+As last step the protocol dependent information must be extracted from the binary representation:
 
 ```CoffeeScript
 result = {
