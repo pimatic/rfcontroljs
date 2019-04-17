@@ -129,6 +129,10 @@ module.exports = {
       checksum ^= (number & 0x0F)
       number >>= 4
     return checksum == 0
+
+  # Helper function to reverse a string
+  reverse: (s) ->
+    if s.length < 2 then s else @reverse(s[1..-1]) + s[0]
 }
 
 module.exports.binaryToNumber = module.exports.binaryToNumberMSBLSB

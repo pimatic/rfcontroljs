@@ -1,7 +1,3 @@
-# Helper function to reverse a string
-reverse = (s) ->
-  if s.length < 2 then s else reverse(s[1..-1]) + s[0]
-
 module.exports = (helper) ->
   pulsesToBinaryMapping = {
     '000022': ''
@@ -60,7 +56,7 @@ module.exports = (helper) ->
         return false
 
       # Reverse the channel bits
-      channel = reverse(channel)
+      channel = helper.reverse(channel)
       # Convert bits to number
       channel = helper.binaryToNumber(channel, 0, 3)
 
@@ -109,7 +105,7 @@ module.exports = (helper) ->
       # Convert the number to a binary string
       channel = helper.numberToBinary(channel, 8)
       # Only now we can reverse the bits
-      channel = reverse(channel)
+      channel = helper.reverse(channel)
       # Convert the binary string to pulses
       channel = helper.map(channel, binaryToPulse)
 
