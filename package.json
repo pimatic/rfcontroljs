@@ -12,6 +12,11 @@
     "gulpfile.coffee",
     "index.js"
   ],
+  "keywords": [
+    "433mhz",
+    "arduino",
+    "ook"
+  ],
   "scripts": {
     "test": "gulp test"
   },
