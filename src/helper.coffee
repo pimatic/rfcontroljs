@@ -9,7 +9,7 @@ module.exports = {
     result = ''
     while i < data.length
       hadMatch = false
-      # try each mapping rool
+      # try each mapping rule
       for search, replace of mapping
         # if we have enough data left
         if data.length-i >= search.length
@@ -32,23 +32,23 @@ module.exports = {
   # converts the binary data to a singed number.
   binaryToSignedNumberMSBLSB: (data, b, e) ->
     signedPos = b
-    b++ #increment b to remove the signedbit from the data
+    b++ #increment b to remove the sign bit from the data
     if (parseInt(data[signedPos], 10)) is 1
-      #it is negativ
+      #it is negative
       return @_binaryToSignedNumberMSBLSB(data, b, e)
     else
-      #it isnt negativ
+      #it isn't negative
       return @binaryToNumberMSBLSB(data, b, e)
 
 
   binaryToSignedNumberLSBMSB: (data, b, e) ->
     signedPos = e
-    e-- #decrement e to remove the signedbit from the data
+    e-- #decrement e to remove the sign bit from the data
     if (parseInt(data[signedPos], 10)) is 1
-      #it is negativ
+      #it is negative
       return @_binaryToSignedNumberLSBMSB(data, b, e)
     else
-      #it isnt negativ
+      #it isn't negative
       return @binaryToNumberLSBMSB(data, b, e)
 
 
