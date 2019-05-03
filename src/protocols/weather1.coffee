@@ -18,7 +18,7 @@ module.exports = (helper) ->
         type: "number"
       lowBattery:
         type: "boolean"
-    brands: []
+    brands: ["Logilink WS0002", "DANIU"]
     pulseLengths: [456, 1990, 3940, 9236]
     pulseCount: 74
     decodePulses: (pulses) ->

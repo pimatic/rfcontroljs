@@ -16,7 +16,7 @@ module.exports = (helper) ->
         type: "number"
       humidity:
         type: "number"
-    brands: ["tfa", "conrad"]
+    brands: ["TFA", "Conrad Electronic"]
     pulseLengths: [508, 2012, 3908, 7726]
     pulseCount: 86
     decodePulses: (pulses) ->

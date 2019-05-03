@@ -17,7 +17,7 @@ module.exports = (helper) ->
         type: "number"
       lowBattery:
         type: "boolean"
-    brands: ["Sempre (Aldi) GT-WT-02"]
+    brands: ["Sempre GT-WT-02"]
     pulseLengths: [552, 2089, 4137, 9032]
     pulseCount: 80
     decodePulses: (pulses) ->

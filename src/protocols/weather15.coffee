@@ -21,7 +21,7 @@ module.exports = (helper) ->
         type: "number"
       lowBattery:
         type: "boolean"
-    brands: ["Globaltronics GT-WT-01 variant"]
+    brands: ["Globaltronics GT-WT-01 variant", "Freetec PT-250"]
     pulseLengths: [496, 2048, 4068, 8960]
     pulseCount: 76
     decodePulses: (pulses) ->
