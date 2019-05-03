@@ -18,7 +18,7 @@ module.exports = (helper) ->
         type: "number"
       state:
         type: "boolean"
-    brands: ["ADEO"]
+    brands: ["ADEO", "ELRO/Home Easy HE-852"]
     pulseLengths: [217, 648, 6696]
     pulseCount: 50
     decodePulses: (pulses) ->
@@ -33,6 +33,6 @@ module.exports = (helper) ->
     encodeMessage: (message) ->
       id  = helper.map(helper.numberToBinaryLSBMSB(message.id, 12), binaryToPulse)
       unit = helper.map(helper.numberToBinaryLSBMSB(message.unit, 11), binaryToPulse)
-      state = (if message.state then binaryToPulse['0'] else binaryToPulse[''])
+      state = (if message.state then binaryToPulse['0'] else binaryToPulse['1'])
       return "#{id}#{unit}#{state}02"
   }

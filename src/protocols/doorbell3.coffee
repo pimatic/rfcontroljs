@@ -16,7 +16,7 @@ module.exports = (helper) ->
         type: "number"
       unit:
         type: "number"
-    brands: ["WP515S"]
+    brands: ["Smarthome WP515S"]
     pulseLengths: [300, 580, 10224]
     pulseCount: 26
     decodePulses: (pulses) ->
