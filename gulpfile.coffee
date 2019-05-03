@@ -119,6 +119,6 @@ gulp.task 'docs', ->
 
     """
 
-  table += "</table>\n"
+  table += "</table>\n\n"
   require('fs').writeFileSync('./protocols.md', header + table + main)
 
