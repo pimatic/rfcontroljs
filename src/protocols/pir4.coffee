@@ -1,4 +1,4 @@
-module.exports = (helper) ->
+  module.exports = (helper) ->
   pulsesToBinaryMapping = {
     '0': '0' #binary 0
     '1': '1' #binary 1
@@ -18,7 +18,7 @@ module.exports = (helper) ->
         type: "number"
       presence:
         type: "boolean"
-    brands: []
+    brands: ["SelectPlus Doorbell"]
     pulseLengths: [ 371, 1081, 5803 ]
     pulseCount: 36
     decodePulses: (pulses) ->
