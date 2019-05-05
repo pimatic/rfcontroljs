@@ -1,8 +1,8 @@
-  module.exports = (helper) ->
+module.exports = (helper) ->
   pulsesToBinaryMapping = {
     '0': '0' #binary 0
     '1': '1' #binary 1
-    '2': ''    #footer
+    '2': ''  #footer
   }
   binaryToPulse = {
     '0': '0'
