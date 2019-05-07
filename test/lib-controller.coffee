@@ -304,6 +304,28 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'weather20'
+      pulseLengths: [560, 972, 1904, 3812, 8556]
+      pulses: [
+        '0302020302020202030202020302020202020202030302020202030202020202020202020104'
+        '0302020302020202030202020302020202020202030203030302030202020202020202020104'
+        '0302020302020202030202020302020202020202030203030302030302020202020202020104'
+        '0302020302020202030302030302020302020202030302020203030202020202020202020104'
+        '0302020302020202030303020302020202020202030302020203020302020202020202020104'
+        '0302020302020202030303020302020202020202030302020202020302020202020202020104'
+        '0302020302020202030303020302020202020202030302020302020202020202020202020104'
+      ]
+      values: [
+        { id: 2312, channel: 1, temperature: 19.4, lowBattery: true }
+        { id: 2312, channel: 1, temperature: 18.6, lowBattery: true }
+        { id: 2312, channel: 1, temperature: 18.7, lowBattery: true }
+        { id: 2317, channel: 2, temperature: 19.8, lowBattery: true }
+        { id: 2318, channel: 1, temperature: 19.7, lowBattery: true }
+        { id: 2318, channel: 1, temperature: 19.3, lowBattery: true }
+        { id: 2318, channel: 1, temperature: 20, lowBattery: true }
+      ]
+    },
+    {
       protocol: 'dimmer1'
       pulseLengths: [259, 1293, 2641, 10138]
       pulses: [
@@ -956,7 +978,8 @@ describe '#decodePulses()', ->
             result = r
             break
         assert(result, "pulse #{pulses} of #{t.protocol} should be detected as #{t.protocol}.")
-        assert.deepEqual(result.values, t.values[i])
+        assert.deepEqual(result.values, t.values[i],
+        "Expected values do not match actual: " + JSON.stringify(t.values[i]))
   )
 
   runTest(t) for t in tests
