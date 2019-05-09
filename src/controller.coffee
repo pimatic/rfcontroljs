@@ -12,7 +12,7 @@ protocols = [
   'pir1', 'pir2', 'pir3', 'pir4', 'pir5', 'pir6'
   'contact1', 'contact2', 'contact3', 'contact4'
   'generic', 'generic2'
-  'alarm1', 'alarm2'
+  'alarm1', 'alarm2', 'alarm3'
   'led1', 'led2', 'led3', 'led4'
   'doorbell1', 'doorbell2', 'doorbell3',
   'awning1', 'awning2'
