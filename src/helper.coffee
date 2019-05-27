@@ -133,6 +133,23 @@ module.exports = {
   # Helper function to reverse a string
   reverse: (s) ->
     if s.length < 2 then s else @reverse(s[1..-1]) + s[0]
+
+  binaryToBitPos: (data, start, end, bitValue=1) ->
+    i = Math.log(@binaryToNumberLSBMSB(data, start, end))/Math.log(2)
+    # i must be a power of 2
+    if i % 1 is 0
+      return i + 1
+    else
+      return 0
+
+  bitPosToBinary: (pos, length, bitValue=1) ->
+    if pos < 0 or pos > length
+      @numberToBinaryLSBMSB(0, length)
+    else if bitValue is 1
+      @numberToBinaryLSBMSB(Math.pow(2, pos - 1), length)
+    else
+      @numberToBinaryLSBMSB(0xF - Math.pow(2, pos - 1), length)
+
 }
 
 module.exports.binaryToNumber = module.exports.binaryToNumberMSBLSB

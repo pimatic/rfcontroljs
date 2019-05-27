@@ -788,6 +788,32 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'switch32'
+      pulseLengths: [440, 1300, 13488],
+      pulses: [
+        '01010110011001100101011001100110011001100110011002'
+        '01010110011001100101011001100110011001100110010102'
+        '01010110011001100110010101100110011001100110011002'
+        '01010110011001100110010101100110011001100110010102'
+        '01010110011001100110011001010110011001100110011002'
+        '01010110011001100110011001010110011001100110010102'
+        '01010110011001100110011001100101011001100110011002'
+        '01010110011001100110011001100101011001100110010102'
+        '01100101011001100101011001100110011001100110011002'
+      ],
+      values: [
+        { systemCode: 1, programCode: 1, state: true }
+        { systemCode: 1, programCode: 1, state: false }
+        { systemCode: 1, programCode: 2, state: true }
+        { systemCode: 1, programCode: 2, state: false }
+        { systemCode: 1, programCode: 3, state: true }
+        { systemCode: 1, programCode: 3, state: false }
+        { systemCode: 1, programCode: 4, state: true }
+        { systemCode: 1, programCode: 4, state: false }
+        { systemCode: 2, programCode: 1, state: true }
+      ]
+    },
+    {
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
       pulses: [
@@ -1181,6 +1207,11 @@ describe '#encodeMessage()', ->
       protocol: 'switch31'
       message: { all: false, channel: 1, id: 47333, state: true }
       pulses: '0000220100010101000000010101000001000100010000000101010000000101000100010000000001010103'
+    },
+    {
+      protocol: 'switch32'
+      message: { systemCode: 1, programCode: 1, state: true }
+      pulses: '01010110011001100101011001100110011001100110011002'
     },
     {
       protocol: 'led3'
