@@ -13,9 +13,9 @@ module.exports = (helper) ->
     type: 'switch'
     values:
       systemCode:
-        type: "number"
+        enum: [0, 1, 2, 3, 4]
       programCode:
-        type: "number"
+        enum: [0, 1, 2, 3, 4]
       state:
         type: "boolean"
     brands: ["Rising Sun RSL366", "Conrad RSL366", "PROmax"]
