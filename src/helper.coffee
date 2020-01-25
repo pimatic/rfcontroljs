@@ -7,20 +7,35 @@ module.exports = {
   map: (data, mapping) ->
     i = 0
     result = ''
-    while i < data.length
-      hadMatch = false
-      # try each mapping rule
-      for search, replace of mapping
-        # if we have enough data left
-        if data.length-i >= search.length
-          # and rule matches
-          if data.substr(i, search.length) is search
-            # add replace to result
-            result += replace
-            i += search.length
-            hadMatch = true
-            break
-      unless hadMatch then throw new ParsingError("Data did not match mapping")
+
+    if not Array.isArray mapping
+      while i < data.length
+        hadMatch = false
+        # try each mapping rule
+        for search, replace of mapping
+          # if we have enough data left
+          if data.length-i >= search.length
+            # and rule matches
+            if data.substr(i, search.length) is search
+              # add replace to result
+              result += replace
+              i += search.length
+              hadMatch = true
+              break
+        unless hadMatch then throw new ParsingError("Data did not match mapping")
+    else
+      while i < data.length
+        hadMatch = false
+        for s in mapping
+          search = Object.keys(s)[0]
+          replace = s[search]
+          if data.length-i >= search.length
+            if data.substr(i, search.length) is search
+              result += replace
+              i += search.length
+              hadMatch = true
+              break
+        unless hadMatch then throw new ParsingError("Data did not match mapping")
     return result
 
   mapByArray: (data, mapping) ->

@@ -344,6 +344,22 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'weather21'
+      pulseLengths: [ 196, 288, 628, 61284 ]
+      pulses: [
+        '1222222220122012121212201220121220121212121212121212121220122020121221212112121221121213'
+        '1222222220122012121212201220121212201220121212121212121220122020122020201212121212121213'
+        '1222222220122012121212201220121212122020121212121212121220201212121220122112201221122123'
+        '1222222220122012121212201220121212122121121212121212121221211212121221122112211221122123'
+      ]
+      values: [
+        { id: 161, temperature: 17.9, humidity: 72, channel: 1, lowBattery: false }
+        { id: 161, temperature: 18.3, humidity: 69, channel: 1, lowBattery: false }
+        { id: 161, temperature: 19.4, humidity: 67, channel: 1, lowBattery: false }
+        { id: 161, temperature: 19.4, humidity: 67, channel: 1, lowBattery: false }
+      ]
+    },
+    {
       protocol: 'dimmer1'
       pulseLengths: [259, 1293, 2641, 10138]
       pulses: [
