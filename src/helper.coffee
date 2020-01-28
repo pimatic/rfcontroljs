@@ -165,6 +165,31 @@ module.exports = {
     else
       @numberToBinaryLSBMSB(0xF - Math.pow(2, pos - 1), length)
 
+  binaryToOctets: (binary, maxOffset = 0) ->
+    s = []
+    offset = 0
+    while offset < binary.length and (maxOffset is 0 or offset < maxOffset)
+      s.push(@binaryToNumber(binary, offset, offset + 7))
+      offset+=8
+    return s
+
+  generateCrc8Table: (poly = 0) ->
+    t = []
+    for i in [0..255]
+      currentByte = i
+      for j in [0..7]
+        if (currentByte & 0x80) isnt 0
+          currentByte = ((currentByte << 1) ^ poly) % 256
+        else
+          currentByte = (currentByte << 1) % 256
+      t[i] = currentByte
+    return t
+
+  crc8: (table, bytes, init = 0, finalXor = 0) ->
+    crcValue = init
+    for i in [0..bytes.length-1]
+      crcValue = table[(crcValue ^ bytes[i]) % 256]
+    return crcValue # (crcValue ^ finalXor) % 256
 }
 
 module.exports.binaryToNumber = module.exports.binaryToNumberMSBLSB
