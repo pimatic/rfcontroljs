@@ -30,7 +30,7 @@ module.exports = (helper) ->
         type: "number"
       lowBattery:
         type: "boolean"
-    brands: ["Auriol HG02832"]
+    brands: ["Auriol HG02832, Auriol HG05124A-DCF, Auriol IAN 321304_1901, Rubicson 48957"]
     pulseLengths: [196, 288, 628, 61284]
     pulseCount: 88
     decodePulses: (pulses) ->
