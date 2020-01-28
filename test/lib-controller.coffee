@@ -353,10 +353,10 @@ describe '#decodePulses()', ->
         '1222222220122012121212201220121212122121121212121212121221211212121221122112211221122123'
       ]
       values: [
-        { id: 161, temperature: 17.9, humidity: 72, channel: 1, lowBattery: false }
-        { id: 161, temperature: 18.3, humidity: 69, channel: 1, lowBattery: false }
-        { id: 161, temperature: 19.4, humidity: 67, channel: 1, lowBattery: false }
-        { id: 161, temperature: 19.4, humidity: 67, channel: 1, lowBattery: false }
+        { id: 161, temperature: 17.9, humidity: 72, channel: 1, lowBattery: false, crcOk: true}
+        { id: 161, temperature: 18.3, humidity: 69, channel: 1, lowBattery: false, crcOk: true}
+        { id: 161, temperature: 19.4, humidity: 67, channel: 1, lowBattery: false, crcOk: false}
+        { id: 161, temperature: 19.4, humidity: 67, channel: 1, lowBattery: false, crcOk: false}
       ]
     },
     {
