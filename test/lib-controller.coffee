@@ -830,6 +830,33 @@ describe '#decodePulses()', ->
       ]
     },
     {
+      protocol: 'switch33'
+      pulseLengths: [ 700, 1340, 15000 ]
+      pulses: [
+        '010011010010101010101010101100110010101012' # Switch 1 ON
+        '010011010010101010101010110010110010110102' # Switch 2 ON
+        '010011010010101010101010110010101010110012' # Switch 2 OFF
+        '010011010010101010101010110100110010110012' # Switch 3 ON
+        '010011010010101010101010110100101010110102' # Switch 3 OFF
+        '010011010010101010101010110101010010101012' # ALL ON
+        '010011010010101010101010110101001010101102' # ALL OFF
+        '010011010010101010101010110101010100110012' # DIMM
+        '010011010010101010101010110101001100110102' # BRIGHT
+      ],
+      values: [
+        { id:2816, unit:1, all:false, state:true, dimm:false }
+        { id:2816, unit:2, all:false, state:true, dimm:false }
+        { id:2816, unit:2, all:false, state:false, dimm:false }
+        { id:2816, unit:3, all:false, state:true, dimm:false }
+        { id:2816, unit:3, all:false, state:false, dimm:false }
+        { id:2816, unit:3, all:true, state:true, dimm:false }
+        { id:2816, unit:3, all:true, state:false, dimm:false }
+        { id:2816, unit:3, all:true, state:true, dimm:true }
+        { id:2816, unit:3, all:true, state:false, dimm:true }
+
+      ]
+    },
+    {
       protocol: 'rolling1'
       pulseLengths: [500, 1000, 3000, 7250],
       pulses: [
@@ -1038,8 +1065,8 @@ describe '#decodePulses()', ->
             result = r
             break
         assert(result, "pulse #{pulses} of #{t.protocol} should be detected as #{t.protocol}.")
-        assert.deepEqual(result.values, t.values[i],
-        "Expected values do not match actual: " + JSON.stringify(t.values[i]))
+        assert.deepEqual(t.values[i], result.values,
+          "Expected values do not match actual: " + JSON.stringify(t.values[i]))
   )
 
   runTest(t) for t in tests
