@@ -31,8 +31,8 @@ module.exports = (helper) ->
     pulseLengths: [ 700, 1340, 15000 ]
     pulseCount: 42
     decodePulses: (pulses) ->
-# pulses is something like: '001100110101001010101010101010110100110102'
-# we first map the sequences to binary
+        # pulses is something like: '001100110101001010101010101010110100110102'
+      # we first map the sequences to binary
       binary = helper.map(pulses[1..], pulsesToBinaryMapping)
       # binary is now something like: '01011100000000010001'
       # now we extract the data from that string
