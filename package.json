@@ -31,12 +31,15 @@
   },
   "devDependencies": {
     "coffee-script": "^1.12.2",
-    "gulp": "~3.9.1",
+    "gulp": "^3.9.1",
     "gulp-coffee": "~2.3.3",
     "gulp-coffee-istanbul": "^0.9.1",
     "gulp-coffeelint": "^0.6.0",
     "gulp-mocha": "^3.0.1",
     "gulp-plumber": "~1.1.0",
     "gulp-watch": "~4.3.11"
+  },
+  "dependencies": {
+    "traceur": "0.0.111"
   }
 }
