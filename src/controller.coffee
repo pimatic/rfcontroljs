@@ -15,7 +15,7 @@ protocols = [
   'generic', 'generic2'
   'alarm1', 'alarm2', 'alarm3'
   'led1', 'led2', 'led3', 'led4'
-  'doorbell1', 'doorbell2', 'doorbell3',
+  'doorbell1', 'doorbell2', 'doorbell3', 'doorbell5'
   'awning1', 'awning2'
   'shutter1', 'shutter3', 'shutter4', 'shutter5'
   'rawswitch', 'rawshutter'
